@@ -1,0 +1,1397 @@
+Document length: 6025 lines
+Detected headings and short summaries:
+- [L1] Final Year Project Report (content lines: 0)
+- [L3] Mobile Assistant for the Visually (content lines: 1)
+  Summary: Impaired
+- [L7] Project Advisor: (content lines: 0)
+- [L9] Muhammad Tayyab (supervisor) (content lines: 0)
+- [L11] Talha Mughal (co-supervisor) (content lines: 0)
+- [L13] Submitted By: (content lines: 0)
+- [L15] Muhammad Hassan22017020019 (content lines: 0)
+- [L17] Syed Ali Asad22017020043 (content lines: 0)
+- [L19] Noorish Imran22017020009 (content lines: 0)
+- [L21] Maliha Javed22017020010 (content lines: 3)
+  Summary: Session | 2025-2026 | University of Management and Technology (Iqbal Campus)
+- [L29] Daska Road Sialkot Pakistan (content lines: 2)
+  Summary: Dedication | This project is dedicated to the world of the visual impaired individuals who struggle to navigate themselves in daily life. We are trying to think of a stable and practical technological product that can help them to be safer, smarter, more independent in their lives. We do think that technology must contribute to inclusivity and access by all. With this project, we would wish to trim down dependency and increase confidence among those who depend on assistive tech. It is a step toward an inclusive society that is more accessible to the visually impaired population and which makes their movement around the world easier and more dignified. I do hope this project can provide actual assistance and will increase the quality of life of the people who need it the most.
+- [L35] Final Approval (content lines: 1)
+  Summary: Head of DepartmentDr Umair Muneer Butt
+- [L39] Assistant Professor, KU Head (content lines: 17)
+  Summary: Knowledge Unit of Systems & Technology | UMT Sialkot | Head FYP (Final Year Projects-CS)              ______________________
+- [L75] Syed Ali Asad22017020043 (content lines: 0)
+- [L77] Noorish Imran22017020009 (content lines: 0)
+- [L79] Maliha Javed22017020010 (content lines: 1)
+  Summary: Supervised byMuhammad Tayyab (supervisor)
+- [L83] Talha Mughal (co-supervisor) (content lines: 0)
+- [L85] Starting DateDecember, 2025 (content lines: 0)
+- [L87] Completion Date (content lines: 0)
+- [L89] Tools UsedAndroid Studio (content lines: 3)
+  Summary: TensorFlow Lite | Firebase | SQLite
+- [L97] Operating SystemAndroid (content lines: 0)
+- [L99] Plagairism Report (content lines: 7)
+  Summary: Abstract | This document describes VisionMate, a smartphone-centred assistive system for people with visual impairments that combines on-device obstacle perception, offline face recognition, turn-by-turn voice navigation, and guardian safety synchronization in a single mobile application. The system implements a dual-zone safety model: a frontal zone for near-term collision detection and a lower path zone that estimates walkability and announces transitions between blocked and clear states. Edge inference is performed locally using YOLOv8n-int8 for object detection and MobileFaceNet for face embedding extraction (TensorFlow Lite), minimising cloud dependence for privacy-sensitive perception tasks. Interaction is audio-first, using text-to-speech for continuous situational feedback and speech input for destination entry; hardware volume-button triggers and inertial fall-detection enable quick user actions. A guardian mode shares realtime location and device status via Firebase (authentication and sync), while a local SQLite cache supports offline face matching. The implementation demonstrates that commodity smartphones can deliver an integrated, low-cost assistive solution that improves autonomy and safety for visually impaired users. | Contents
+- [L115] 1.Introduction8 (content lines: 0)
+- [L117] 1.1Motivations8 (content lines: 0)
+- [L119] 1.2Project Overview8 (content lines: 0)
+- [L121] 1.3Problem Statement8 (content lines: 0)
+- [L123] 1.4Objectives9 (content lines: 0)
+- [L125] 2.Domain Analysis10 (content lines: 0)
+- [L127] 2.1Customer10 (content lines: 0)
+- [L129] 2.2Stakeholders10 (content lines: 0)
+- [L131] 2.3Affected Groups with social or economic impact11 (content lines: 0)
+- [L133] 2.3.1Visually Impaired Individuals:11 (content lines: 0)
+- [L135] 2.3.2Guardians:11 (content lines: 0)
+- [L137] 2.4Dependencies/ External Systems11 (content lines: 0)
+- [L139] 2.4.1Smartphone Hardware:11 (content lines: 0)
+- [L141] 2.4.2Android Operating System:11 (content lines: 0)
+- [L143] 2.4.3GPS Services:11 (content lines: 0)
+- [L145] 2.4.4Cloud Services (Firebase):11 (content lines: 0)
+- [L147] 2.4.5Maps Service Provider (e.g., Google Maps):11 (content lines: 0)
+- [L149] 2.4.6Internet Connectivity:11 (content lines: 0)
+- [L151] 3.Literature review12 (content lines: 0)
+- [L153] 3.1Gap Analysis16 (content lines: 0)
+- [L155] 3.2Proposed Methodology18 (content lines: 0)
+- [L157] 3.2.1Data Sourcing Methodology18 (content lines: 0)
+- [L159] 3.2.2Open-Source Datasets19 (content lines: 0)
+- [L161] 3.2.3User-Generated Data for Facial Recognition19 (content lines: 0)
+- [L163] 3.2.4Parameters19 (content lines: 0)
+- [L165] 3.2.5Data Processing Workflow19 (content lines: 0)
+- [L167] 3.3System Workflow20 (content lines: 0)
+- [L169] 3.4Models Training & Implementation Methodology21 (content lines: 0)
+- [L171] 3.4.1YOLOv8-Nano21 (content lines: 0)
+- [L173] 3.4.2MobileFaceNet21 (content lines: 0)
+- [L175] 3.4.3Voice Navigation and Feedback21 (content lines: 0)
+- [L177] 4.Requirements analysis22 (content lines: 0)
+- [L179] 4.1Requirements22 (content lines: 0)
+- [L181] 4.1.1System Requirements Table22 (content lines: 0)
+- [L183] 4.2List of Actors23 (content lines: 0)
+- [L185] 4.2.1Visually Impaired:23 (content lines: 0)
+- [L187] 4.2.2Guardian:23 (content lines: 0)
+- [L189] 4.3List of use cases23 (content lines: 0)
+- [L191] 4.4System use case diagram25 (content lines: 0)
+- [L193] 4.5Extended use cases26 (content lines: 0)
+- [L195] 4.6User interfaces (mock screens)39 (content lines: 1)
+  Summary: 39
+- [L199] 5.Data flow diagram49 (content lines: 0)
+- [L201] 5.1Data Flow Diagram Level 049 (content lines: 0)
+- [L203] 5.2Data Flow Diagram Level 149 (content lines: 0)
+- [L205] 5.3Data Flow Diagram Level 250 (content lines: 0)
+- [L207] 6.System Design52 (content lines: 0)
+- [L209] 6.1System Architecture Diagram52 (content lines: 0)
+- [L211] 6.2Class Diagram53 (content lines: 0)
+- [L213] 6.3Sequence Diagrams54 (content lines: 0)
+- [L215] 6.4ERD55 (content lines: 0)
+- [L217] 7.Implementation details56 (content lines: 0)
+- [L219] 7.1Development Setup56 (content lines: 0)
+- [L221] 7.2Deployment setup56 (content lines: 0)
+- [L223] 7.3Algorithms57 (content lines: 0)
+- [L225] 7.4Constraints59 (content lines: 0)
+- [L227] 7.4.1Assumptions59 (content lines: 0)
+- [L229] 7.4.2System Constraints60 (content lines: 0)
+- [L231] 7.4.3Restrictions60 (content lines: 0)
+- [L233] 7.4.4Limitations60 (content lines: 0)
+- [L235] 8.Testing61 (content lines: 0)
+- [L237] 8.1Extended Test Cases61 (content lines: 0)
+- [L239] 8.2Decision Table73 (content lines: 0)
+- [L241] 8.2.1Code snippet73 (content lines: 0)
+- [L243] 8.2.2Decision coverage table73 (content lines: 0)
+- [L245] 8.3Traceability Matrix73 (content lines: 0)
+- [L247] 8.3.1RID vs UCID (requirements vs use cases)73 (content lines: 0)
+- [L249] 8.3.2Prototypes (RID vs PID)73 (content lines: 0)
+- [L251] 8.3.3Test Cases (RID vs TID)73 (content lines: 0)
+- [L253] 8.3.4Coverage (UCID vs TID)74 (content lines: 0)
+- [L255] 9.Results/Output/Statistics75 (content lines: 0)
+- [L257] 9.1%completion75 (content lines: 0)
+- [L259] 9.2%accuracy75 (content lines: 0)
+- [L261] 9.3%correctness75 (content lines: 0)
+- [L263] 10.CONCLUSION76 (content lines: 0)
+- [L265] 11.FUTURE WORK77 (content lines: 0)
+- [L267] 12.References78 (content lines: 1)
+  Summary: Definitions and Acronyms
+- [L271] Table 1: Definitions and Acronyms (content lines: 2)
+  Summary: Acronym | Definition
+- [L277] UMT (content lines: 1)
+  Summary: University of Management and Technology
+- [L281] GPS (content lines: 0)
+- [L283] Global Positioning System (content lines: 1)
+  Summary: UI
+- [L287] User Interface (content lines: 2)
+  Summary: YOLOv8 | You Only Look Once Version 8
+- [L293] API (content lines: 0)
+- [L295] Application Programming Interface (content lines: 2)
+  Summary: TFLite | TensorFlow Lite
+- [L301] TTS (content lines: 1)
+  Summary: Text-to-Speech
+- [L305] STT (content lines: 2)
+  Summary: Speech-to-Text | OS
+- [L311] Operating System (content lines: 0)
+- [L313] APK (content lines: 0)
+- [L315] Android Package Kit (content lines: 36)
+  Summary: List of Figures | Figure 3.1: Proposed System19 | Figure 4.1: Use Case24
+- [L389] Table 1: Definitions and Acronyms3 (content lines: 0)
+- [L391] Table 2: Stakeholders10 (content lines: 0)
+- [L393] Table 3: Gap Analysis16 (content lines: 0)
+- [L395] Table 4: Functional Requirements22 (content lines: 0)
+- [L397] Table 5: Non-Functional Requirements23 (content lines: 0)
+- [L399] Table 6: Use Case23 (content lines: 0)
+- [L401] Table 7: Login26 (content lines: 0)
+- [L403] Table 8: Create New Account26 (content lines: 0)
+- [L405] Table 9: Select Signup Role27 (content lines: 0)
+- [L407] Table 10: Guardian Signup28 (content lines: 0)
+- [L409] Table 11: User Signup28 (content lines: 0)
+- [L411] Table 12: Link User with Guardian29 (content lines: 0)
+- [L413] Table 13: View Link Status30 (content lines: 0)
+- [L415] Table 14: Forgot Account30 (content lines: 0)
+- [L417] Table 15: OTP Verification31 (content lines: 0)
+- [L419] Table 16: Register Face32 (content lines: 0)
+- [L421] Table 17: Manage Faces33 (content lines: 0)
+- [L423] Table 18: View Live Location33 (content lines: 0)
+- [L425] Table 19: Object Detection34 (content lines: 0)
+- [L427] Table 20: Face Recognition35 (content lines: 0)
+- [L429] Table 21: Navigation35 (content lines: 0)
+- [L431] Table 22: Audio Feedback36 (content lines: 0)
+- [L433] Table 23: Voice Command Activation (Volume Up 2)37 (content lines: 0)
+- [L435] Table 24: Save Favorite Location37 (content lines: 0)
+- [L437] Table 25: Logout38 (content lines: 0)
+- [L439] Table 2661 (content lines: 0)
+- [L441] Table 2762 (content lines: 0)
+- [L443] Table 2862 (content lines: 0)
+- [L445] Table 2963 (content lines: 0)
+- [L447] Table 3063 (content lines: 0)
+- [L449] Table 3164 (content lines: 0)
+- [L451] Table 3264 (content lines: 0)
+- [L453] Table 3365 (content lines: 0)
+- [L455] Table 3466 (content lines: 0)
+- [L457] Table 3566 (content lines: 0)
+- [L459] Table 3667 (content lines: 0)
+- [L461] Table 3767 (content lines: 0)
+- [L463] Table 3868 (content lines: 0)
+- [L465] Table 3969 (content lines: 0)
+- [L467] Table 4069 (content lines: 0)
+- [L469] Table 4170 (content lines: 0)
+- [L471] Table 4271 (content lines: 0)
+- [L473] Table 4371 (content lines: 0)
+- [L475] Table 4472 (content lines: 0)
+- [L477] Table 4572 (content lines: 5)
+  Summary: Introduction | Visual impairment can severely limit an individual’s independence, safety, and confidence during routine activities. Tasks that sighted people take for granted—avoiding obstacles, recognising known people, and following a safe path—become difficult to perform unaided. Traditional aids such as the white cane help with immediate physical barriers but do not provide semantic scene information or person recognition. Modern assistive devices that offer richer functionality are often costly or require specialised hardware. | VisionMate is a mobile application that transforms an ordinary smartphone into an assistive companion for people with visual impairments. The app provides real-time object detection and tracking, offline face recognition for identifying registered contacts, voice-guided navigation, and a guardian mode for live location sharing. Core feedback is delivered via audio so the interface remains accessible without visual dependence. By combining on-device perception, offline caching, and optional cloud sync, VisionMate aims to deliver an affordable, holistic solution that enhances mobility, social interaction, and personal safety.
+- [L489] Project Overview (content lines: 1)
+  Summary: VisionMate transforms a commodity smartphone into an integrated assistive platform that bundles realtime object detection, offline face recognition, voiceguided navigation, and guardian safety features. The system emphasises ondevice inference (TensorFlow Lite models) and local caching to reduce cloud dependency while using Firebase services selectively for authentication, realtime location sharing, and guardian sync. The app’s audiofirst interaction model and minimal hardware requirements make it practical and affordable for broad deployment. Overall, the project targets a holistic, usercentric solution that balances functionality, responsiveness, and privacy.
+- [L493] Problem Statement (content lines: 8)
+  Summary: Visually impaired people face continuous challenges when navigating everyday environments: avoiding obstacles, identifying familiar people, and following safe routes. Traditional aids such as the white cane provide important tactile feedback but cannot convey semantic or contextual scene information. Commercial “smart” assistive devices can be expensive, bulky, or restricted in capability, limiting accessibility for many users. There is therefore an urgent need for an affordable, widely available assistive technology that provides rich, realtime perception and guidance without requiring specialised hardware. This project aims to meet that need by leveraging existing smartphones and intelligent software to improve mobility, situational awareness, and personal safety. | Objectives | Upon completion, this project anticipates to meet the following results:
+- [L511] Domain Analysis (content lines: 6)
+  Summary: Domain analysis identifies the users, environment, stakeholders and external systems that shape VisionMate’s requirements. It clarifies what the system must do, what data it will handle, and constraints affecting performance and usability so the final solution is practical, secure and usercentred. | Customer | Primary audience: visually impaired smartphone users needing audiobased assistance for perception, recognition, navigation and safety.
+- [L525] Table 2: Stakeholders (content lines: 2)
+  Summary: Stakeholder | Role in System
+- [L531] Visually Impaired User (content lines: 3)
+  Summary: primary beneficiary; relies on object detection, face recognition, voice navigation and audio feedback for independent mobility. | Guardian | Links to the user account, receives SOS/alerts and monitors live location to support safety.
+- [L539] Project Developer (content lines: 1)
+  Summary: Responsible for design, development, testing and maintenance; ensures system performance and reliability.
+- [L543] Project Supervisor (content lines: 1)
+  Summary: Provides academic guidance, oversight and evaluation to meet university standards.
+- [L547] Firebase Cloud Services (content lines: 1)
+  Summary: External service provider for authentication, realtime database and optional sync used by guardian features.
+- [L551] Maps Service Provider (content lines: 3)
+  Summary: Supplies routing and place information required for voicebased navigation.. | Affected Groups with social or economic impact | The implementation of the vision mate system will have an impact to some group of people, a different way:
+- [L559] Visually Impaired Individuals: (content lines: 5)
+  Summary: Improves daily mobility, situational awareness and social interaction through affordable softwarebased assistance (object recognition, navigation, face recognition). | Guardians: | Reduces caregiver anxiety by enabling live location monitoring and timely response during emergencies or unfamiliar situations.
+- [L571] Smartphone Hardware: (content lines: 5)
+  Summary: Camera — realtime visual input for detection and face capture.• Microphone & speaker — voice input and audio feedback.• GPS — location for navigation and guardian tracking.• Accelerometer — fall detection and inertial sensing.• Battery sensor & hardware buttons (volume) — device status and quick triggers. | Android /  ios Operating System: | • OS handles permissions, background operation, accessibility APIs (TalkBack/VoiceOver) and resource management.
+- [L583] Cloud Services (Firebase): (content lines: 3)
+  Summary: Used for user authentication, realtime location sync, SOS/alerts and optional backups; subject to security and consent policies. | Maps Service Provider (e.g., Google Maps): | Supplies route computation, place search and map tiles used by voice navigation and bookmarking.
+- [L591] Internet Connectivity: (content lines: 20)
+  Summary: Required for map routing, cloud sync and guardian features; core perception and offline face recognition are designed to function without connectivity | Literature review | Zhao et al. [1] proposed Accessibility Bot, a research prototype for assisting individuals with visual impairments (VIPs) to identify their friends and perceive facial information in the process of social activities. Integrated into Facebook Messenger, the system uses the phone's camera to identify faces in real time, and takes advantage of cutting-edge computer vision models that have been trained by using existing tagged photos on Facebook, that eliminates the need for manually creating training datasets. The application extracts important information about the faces, such as which face, location of the face in relation to the others, expressions and attributes like facial hair, that is fed back to the user via the audio feedback via a screen reader. While the underlying recognition algorithm was able to achieve greater than 97% accuracy on the PIPA dataset, in a study involving six VIPs over a period of seven days, it was noted that in practice "perceived accuracy" was often less because of issues with aiming the camera and inconsistent photo quality. Ultimately, the research was able to offer some deep insights into the practical problems of implementing assistive face recognition technology in uncontrolled environments outside of the lab.
+- [L633] Gap Analysis (content lines: 0)
+- [L635] Table 3: Gap Analysis (content lines: 3)
+  Summary: Ref. | Goal | Year
+- [L643] Models Used (content lines: 1)
+  Summary: Context/Focus
+- [L647] Best Performing Architecture (content lines: 1)
+  Summary: Limitation/Weakness
+- [L651] Performance Metric (content lines: 7)
+  Summary: [9] | Implementing a tangible wearable solution for independence. | 2025
+- [L667] 18.8 FPS; 99% pedestrian detection. (content lines: 39)
+  Summary: [11] | Assisting with object identification and navigation in public spaces. | 2025
+- [L747] 85.2% image recognition; 250ms inference time. (content lines: 7)
+  Summary: [17] | Effective object detection for safe navigation of visually impaired individuals. | 2025
+- [L763] 99.74% Accuracy. (content lines: 7)
+  Summary: [16] | To assist visually impaired individuals in recognizing daily objects via audio feedback. | 2025
+- [L779] 0.87 to 0.92 Confidence Scores. (content lines: 5)
+  Summary: [10] | Evaluating challenges and opportunities in navigation assistance. | 2024
+- [L791] Review Article (content lines: 15)
+  Summary: Existing systems are often bulky and suffer from high processing latency. | Qualitative assessment of multi-modal feedback. | [12]
+- [L823] Proximity Measurement Strategy (content lines: 23)
+  Summary: Performance significantly degrades in low-light or nighttime conditions. | 95% Human; 91% Laptop accuracy. | [4]
+- [L871] Accessibility Bot (content lines: 19)
+  Summary: Real-world "perceived accuracy" declines due to user camera-aiming challenges. | >97% accuracy (PIPA dataset). | [14]
+- [L911] Proposed Methodology (content lines: 1)
+  Summary: This research is carried out by experimental and applied research methodology which is concerned with the design and development, implementation and evaluation of an AI based mobile assistive system for visually impaired people. The aim is to experimentally demonstrate the feasibility, accuracy and performance of applications of real-time object detection, facial recognition and voice-guided navigation based on on-device artificial intelligence.
+- [L915] Data Sourcing Methodology (content lines: 7)
+  Summary: The data utilized by the VisionMate system is from two primary sources, in order to support the object detection/ recognition capabilities in real time and the facial recognition functionalities. These data sources are carefully selected to provide the efficiency, accuracy and privacy of the users. | Open-Source Datasets | For the object detection tasks a modified model of YOLOv8-Nano that has already been trained on a huge data of common objects like vehicles, furniture, household objects and pedestrians. Leveraging this worldly knowledge makes it possible for the model to recognize a wide variety of objects with a decrease in the complexity of training, the computing requirements, and the development time. This way, the accuracy of detection is quite high and real-time performance on the mobile devices are possible.
+- [L931] Data Processing Workflow (content lines: 1)
+  Summary: The whole process of data processing is broken into four consecutive steps:
+- [L935] Data Acquisition: (content lines: 5)
+  Summary: The smartphone camera is used to capture the live video frames and the guardian contains the application interfaces to upload the faces images. | Preprocessing: | Frames that are captured are resized to 320 x 320, and normalized according to the input specifications of the YOLOv8-Nano model so that they will have the best computational efficiency.
+- [L947] Data Utilization: (content lines: 1)
+  Summary: The classes of the objects identified and identities are translated into audible feedback through Text-to-Speech (TTS) engine to give instant feedback to the visually impaired users.
+- [L951] System Workflow (content lines: 2)
+  Summary: Figure 3.1: Proposed System | The proposed system is planned to be operated primarily by using the on-device processing for the purpose of guaranteeing real-time performance, preserving the privacy and reducing the reliance of the internet connectivity. The mobile application is made with the help of the Flutter framework and this is the main control unit which integrates the smartphone camera, GPS, speaker, and processing with the help of embedded Artificial Intelligence models. work flow of the system starts with the continuous capture of real-time visual data using the smartphone camera. The gained frames are preprocessed and fed to light-weighted AI models which are implemented with TensorFlow Lite(TFLite) framework. The object detection module is made up of YOLOv8-Nano which determines the surrounding objects while the facial recognition module is made up of MobileFaceNet for facial recognition of the registered people. Meaningful audio feedback from processed results is achieved using a Text-to-Speech (TTS) engine to inform the user.2 For navigation and security purposes, the system has location tracking (GPS engine) and voice-guided navigation. In addition to this, a secure Guardian Mode is implemented with the help of the Firebase Realtime Database that proposes authorized guardian to track the real-time location of the user. This combination of offline and online architecture is capable of ensuring fast response, safe handling of data and reliable 24x7 assistance for the visually impaired.
+- [L957] Models Training & Implementation Methodology (content lines: 5)
+  Summary: The proposed system is implemented on light weight deep learning models and these models are optimized to run in real time at device. The selected models have high detection accuracy, low detection latency and can make good use of their resources hence can be run in regular smartphones. | YOLOv8-Nano | YOLOv8-Nano is used to detect the objects in real-time as it has a small structure and can run the inference in the quickest manner. The model is taking continuous video frames which are captured by the smartphone camera and it is detecting different categories of objects by generating bounding boxes and marking them with corresponding classes. Its lightweight framework makes it capable to perform the operations in the device effectively and its dependable detection functionality that is important in providing real-time environmental awareness for the visually impaired users.
+- [L969] Voice Navigation and Feedback (content lines: 5)
+  Summary: The system has the fact of route guidance in real time, which is based on navigation services GPS. The deployment of a Speech-to-Text module enables the voice recognition of inputs to enter one's destinations using the help of voice. The audible responses are the navigation instructions, objects detected and results of recognition which are converted into text to speech (TTS) engine and enable hands-free and intuitive interaction. | Requirements analysis | Requirements Analysis - involves defining and recording the requirements of what the VisionMate system needs to accomplish and what conditions it needs to be used in. In this project, the needs were determined keeping in point actual needs of the visually impaired people and their guardians and making the solution practical, safe and convenient to use. The functional requirements are the explanation of the essential features like the secure login, user guardian connection, face registering and recognizing, real time object tracking, voice guided navigation and guardian live tracking. Non-functional requirements are concerned to accessibility, performance, privacy and reliability such as presenting all the essential information via audio feedback and ensuring the safe accessibility to location data. This analysis is clear and helps in laying a clear foundation of design, implementation as well as testing and the final application will satisfy the project goals.
+- [L981] System Requirements Table (content lines: 0)
+- [L983] Table 4: Functional Requirements (content lines: 1)
+  Summary: ID
+- [L987] Feature Name (content lines: 0)
+- [L989] Technical Requirement Description (content lines: 0)
+- [L991] FR-01 (content lines: 0)
+- [L993] User Authentication (content lines: 1)
+  Summary: The system shall have the functionality of secure login/logout of Blind Users and Guardians with the help of the Firebase Authentication.
+- [L997] FR-02 (content lines: 0)
+- [L999] Role Management (content lines: 1)
+  Summary: The system requires the setting of some permissions as well the UI dashboards depending on the two roles (Blind User or Guardian).
+- [L1003] FR-03 (content lines: 0)
+- [L1005] Guardian Linking (content lines: 1)
+  Summary: The system shall allow a user to link their profile with a Guardian using a unique identifier (e.g., guardian email) and require user consent.
+- [L1009] FR-04 (content lines: 0)
+- [L1011] Object Detection (content lines: 1)
+  Summary: The system is required for detecting common objects in real-time based on a 320x320 YOLOv8-Nano model.
+- [L1015] FR-05 (content lines: 0)
+- [L1017] Facial Recognition (content lines: 1)
+  Summary: The faces registered shall be detected by the system by generating and matching 192 dimensional embeddings using MobileFaceNet.
+- [L1021] FR-06 (content lines: 0)
+- [L1023] Guardian Face Management (content lines: 1)
+  Summary: Guardians (when permitted) shall be able to register, update and delete face profiles stored in the user’s local DB and/or synced cloud copy
+- [L1027] FR-07 (content lines: 0)
+- [L1029] Live Location Sync (content lines: 1)
+  Summary: The system shall continuously synchronize the location (GPS Coordinates) of the user to FireBase Realtime database for remote monitoring of the user.
+- [L1033] FR-08 (content lines: 0)
+- [L1035] Tactile Mic Trigger (content lines: 1)
+  Summary: The system shall switch to SpeechtoText (STT) input when the user performs the configured hardware gesture (e.g., doublepress Volume Up).
+- [L1039] FR-09 (content lines: 0)
+- [L1041] Instant Bookmarking (content lines: 1)
+  Summary: The system shall accept if user want to save the current location as "Favorite Destination", by doing Triple-Press on Volume Up hardware key.
+- [L1045] FR-10 (content lines: 2)
+  Summary: Voice-Guided Navigation | The system shall provide turn turn audible navigation milestone and distance update using Text-to-Speech (TTS) engine.
+- [L1051] FR-11 (content lines: 0)
+- [L1053] Audio Feedback (content lines: 1)
+  Summary: The system needs to provide instant audio alerts of any detection and recognition and hardware triggers.
+- [L1057] FR-12 (content lines: 2)
+  Summary: Manual SOS | Allow user to manually trigger an SOS (hardware shortcut or UI) that notifies guardian(s) and shares last known location.
+- [L1063] FR-13 (content lines: 0)
+- [L1065] Fall Detection & Confirmation (content lines: 1)
+  Summary: Detect probable falls using inertial sensors, prompt for user confirmation and escalate to SOS if unconfirmed.
+- [L1069] FR-14 (content lines: 0)
+- [L1071] Critical Battery Alert (content lines: 1)
+  Summary: Detect critically low battery and optionally notify guardian with last known location.
+- [L1075] FR-15 (content lines: 0)
+- [L1077] Offline Face Cache (content lines: 1)
+  Summary: Maintain a local SQLite cache of registered faces/embeddings for offline recognition.
+- [L1081] FR-16 (content lines: 2)
+  Summary: Sync & Conflict Handling | Provide optional cloud sync with conflict resolution and user consent settings.
+- [L1087] Table 5: Non-Functional Requirements (content lines: 1)
+  Summary: ID
+- [L1091] Quality Attribute (content lines: 0)
+- [L1093] Requirement Description (content lines: 0)
+- [L1095] NFR-01 (content lines: 0)
+- [L1097] Offline Operation (content lines: 1)
+  Summary: Core AI modules (YOLO and FaceNet) must be able to run on-device in order to function in the absence of connectivity to the Internet.
+- [L1101] NFR-02 (content lines: 0)
+- [L1103] Inference Latency (content lines: 1)
+  Summary: Target timely perception→audio feedback (example target <450 ms on midrange devices); final target depends on device and tuning.
+- [L1107] NFR-03 (content lines: 0)
+- [L1109] Data Privacy (content lines: 1)
+  Summary: Raw facial images should not be uploaded by default; only embeddings or encrypted representations are stored/shared with consent.
+- [L1113] NFR-04 (content lines: 0)
+- [L1115] Tactile Priority (content lines: 1)
+  Summary: The prioritization of hardware button triggers (Volume keys) to win over to on-screen UI needs to be placed for all critical blind user interactions.
+- [L1119] NFR-05 (content lines: 2)
+  Summary: Reliability | Set validation targets (example: ≥80% practical accuracy in normal lighting) and plan field tuning and reporting.
+- [L1125] NFR-06 (content lines: 0)
+- [L1127] Resource Management (content lines: 1)
+  Summary: The app needs to use a periodic processing (loop control) to ensure, that it does not spike the temperature to high and suck power from the battery too much (on mid range devices).
+- [L1131] NFR-07 (content lines: 0)
+- [L1133] Platform Compatibility (content lines: 1)
+  Summary: The application should be compatible with the android running on the API Level 23 (Marshmallow) and above.
+- [L1137] NFR-08 (content lines: 2)
+  Summary: Security & Consent | Enforce secure auth, TLS for transport, document Firestore security rules and explicit consent flows for biometric/location sharing.
+- [L1143] NFR-09 (content lines: 2)
+  Summary: Accessibility QA | Ensure TalkBack/VoiceOver semantics, clear utterances, and gesture testing as part of QA.
+- [L1149] NFR-10 (content lines: 3)
+  Summary: Testability & Instrumentation | Include logging/metrics for inference timing, detection rates, SOS latency for validation. | List of Actors
+- [L1157] Visually Impaired: (content lines: 4)
+  Summary: Primary user who will get assistance of object detection, face recognition, navigation, and audio feedback. | Guardian: | Secondary user responsible for the account management and view the live location.
+- [L1167] Table 6: Use Case (content lines: 0)
+- [L1169] Use Case ID (content lines: 0)
+- [L1171] Use Case Name (content lines: 0)
+- [L1173] Brief Description (content lines: 0)
+- [L1175] UC-01 (content lines: 2)
+  Summary: Login | Enables a guardians or a visually impaired user to log on into the VisionMate application.
+- [L1181] UC-02 (content lines: 0)
+- [L1183] Create New Account (content lines: 1)
+  Summary: Opens up account opening procedure on login screen.
+- [L1187] UC-03 (content lines: 0)
+- [L1189] Select Signup Role (content lines: 1)
+  Summary: Provides an option of signing up as a Guardian or Visually impaired User.
+- [L1193] UC-04 (content lines: 0)
+- [L1195] Guardian Signup (content lines: 1)
+  Summary: Allows a guardian to login to an account and authenticate it using OTP.
+- [L1199] UC-05 (content lines: 0)
+- [L1201] User Signup (content lines: 1)
+  Summary: Register a Visually Impaired User account.
+- [L1205] UC-06 (content lines: 0)
+- [L1207] Link User with Guardian (content lines: 1)
+  Summary: Associate user account to guardian account
+- [L1211] UC-07 (content lines: 0)
+- [L1213] View Link Status (content lines: 1)
+  Summary: Allows the guardian to know whether the visually impaired user is connected or not.
+- [L1217] UC-08 (content lines: 0)
+- [L1219] Forgot Account (content lines: 1)
+  Summary: Helps the user or the guardian to get access of their accounts in case of forgotten account passwords.
+- [L1223] UC-09 (content lines: 2)
+  Summary: OTP Verification | Verifies identity of user or guardian, during registration and recovery of account
+- [L1229] UC-10 (content lines: 0)
+- [L1231] Register Face (content lines: 1)
+  Summary: Enables the guardian enter the faces of relatives to be recognized.
+- [L1235] UC-11 (content lines: 0)
+- [L1237] Manage Faces (content lines: 1)
+  Summary: Enables the guardian to see, change and delete faces registered.
+- [L1241] UC-12 (content lines: 0)
+- [L1243] View Live Location (content lines: 1)
+  Summary: Gives the guardian to monitor the actual whereabouts of the connected user.
+- [L1247] UC-13 (content lines: 0)
+- [L1249] Object Detection (content lines: 1)
+  Summary: Identifies objects around and has audio feedback to user.
+- [L1253] UC-14 (content lines: 0)
+- [L1255] Face Recognition (content lines: 1)
+  Summary: Detects registered faces and speaks them out
+- [L1259] UC-15 (content lines: 2)
+  Summary: Navigation | Voice commanded GPS to the preferred destination.
+- [L1265] UC-16 (content lines: 0)
+- [L1267] Audio Feedback (content lines: 1)
+  Summary: Converts system out into speech.
+- [L1271] UC-17 (content lines: 0)
+- [L1273] Voice Command Activation (content lines: 1)
+  Summary: Activate voice commands via configured hardware gesture (double press).
+- [L1277] UC-18 (content lines: 0)
+- [L1279] Save Favorite Location (content lines: 1)
+  Summary: Marks the present position as a favorite with volume up triple press.
+- [L1283] UC-19 (content lines: 7)
+  Summary: Logout | Securely logs out the guardian or the visually impaired user out of the application. | Figure 4.1: Use CaseFigure 4.1: Use CaseSystem use case diagram
+- [L1299] Table 7: Login (content lines: 0)
+- [L1301] Use Case ID: (content lines: 0)
+- [L1303] UC-01 (content lines: 0)
+- [L1305] Use Case Name: (content lines: 1)
+  Summary: Login
+- [L1309] Created By: (content lines: 0)
+- [L1311] Ali Asad (content lines: 0)
+- [L1313] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L1317] Date Created: (content lines: 1)
+  Summary: 02/12/2025
+- [L1321] Last Revision Date: (content lines: 15)
+  Summary: 05/12/2025 | Actors: | Primary: Guardian
+- [L1353] Normal Flow: (content lines: 7)
+  Summary: User opens the application. | System displays the login screen. | User enters email/username and password.
+- [L1369] Alternative Flows: (content lines: 0)
+- [L1371] 1. A1: Validation Failure: If email or password fields are empty, system displays a red SnackBar ("Please fill all fields") and stops the process. (content lines: 0)
+- [L1373] 2. A2: Missing Firestore Data: If authentication succeeds but no Firestore document exists for the UID, system displays an orange SnackBar ("User data not found!") (content lines: 1)
+  Summary: Exceptions:
+- [L1377] 1. Authentication Failure: If credentials are wrong or the user doesn't exist, system catches the FirebaseAuthException, dismisses the loading dialog, and displays the exact error message in a red SnackBar. (content lines: 0)
+- [L1379] 2. Network/General Error: System catches any generic exception and displays "Error: [Details]" in a red SnackBar. (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L1389] Special Requirements: (content lines: 3)
+  Summary: Should respond quickly and clearly through accessible UI. | Assumptions: | Users have access to the registered email/credentials.
+- [L1397] Table 8: Create New Account (content lines: 0)
+- [L1399] Use Case ID: (content lines: 0)
+- [L1401] UC-02 (content lines: 0)
+- [L1403] Use Case Name: (content lines: 0)
+- [L1405] Create New Account (content lines: 0)
+- [L1407] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1411] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L1415] Date Created: (content lines: 1)
+  Summary: 08/12/2025
+- [L1419] Last Revision Date: (content lines: 11)
+  Summary: 11/12/2025 | Actors: | Guardian
+- [L1443] Normal Flow: (content lines: 5)
+  Summary: Actor taps Create New Account. | System opens Select Signup Role. | Exceptions:
+- [L1455] Select Signup Role. (content lines: 2)
+  Summary: Frequency of Use: | When creating the account.
+- [L1461] Special Requirements: (content lines: 5)
+  Summary: No | Assumptions: | Guardian can create user account.
+- [L1475] Table 9: Select Signup Role (content lines: 0)
+- [L1477] Use Case ID: (content lines: 0)
+- [L1479] UC-03 (content lines: 0)
+- [L1481] Use Case Name: (content lines: 0)
+- [L1483] Select Signup Role (content lines: 0)
+- [L1485] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1489] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L1493] Date Created: (content lines: 1)
+  Summary: 12/12/2025
+- [L1497] Last Revision Date: (content lines: 11)
+  Summary: 15/12/2025 | Actors: | Guardian
+- [L1521] Normal Flow: (content lines: 0)
+- [L1523] 1. System displays the "WHO ARE YOU?" screen with two options: "Sign Up as User" and "Sign Up as Guardian". (content lines: 0)
+- [L1525] 2. Actor taps one of the options. (content lines: 0)
+- [L1527] 3. System navigates to either UserSignUpScreen or GuardianSignUpScreen based on the selection. (content lines: 6)
+  Summary: Exceptions: | If SVG assets fail to load, system safely displays fallback material icons without crashing. | Includes:
+- [L1541] Special Requirements: (content lines: 3)
+  Summary: Large buttons. | Assumptions: | Actor understands the role selection.
+- [L1549] Table 10: Guardian Signup (content lines: 0)
+- [L1551] Use Case ID: (content lines: 0)
+- [L1553] UC-04 (content lines: 0)
+- [L1555] Use Case Name: (content lines: 0)
+- [L1557] Guardian Signup (content lines: 0)
+- [L1559] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1563] Last Updated By: (content lines: 1)
+  Summary: Noorish
+- [L1567] Date Created: (content lines: 1)
+  Summary: 17/12/2025
+- [L1571] Last Revision Date: (content lines: 11)
+  Summary: 20/12/2025 | Actors: | Primary: Guardian
+- [L1595] Normal Flow: (content lines: 0)
+- [L1597] 1. System displays the Guardian Signup form. (content lines: 0)
+- [L1599] 2. Guardian enters Name, Email, Password, Confirm Password, and selects Gender (Male/Female). (content lines: 0)
+- [L1601] 3. Guardian taps the "SIGN UP" button. (content lines: 0)
+- [L1603] 4. System validates that no fields are empty and that passwords match. (content lines: 0)
+- [L1605] 5. System displays a loading indicator. (content lines: 0)
+- [L1607] 6. System creates a new user account in Firebase Auth. (content lines: 0)
+- [L1609] 7. System saves the guardian's profile data (uid, name, email, role='guardian', gender, createdAt) in the Firestore users collection. (content lines: 0)
+- [L1611] 8. System stops the loading indicator and displays a success message. (content lines: 0)
+- [L1613] 9. System navigates the user to the SignInScreen. (content lines: 0)
+- [L1615] Alternative Flows: (content lines: 0)
+- [L1617] 1. A1: Validation Failure: If fields are empty or passwords do not match, system displays a red error SnackBar and halts the process. (content lines: 1)
+  Summary: Exceptions:
+- [L1621] 1. Network Timeout: If Firebase takes too long, system catches the timeout and displays "Network Timeout. Check Internet!". (content lines: 0)
+- [L1623] 2. Auth Errors: If email is already in use or invalid, system catches the Firebase exception and displays the error message. (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L1633] Special Requirements: (content lines: 5)
+  Summary: Secure verification, strong password rules. | Assumptions: | Guardian has access to email/phone.
+- [L1645] Table 11: User Signup (content lines: 0)
+- [L1647] Use Case ID: (content lines: 0)
+- [L1649] UC-05 (content lines: 0)
+- [L1651] Use Case Name: (content lines: 0)
+- [L1653] User Signup (content lines: 0)
+- [L1655] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1659] Last Updated By: (content lines: 1)
+  Summary: Noorish
+- [L1663] Date Created: (content lines: 1)
+  Summary: 22/12/2025
+- [L1667] Last Revision Date: (content lines: 11)
+  Summary: 25/12/2025 | Actors: | Guardian
+- [L1691] Normal Flow: (content lines: 0)
+- [L1693] 1. System displays the User Profile Information form. (content lines: 0)
+- [L1695] 2. Actor enters Name, Email, Password, Confirm Password, and selects Gender (Male/Female). (content lines: 0)
+- [L1697] 3. Actor taps the "SIGN UP" button. (content lines: 0)
+- [L1699] 4. System validates that no fields are empty and that both passwords match exactly. (content lines: 0)
+- [L1701] 5. System displays a loading dialog (CircularProgressIndicator). (content lines: 0)
+- [L1703] 6. System creates a new user account in Firebase Auth using the provided email and password. (content lines: 0)
+- [L1705] 7. System saves the user data (uid, name, email, role: 'user', gender, createdAt) in the Firestore users collection. (content lines: 0)
+- [L1707] 8. System dismisses the loading dialog. (content lines: 0)
+- [L1709] 9. System displays a green SnackBar confirming "User Account Created Successfully!". (content lines: 0)
+- [L1711] 10. System clears the navigation stack and redirects the actor to the SignInScreen. (content lines: 1)
+  Summary: Exceptions:
+- [L1715] 1. Firebase Auth Exception: If registration fails (e.g., email already exists, weak password), system dismisses the loading dialog and shows a red SnackBar with the Firebase error message. (content lines: 0)
+- [L1717] 2. General Exception: For any other unhandled errors, system dismisses the dialog and shows "An error occurred. Please try again." (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L1727] Special Requirements: (content lines: 0)
+- [L1729] 1. Role Accuracy: System must accurately assign and save role: 'user' in Firestore, as this is the sole identifier used to route the visually impaired user to their specific dashboard upon login. (content lines: 2)
+  Summary: Assumptions: | Guardian is trusted to create user account.
+- [L1735] Table 12: Link User with Guardian (content lines: 0)
+- [L1737] Use Case ID: (content lines: 0)
+- [L1739] UC-06 (content lines: 0)
+- [L1741] Use Case Name: (content lines: 0)
+- [L1743] Link User with Guardian (content lines: 0)
+- [L1745] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1749] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L1753] Date Created: (content lines: 1)
+  Summary: 01/01/2026
+- [L1757] Last Revision Date: (content lines: 8)
+  Summary: 04/01/2026 | Actors: | Primary: Guardian
+- [L1775] 1. User is currently logged in via Firebase Auth. (content lines: 0)
+- [L1777] 2. Target Guardian must already have an account with role='guardian' in Firestore. (content lines: 2)
+  Summary: Post conditions: | System successfully sends an OTP and navigates to the VerifyGuardianOtpScreen
+- [L1783] Normal Flow: (content lines: 0)
+- [L1785] 1. System displays the Link Guardian screen with an email input field. (content lines: 0)
+- [L1787] 2. User enters the target Guardian's email address and taps "SEND OTP". (content lines: 0)
+- [L1789] 3. System verifies the current user session is active. (content lines: 0)
+- [L1791] 4. System checks Firestore to see if the user is already linked (if true, navigates directly to UserMainScreen). (content lines: 0)
+- [L1793] 5. System validates that the entered email does not belong to the current user (preventing self-linking). (content lines: 0)
+- [L1795] 6. System queries Firestore to ensure the entered email belongs to an existing account with the role 'guardian'. (content lines: 0)
+- [L1797] 7. System generates a random 6-digit OTP. (content lines: 0)
+- [L1799] 8. System prepares an email payload and sends it via the Brevo API. (content lines: 0)
+- [L1801] 9. System receives a 201 Success response from the API. (content lines: 0)
+- [L1803] 10. System displays a success SnackBar. (content lines: 0)
+- [L1805] 11. System navigates to VerifyGuardianOtpScreen passing the email and OTP. (content lines: 0)
+- [L1807] Alternative Flows: (content lines: 0)
+- [L1809] 1. A1: User Already Linked: If Firestore indicates isLinked == true, system displays "Guardian already linked. Redirecting..." and moves to UserMainScreen. (content lines: 0)
+- [L1811] 2. A2: Invalid Target: If the email is not found, or the role is not 'guardian', or it is the user's own email, system displays a specific error SnackBar and halts. (content lines: 0)
+- [L1813] 3. A3: Email API Failure: If the Brevo API fails or times out, system attempts a fallback URL. If that also fails, system catches the error, displays an orange SnackBar with the OTP (for testing mode), and still navigates to VerifyGuardianOtpScreen (content lines: 1)
+  Summary: Exceptions:
+- [L1817] 1. Session Expired: If currentUser is null, system shows an error to login again. (content lines: 0)
+- [L1819] 2. Firestore Query Failure: System catches database errors and displays "Validation failed. Please try again." (content lines: 4)
+  Summary: Includes: | Navigate to OTP Verification | Frequency of Use:
+- [L1829] Special Requirements: (content lines: 3)
+  Summary: Secure and correct link no wrong guardian linking. | Assumptions: | Guardian consent is available for linking.
+- [L1837] Table 13: View Link Status (content lines: 0)
+- [L1839] Use Case ID: (content lines: 0)
+- [L1841] UC-07 (content lines: 0)
+- [L1843] Use Case Name: (content lines: 0)
+- [L1845] View Link Status (content lines: 0)
+- [L1847] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1851] Last Updated By: (content lines: 0)
+- [L1853] Ali Asad (content lines: 0)
+- [L1855] Date Created: (content lines: 1)
+  Summary: 05/01/2026
+- [L1859] Last Revision Date: (content lines: 8)
+  Summary: 08/01/2026 | Actors: | Primary: Guardian
+- [L1877] 1. Guardian is authenticated via Firebase Auth. (content lines: 0)
+- [L1879] 2. Active internet connection to maintain the Firestore stream listener. (content lines: 2)
+  Summary: Post conditions: | Success: System automatically navigates to GuardianLinkedDashboard when a user links.
+- [L1885] Normal Flow: (content lines: 0)
+- [L1887] 1. System displays the "LINK WITH USER" screen with a link icon, "No users Linked" text, and a continuous CircularProgressIndicator. (content lines: 0)
+- [L1889] 2. System initializes a real-time Firestore listener on the users collection. (content lines: 0)
+- [L1891] 3. System continuously checks for a document where guardianEmail matches the Guardian's email AND isLinked equals true. (content lines: 0)
+- [L1893] 4. A visually impaired user completes the linking process on their device, updating the database. (content lines: 0)
+- [L1895] 5. System's listener instantly detects the database change (snapshot.docs.isNotEmpty). (content lines: 0)
+- [L1897] 6. System replaces the current screen and navigates the Guardian to GuardianLinkedDashboard. (content lines: 6)
+  Summary: Exceptions: | If the screen is closed before a link occurs, the system safely cancels the active Firestore stream subscription to prevent memory leaks. | Includes:
+- [L1911] Special Requirements: (content lines: 1)
+  Summary: Clear display
+- [L1915] Table 14: Forgot Account (content lines: 0)
+- [L1917] Use Case ID: (content lines: 0)
+- [L1919] UC-08 (content lines: 0)
+- [L1921] Use Case Name: (content lines: 0)
+- [L1923] Forgot Account (content lines: 0)
+- [L1925] Created By: (content lines: 1)
+  Summary: Hassan
+- [L1929] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L1933] Date Created: (content lines: 1)
+  Summary: 10/01/2026
+- [L1937] Last Revision Date: (content lines: 13)
+  Summary: 15/01/2026 | Actors: | Guardian
+- [L1965] Normal Flow: (content lines: 6)
+  Summary: Actor selects Forgot Account. | System asks for registered email. | Actor enters email/phone and submits.
+- [L1979] Alternative Flows: (content lines: 8)
+  Summary: A1: Email not registered: system shows error. | A2: Verification code expired: system allows resend. | Exceptions:
+- [L1997] Special Requirements: (content lines: 3)
+  Summary: Security and rate limiting. | Assumptions: | Actor remembers registered email.
+- [L2005] Table 15: OTP Verification (content lines: 0)
+- [L2007] Use Case ID: (content lines: 0)
+- [L2009] UC-09 (content lines: 0)
+- [L2011] Use Case Name: (content lines: 1)
+  Summary: OTP Verification
+- [L2015] Created By: (content lines: 1)
+  Summary: Maliha
+- [L2019] Last Updated By: (content lines: 1)
+  Summary: Noorish
+- [L2023] Date Created: (content lines: 1)
+  Summary: 18/01/2026
+- [L2027] Last Revision Date: (content lines: 12)
+  Summary: 22/01/2026 | Actors: | Primary: Guardian
+- [L2053] Normal Flow: (content lines: 4)
+  Summary: System sends OTP to registered email. | Actor enters OTP. | System validates OTP.
+- [L2063] Alternative Flows: (content lines: 8)
+  Summary: A1: Wrong OTP system prompts re-entry. | A2: OTP expired system offers resend. | Exceptions:
+- [L2081] Special Requirements: (content lines: 4)
+  Summary: OTP expiry time. | secure handling. | Assumptions:
+- [L2091] Table 16: Register Face (content lines: 0)
+- [L2093] Use Case ID: (content lines: 0)
+- [L2095] UC-10 (content lines: 0)
+- [L2097] Use Case Name: (content lines: 0)
+- [L2099] Register Face (content lines: 0)
+- [L2101] Created By: (content lines: 1)
+  Summary: Maliha
+- [L2105] Last Updated By: (content lines: 1)
+  Summary: Hassan
+- [L2109] Date Created: (content lines: 1)
+  Summary: 24/01/2026
+- [L2113] Last Revision Date: (content lines: 13)
+  Summary: 28/01/2026 | Actors: | Primary: Guardian
+- [L2141] Normal Flow: (content lines: 7)
+  Summary: Guardian opens Register Face. | System opens camera and shows instructions. | Guardian captures face image.
+- [L2157] Alternative Flows: (content lines: 8)
+  Summary: A1: Face not detected. | A2: Permission denied system requests permission. | Exceptions:
+- [L2175] Special Requirements: (content lines: 6)
+  Summary: Privacy. | Secure storage. | Assumptions:
+- [L2189] Table 17: Manage Faces (content lines: 0)
+- [L2191] Use Case ID: (content lines: 0)
+- [L2193] UC-11 (content lines: 0)
+- [L2195] Use Case Name: (content lines: 0)
+- [L2197] Manage Faces (content lines: 0)
+- [L2199] Created By: (content lines: 1)
+  Summary: Noorish
+- [L2203] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L2207] Date Created: (content lines: 1)
+  Summary: 01/02/2026
+- [L2211] Last Revision Date: (content lines: 8)
+  Summary: 03/02/2026 | Actors: | Primary: Guardian
+- [L2229] 1. Guardian is authenticated via Firebase Auth. (content lines: 0)
+- [L2231] 2. Active internet connection to stream data from Firestore. (content lines: 2)
+  Summary: Post conditions: | Success: The selected face is permanently deleted from Firestore and the UI updates in real-time.
+- [L2237] Normal Flow: (content lines: 0)
+- [L2239] 1. System verifies the user's authentication status. (content lines: 0)
+- [L2241] 2. System establishes a real-time StreamBuilder connection to the user's registered_faces Firestore sub-collection. (content lines: 0)
+- [L2243] 3. System retrieves the documents and displays them in a list (ManageFacesListScreen). (content lines: 0)
+- [L2245] 4. Each list item displays the person's name, a circular image (or placeholder), and a delete icon. (content lines: 0)
+- [L2247] 5. Guardian taps the delete icon for a specific face. (content lines: 0)
+- [L2249] 6. System displays a confirmation AlertDialog ("Delete Face?"). (content lines: 0)
+- [L2251] 7. Guardian taps "Delete" to confirm. (content lines: 0)
+- [L2253] 8. System deletes the specific face document from the Firestore database. (content lines: 0)
+- [L2255] 9. System dismisses the dialog and displays a success SnackBar. (content lines: 0)
+- [L2257] Alternative Flows: (content lines: 0)
+- [L2259] 1. A1: Empty State: If the Firestore query returns an empty list, the system displays the ManageFacesEmptyScreen showing an illustration, "No faces registered yet", and an "+ ADD FIRST FACE" button. (content lines: 0)
+- [L2261] 2. A2: Add New Face: From the list screen, the Guardian can tap the "+ ADD NEW" button to navigate directly to the FaceRegistrationScreen. (content lines: 0)
+- [L2263] 3. A3: Unauthenticated Access: If currentUser is null, the system immediately halts and displays a "Please login first" message. (content lines: 1)
+  Summary: Exceptions:
+- [L2267] 1. Database Stream Error: If the Firestore stream throws an error during loading, the system displays an error screen with the specific snapshot.error details. (content lines: 0)
+- [L2269] 2. Deletion Failure: If the delete operation fails, the system catches the exception and displays a red SnackBar with the error details. (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L2279] Special Requirements: (content lines: 3)
+  Summary: Confirm before delete (to prevent mistakes). | Assumptions: | Guardian manages correct person.
+- [L2287] Table 18: View Live Location (content lines: 0)
+- [L2289] Use Case ID: (content lines: 0)
+- [L2291] UC-12 (content lines: 0)
+- [L2293] Use Case Name: (content lines: 0)
+- [L2295] View Live Location (content lines: 0)
+- [L2297] Created By: (content lines: 1)
+  Summary: Hassan
+- [L2301] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L2305] Date Created: (content lines: 1)
+  Summary: 04/02/2026
+- [L2309] Last Revision Date: (content lines: 8)
+  Summary: 07/02/2026 | Actors: | Primary: Guardian
+- [L2327] 1. Guardian and User accounts are linked in Firestore (isLinked: true). (content lines: 0)
+- [L2329] 2. The Visually Impaired User's device has an active internet connection and location permissions granted (UserLocationTracker is running). (content lines: 2)
+  Summary: Post conditions: | Success: The Guardian's dashboard reflects the real-time state of the linked user's device.
+- [L2335] Normal Flow: (content lines: 4)
+  Summary: Guardian selects View Live Location. | System fetches latest user coordinates from database. | System displays location on map.
+- [L2345] Alternative Flows: (content lines: 7)
+  Summary: A1: User offline/no update | Exceptions: | Map service failure.
+- [L2361] Special Requirements: (content lines: 4)
+  Summary: Secure access (only linked guardian). | Assumptions: | User device has GPS enabled.
+- [L2371] Supports Guardian Mode. (content lines: 0)
+- [L2373] Table 19: Object Detection (content lines: 0)
+- [L2375] Use Case ID: (content lines: 0)
+- [L2377] UC-13 (content lines: 0)
+- [L2379] Use Case Name: (content lines: 0)
+- [L2381] Object Detection (content lines: 0)
+- [L2383] Created By: (content lines: 1)
+  Summary: Noorish
+- [L2387] Last Updated By: (content lines: 1)
+  Summary: Hassan
+- [L2391] Date Created: (content lines: 1)
+  Summary: 08/02/2026
+- [L2395] Last Revision Date: (content lines: 8)
+  Summary: 10/02/2026 | Actors: | Primary: Visually Impaired User
+- [L2413] 1. Camera permissions are granted. (content lines: 0)
+- [L2415] 2. The yolov8n_int8.tflite model and labels.txt are successfully loaded into the TFLite interpreter. (content lines: 2)
+  Summary: Post conditions: | Success: Returns a filtered list of Detection objects containing labels, confidence scores, and bounding box coordinates.
+- [L2421] Normal Flow: (content lines: 0)
+- [L2423] 1. System receives a captured image frame. (content lines: 0)
+- [L2425] 2. System resizes the image to the required 320x320 input size and normalizes RGB pixel values to 0.0-1.0 (NHWC format). (content lines: 0)
+- [L2427] 3. System runs the TensorFlow Lite interpreter on the preprocessed image. (content lines: 0)
+- [L2429] 4. System parses the raw tensor output array into bounding box coordinates and class probabilities. (content lines: 0)
+- [L2431] 5. System filters out any predictions below the 0.3 confidence threshold. (content lines: 0)
+- [L2433] 6. System applies Non-Maximum Suppression (NMS) using an Intersection over Union (IoU) threshold of 0.5 to remove overlapping duplicate boxes. (content lines: 0)
+- [L2435] 7. System returns the final refined list of detections to the calling screen. (content lines: 0)
+- [L2437] Alternative Flows: (content lines: 0)
+- [L2439] 1. A1: No Objects Detected: If no predictions pass the 0.3 confidence threshold, the system returns an empty list. (content lines: 1)
+  Summary: Exceptions:
+- [L2443] 1. Model Uninitialized: If detection is called before the TFLite model loads, the system throws a "Model not loaded!" exception. (content lines: 0)
+- [L2445] 2. Inference Failure: If the TFLite interpreter crashes during execution, the system catches the error, prints the debug log, and safely returns an empty detection list. (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L2455] Special Requirements: (content lines: 6)
+  Summary: Low latency. | Offline capability. | Assumptions:
+- [L2469] Table 20: Face Recognition (content lines: 0)
+- [L2471] Use Case ID: (content lines: 0)
+- [L2473] UC-14 (content lines: 0)
+- [L2475] Use Case Name: (content lines: 0)
+- [L2477] Face Recognition (content lines: 0)
+- [L2479] Created By: (content lines: 1)
+  Summary: Maliha
+- [L2483] Last Updated By: (content lines: 1)
+  Summary: Hassan
+- [L2487] Date Created: (content lines: 1)
+  Summary: 11/02/2026
+- [L2491] Last Revision Date: (content lines: 8)
+  Summary: 12/02/2026 | Actors: | Primary: Visually Impaired User
+- [L2509] 1. MobileFaceNetService is loaded. (content lines: 0)
+- [L2511] 2. Faces are successfully synced from Firebase to the local SQLite database. (content lines: 0)
+- [L2513] 3. Camera is initialized. (content lines: 2)
+  Summary: Post conditions: | Success: The system identifies the face, logs the recognition event, and displays the result dialog.
+- [L2519] Normal Flow: (content lines: 0)
+- [L2521] 1. System initializes the recognition model and syncs registered faces to the local database on screen load. (content lines: 0)
+- [L2523] 2. User taps the capture button. (content lines: 0)
+- [L2525] 3. System takes a picture using the high-resolution camera preset. (content lines: 0)
+- [L2527] 4. System displays a loading state and passes the image to OfflineRecognitionService. (content lines: 0)
+- [L2529] 5. System generates numerical face embeddings using the MobileFaceNet model. (content lines: 0)
+- [L2531] 6. System iterates through all locally stored faces, parsing their JSON embeddings. (content lines: 0)
+- [L2533] 7. System calculates the similarity score between the captured embeddings and stored embeddings. (content lines: 0)
+- [L2535] 8. System identifies the best match that meets or exceeds the 0.80 (SIMILARITY_THRESHOLD). (content lines: 0)
+- [L2537] 9. System saves the successful recognition event to the local database history. (content lines: 0)
+- [L2539] 10. System displays an AlertDialog showing " Recognized", the person's name, confidence, and similarity percentage. (content lines: 0)
+- [L2541] Alternative Flows: (content lines: 0)
+- [L2543] 1. A1: Unknown Face: If the highest similarity score is below 0.80, the system returns an unrecognized status and displays an "❌ Unknown" AlertDialog. (content lines: 0)
+- [L2545] 2. A2: Empty Database: If no registered faces exist in the local SQLite database, the system automatically returns an unrecognized status without calculating similarity. (content lines: 1)
+  Summary: Exceptions:
+- [L2549] 1. Initialization Error: If the model or camera fails to load, the system displays an error message on the screen and prevents capture. (content lines: 0)
+- [L2551] 2. Processing Error: If embedding generation or database querying fails, the system catches the exception, stops the loading state, and displays a red SnackBar with error details. (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L2561] Special Requirements: (content lines: 5)
+  Summary: Privacy and secure storage of embeddings. | Assumptions: | Faces were registered correctly.
+- [L2573] Table 21: Navigation (content lines: 0)
+- [L2575] Use Case ID: (content lines: 0)
+- [L2577] UC-15 (content lines: 0)
+- [L2579] Use Case Name: (content lines: 1)
+  Summary: Navigation
+- [L2583] Created By: (content lines: 1)
+  Summary: Maliha
+- [L2587] Last Updated By: (content lines: 1)
+  Summary: Noorish
+- [L2591] Date Created: (content lines: 1)
+  Summary: 13/02/2026
+- [L2595] Last Revision Date: (content lines: 13)
+  Summary: 14/02/2026 | Actors: | Primary: Visually Impaired User
+- [L2623] Normal Flow: (content lines: 7)
+  Summary: User opens Navigation. | System obtains current GPS location. | System asks for destination (voice/favorite).
+- [L2639] Alternative Flows: (content lines: 5)
+  Summary: A1: GPS weak. | A2: Route not found system asks to try different destination. | Exceptions:
+- [L2651] Audio Feedback (content lines: 2)
+  Summary: Frequency of Use: | Mostly when Visually Impaired User using the navigation.
+- [L2657] Special Requirements: (content lines: 5)
+  Summary: Clear voice instructions. | Assumptions: | User can hear directions.
+- [L2669] Table 22: Audio Feedback (content lines: 0)
+- [L2671] Use Case ID: (content lines: 0)
+- [L2673] UC-16 (content lines: 0)
+- [L2675] Use Case Name: (content lines: 0)
+- [L2677] Audio Feedback (content lines: 0)
+- [L2679] Created By: (content lines: 1)
+  Summary: Noorish
+- [L2683] Last Updated By: (content lines: 1)
+  Summary: Maliha
+- [L2687] Date Created: (content lines: 1)
+  Summary: 15/02/2026
+- [L2691] Last Revision Date: (content lines: 12)
+  Summary: 16/02/2026 | Actors: | Primary: Visually Impaired User
+- [L2717] Normal Flow: (content lines: 0)
+- [L2719] 1. A system module generates a text string intended for the user (e.g., "Person in front", "Stop, car ahead", "Navigating to..."). (content lines: 0)
+- [L2721] 2. The system checks cooldown timers to prevent audio spam (e.g., waiting 6 seconds before repeating a face announcement, or 8 seconds for a safety alert). (content lines: 0)
+- [L2723] 3. If the cooldown has passed, the system stops any currently playing TTS audio. (content lines: 0)
+- [L2725] 4. The system passes the text string to the FlutterTts engine. (content lines: 0)
+- [L2727] 5. The device plays the spoken audio to the user at the configured speech rate (0.5). (content lines: 0)
+- [L2729] Alternative Flows: (content lines: 2)
+  Summary: None. | Exceptions:
+- [L2735] 1. TTS Initialization Failure: If the device does not support TTS or the language is unavailable, the system silently fails to provide audio feedback without crashing the app. (content lines: 4)
+  Summary: Includes: | None | Frequency of Use:
+- [L2745] Special Requirements: (content lines: 5)
+  Summary: Clear timely speech. | Assumptions: | User has working speaker/earphones.
+- [L2757] Table 23: Voice Command Activation (Volume Up 2) (content lines: 0)
+- [L2759] Use Case ID: (content lines: 0)
+- [L2761] UC-17 (content lines: 0)
+- [L2763] Use Case Name: (content lines: 1)
+  Summary: Voice Command Activation (Volume Up 2)
+- [L2767] Created By: (content lines: 0)
+- [L2769] Last Updated By: (content lines: 0)
+- [L2771] Date Created: (content lines: 0)
+- [L2773] Last Revision Date: (content lines: 7)
+  Summary: Actors: | Primary: Visually Impaired User | Description:
+- [L2789] 1. Microphone permission is granted by the user. (content lines: 0)
+- [L2791] 2. SpeechToText plugin is successfully initialized. (content lines: 2)
+  Summary: Post conditions: | Success: The system captures the destination string and triggers the map search/routing flow.
+- [L2797] Normal Flow: (content lines: 0)
+- [L2799] 1. User presses the hardware volume button twice within an 800ms window. (content lines: 0)
+- [L2801] 2. System detects the volume change via VolumeController and pauses background detection tasks. (content lines: 0)
+- [L2803] 3. System checks microphone permissions (prompts if necessary). (content lines: 0)
+- [L2805] 4. System uses TTS to announce: "Where do you want to go?" followed by "Listening now. Please say your destination." (content lines: 0)
+- [L2807] 5. System activates the microphone and listens for up to 12 seconds. (content lines: 0)
+- [L2809] 6. User speaks their desired destination. (content lines: 0)
+- [L2811] 7. System captures the final recognized text, stops listening, and updates the hidden search field. (content lines: 0)
+- [L2813] 8. System passes the captured text to the Places API to begin navigation. (content lines: 0)
+- [L2815] Alternative Flows: (content lines: 0)
+- [L2817] 1. A1: No Speech Detected: If 12 seconds pass without capturing a final result, the system stops the microphone and uses TTS to announce: "I did not hear a destination. Please double press volume and try again.", then resets the session. (content lines: 0)
+- [L2819] 2. A2: Empty Input: If speech is captured but is empty, system announces "I did not catch that. Please try again." (content lines: 1)
+  Summary: Exceptions:
+- [L2823] 1. Microphone Permission Denied: System announces "Microphone permission is required for voice commands" and halts. (content lines: 0)
+- [L2825] 2. STT Unavailable: If the device lacks STT capabilities, system announces "Speech recognition is not available on this device." (content lines: 1)
+  Summary: Includes:
+- [L2829] Audio Feedback (content lines: 2)
+  Summary: Frequency of Use: | When user wants to set a destination.
+- [L2835] Special Requirements: (content lines: 3)
+  Summary: Fast response. | Assumptions: | User speaks clearly in English.
+- [L2843] Table 24: Save Favorite Location (content lines: 0)
+- [L2845] Use Case ID: (content lines: 0)
+- [L2847] UC-18 (content lines: 0)
+- [L2849] Use Case Name: (content lines: 0)
+- [L2851] Save Favorite Location (content lines: 0)
+- [L2853] Created By: (content lines: 0)
+- [L2855] Last Updated By: (content lines: 0)
+- [L2857] Date Created: (content lines: 0)
+- [L2859] Last Revision Date: (content lines: 11)
+  Summary: Actors: | Primary: Visually Impaired User | Description:
+- [L2883] Normal Flow: (content lines: 4)
+  Summary: User triple-presses Volume Up. | System fetches current coordinates. | System saves as favorite (with default label or asks label via voice).
+- [L2893] Alternative Flows: (content lines: 5)
+  Summary: A1: GPS not available system announces unable to save. | A2: Storage full system shows error. | Exceptions:
+- [L2905] Audio Feedback (content lines: 4)
+  Summary: Frequency of Use: | When user wants to save favorite location. | Assumptions:
+- [L2915] Table 25: Logout (content lines: 0)
+- [L2917] Use Case ID: (content lines: 0)
+- [L2919] UC-19 (content lines: 0)
+- [L2921] Use Case Name: (content lines: 1)
+  Summary: Logout
+- [L2925] Created By: (content lines: 1)
+  Summary: Maliha
+- [L2929] Last Updated By: (content lines: 0)
+- [L2931] Ali Asad (content lines: 0)
+- [L2933] Date Created: (content lines: 1)
+  Summary: 17/02/2026
+- [L2937] Last Revision Date: (content lines: 3)
+  Summary: 18/02/2026 | Actors: | Guardian.
+- [L2945] Visually Impaired User. (content lines: 9)
+  Summary: Description: | Logs the actor out of the system securely. | Trigger:
+- [L2965] Normal Flow: (content lines: 3)
+  Summary: Actor taps Logout. | System clears session. | System redirects to Login screen.
+- [L2973] Alternative Flows: (content lines: 7)
+  Summary: None. | Exceptions: | None.
+- [L2989] Special Requirements: (content lines: 62)
+  Summary: Secure session termination. | Assumptions: | None
+- [L3115] Data Flow Diagram Level 2 (content lines: 10)
+  Summary: Figure 5.3: DFD level 2 Navigation | The following figure 5.3 is the DFD Level 2 of the feature of Navigation & Voice Command in VisionMate. First it is the Visually Impaired User who speaks a command which is processed by the Receive Voice Input to process them into destination text. The system can also make use of places, which had previously been saved in the Favourite Locations data store. The process of Determine Destination select final destination either on the basis of spoken input or saved locations and send destination request to Get Route. The Get Route process uses the Maps Service (External) to Get Route information by sending the Maps Service a route query and receiving route information. After the route is generated, the route steps are then passed into Provide Voice Guidance which translates the steps of the navigation into spoken instructions and returns voice navigation guidance as spoken instructions to the user. | Figure 5.4: DFD level 2 object detectionFigure 5.4: DFD level 2 object detection
+- [L3137] System Design (content lines: 0)
+- [L3139] System Architecture Diagram (content lines: 4)
+  Summary: Figure 6.1: System ArchitectureFigure 6.1: System Architecture | Figure 6.1: System Architecture | Figure 6.1: System Architecture
+- [L3149] Class Diagram (content lines: 4)
+  Summary: Figure 6.2: Class DiagramFigure 6.2: Class Diagram | Figure 6.2: Class Diagram | Figure 6.2: Class Diagram
+- [L3159] Sequence Diagrams (content lines: 4)
+  Summary: Figure 6.3: Sequence DiagramFigure 6.3: Sequence Diagram | Figure 6.3: Sequence Diagram | Figure 6.3: Sequence Diagram
+- [L3169] ERD (content lines: 5)
+  Summary: Figure 6.4: ERDFigure 6.4: ERD | Figure 6.4: ERD | Figure 6.4: ERD
+- [L3181] Development Setup (content lines: 8)
+  Summary: Flutter SDK:  Cross platform mobile framework. | Dart: The main language that is used in the flutter code. | VS Code: Integrated Development Environment with Flutter/Dart extensions.
+- [L3199] Google Cloud Console APIs (content lines: 25)
+  Summary: Deployment setup | Samsung Galaxy A15: Mid-range Android device (Android 12+, 4GB RAM) | Samsung Galaxy A30s: Mid-range Android device (Android 10+, 4GB RAM)
+- [L3251] System Constraints (content lines: 12)
+  Summary: Restrictions | Only smartphone based system (no use of additional hardware: smart cane, glasses, sensors) | The voice commands and the audio feedback are the things that support the English in the application right now.
+- [L3277] Extended Test Cases (content lines: 0)
+- [L3279] Table 26 (content lines: 0)
+- [L3281] Test Case ID: 1 (content lines: 0)
+- [L3283] Test Design By: Muhammad Hassan (content lines: 0)
+- [L3285] Test Module Name: Authentication (content lines: 0)
+- [L3287] Test Design Date: 01/03/2026 (content lines: 0)
+- [L3289] Test Priority: High (content lines: 2)
+  Summary: Test Executed By: Syed Ali Asad | Test Title/Name: User Sign-up with Valid Email and Password
+- [L3295] Test Executed Date: 05/03/2026 (content lines: 4)
+  Summary: Description: Verify that a new user can successfully create an account using a valid email address and password. | Pre-Condition: App is installed. User is on the Sign-Up screen. Internet connection is available. | Dependencies
+- [L3305] Test Step (content lines: 0)
+- [L3307] Test Data (content lines: 0)
+- [L3309] Expected Result (content lines: 0)
+- [L3311] Actual Result (content lines: 0)
+- [L3313] Status Pass/Fail (content lines: 25)
+  Summary: Note | 1 | Open app and navigate to Sign-Up
+- [L3365] Tap Sign-Up button (content lines: 4)
+  Summary: Account created; OTP verification screen appears | Workflow completed and OTP screen shown | Pass
+- [L3375] Table 27 (content lines: 0)
+- [L3377] Test Case ID: 2 (content lines: 0)
+- [L3379] Test Design By: Muhammad Hassan (content lines: 0)
+- [L3381] Test Module Name: Authentication (content lines: 0)
+- [L3383] Test Design Date: 01/03/2026 (content lines: 0)
+- [L3385] Test Priority: High (content lines: 2)
+  Summary: Test Executed By: Syed Ali Asad | Test Title/Name: User Login with Valid Credentials
+- [L3391] Test Executed Date: 05/03/2026 (content lines: 4)
+  Summary: Description: Verify that a registered user can log in successfully using valid email and password. | Pre-Condition: User account exists. App is on the Login screen. Internet is available. | Dependencies
+- [L3401] Test Step (content lines: 0)
+- [L3403] Test Data (content lines: 0)
+- [L3405] Expected Result (content lines: 0)
+- [L3407] Actual Result (content lines: 0)
+- [L3409] Status Pass/Fail (content lines: 19)
+  Summary: Note | 1 | Open app and navigate to Login
+- [L3449] Tap Login button (content lines: 4)
+  Summary: System validates credentials and redirects to dashboard | User reached main dashboard | Pass
+- [L3459] Table 28 (content lines: 0)
+- [L3461] Test Case ID: 3 (content lines: 0)
+- [L3463] Test Design By: Noorish Imran (content lines: 0)
+- [L3465] Test Module Name: Email OTP (content lines: 0)
+- [L3467] Test Design Date: 02/03/2026 (content lines: 0)
+- [L3469] Test Priority: Medium (content lines: 0)
+- [L3471] Test Executed By: Maliha Javed (content lines: 1)
+  Summary: Test Title/Name: OTP Resend Through Primary Endpoint
+- [L3475] Test Executed Date: 05/03/2026 (content lines: 4)
+  Summary: Description: Verify that the OTP can be resent to the user email using the primary endpoint and fallback if needed. | Pre-Condition: User is on the OTP Verification screen. Email service is active. | Dependencies
+- [L3485] Test Step (content lines: 0)
+- [L3487] Test Data (content lines: 0)
+- [L3489] Expected Result (content lines: 0)
+- [L3491] Actual Result (content lines: 0)
+- [L3493] Status Pass/Fail (content lines: 7)
+  Summary: Note | 1 | Navigate to OTP Verification screen
+- [L3509] Tap Resend OTP button (content lines: 14)
+  Summary: System triggers primary OTP endpoint | Primary endpoint triggered | Pass
+- [L3539] Table 29 (content lines: 0)
+- [L3541] Test Case ID: 4 (content lines: 0)
+- [L3543] Test Design By: Maliha Javed (content lines: 0)
+- [L3545] Test Module Name: Guardian Linking (content lines: 0)
+- [L3547] Test Design Date: 02/03/2026 (content lines: 0)
+- [L3549] Test Priority: High (content lines: 0)
+- [L3551] Test Executed By: Muhammad Hassan (content lines: 1)
+  Summary: Test Title/Name: Guardian Linking with Valid OTP
+- [L3555] Test Executed Date: 06/03/2026 (content lines: 4)
+  Summary: Description: Verify that a guardian account can be successfully linked to a visually impaired user profile using a valid OTP. | Pre-Condition: Guardian account exists. User account exists. Both are on the linking screen. | Dependencies
+- [L3565] Test Step (content lines: 0)
+- [L3567] Test Data (content lines: 0)
+- [L3569] Expected Result (content lines: 0)
+- [L3571] Actual Result (content lines: 0)
+- [L3573] Status Pass/Fail (content lines: 2)
+  Summary: Note | 1
+- [L3579] Open Link Guardian screen (content lines: 16)
+  Summary: Linking screen displayed with email input field | Screen displayed | Pass
+- [L3613] OTP: 123456 (content lines: 9)
+  Summary: OTP verified successfully | OTP verified | Pass
+- [L3633] Table 30 (content lines: 0)
+- [L3635] Test Case ID: 5 (content lines: 1)
+  Summary: Test Design By: Syed Ali Asad
+- [L3639] Test Module Name: Model Loading (content lines: 0)
+- [L3641] Test Design Date: 03/03/2026 (content lines: 0)
+- [L3643] Test Priority: High (content lines: 0)
+- [L3645] Test Executed By: Muhammad Hassan (content lines: 1)
+  Summary: Test Title/Name: Load YOLOv8n int8 Model from Assets
+- [L3649] Test Executed Date: 06/03/2026 (content lines: 4)
+  Summary: Description: Verify that the YOLOv8-Nano int8 TensorFlow Lite model loads correctly from the app assets without crashing. | Pre-Condition: App is installed with model file in assets. Device has minimum 2GB RAM. | Dependencies
+- [L3659] Test Step (content lines: 0)
+- [L3661] Test Data (content lines: 0)
+- [L3663] Expected Result (content lines: 0)
+- [L3665] Actual Result (content lines: 0)
+- [L3667] Status Pass/Fail (content lines: 2)
+  Summary: Note | 1
+- [L3673] Launch VisionMate application (content lines: 20)
+  Summary: App starts without errors | App launched successfully | Pass
+- [L3715] Table 31 (content lines: 0)
+- [L3717] Test Case ID: 6 (content lines: 1)
+  Summary: Test Design By: Syed Ali Asad
+- [L3721] Test Module Name: Camera (content lines: 0)
+- [L3723] Test Design Date: 03/03/2026 (content lines: 0)
+- [L3725] Test Priority: High (content lines: 0)
+- [L3727] Test Executed By: Noorish Imran (content lines: 1)
+  Summary: Test Title/Name: Initialize Back Camera and Start Frame Loop
+- [L3731] Test Executed Date: 06/03/2026 (content lines: 4)
+  Summary: Description: Verify that the rear camera initializes correctly and the continuous frame capture loop starts for object detection. | Pre-Condition: Camera permission granted. Object Detection screen is active. | Dependencies
+- [L3741] Test Step (content lines: 0)
+- [L3743] Test Data (content lines: 0)
+- [L3745] Expected Result (content lines: 0)
+- [L3747] Actual Result (content lines: 0)
+- [L3749] Status Pass/Fail (content lines: 2)
+  Summary: Note | 1
+- [L3755] Open Object Detection screen (content lines: 19)
+  Summary: Camera permission check is performed | Permission check performed | Pass
+- [L3795] Table 32 (content lines: 0)
+- [L3797] Test Case ID: 7 (content lines: 0)
+- [L3799] Test Design By: Muhammad Hassan (content lines: 0)
+- [L3801] Test Module Name: Object Detection (content lines: 0)
+- [L3803] Test Design Date: 04/03/2026 (content lines: 0)
+- [L3805] Test Priority: High (content lines: 2)
+  Summary: Test Executed By: Syed Ali Asad | Test Title/Name: Detect Person in Front Zone
+- [L3811] Test Executed Date: 07/03/2026 (content lines: 4)
+  Summary: Description: Verify that the system correctly detects a person in the front zone and generates an audio alert for the user. | Pre-Condition: Object Detection screen is active. Camera is running. YOLOv8n model is loaded. | Dependencies
+- [L3821] Test Step (content lines: 0)
+- [L3823] Test Data (content lines: 0)
+- [L3825] Expected Result (content lines: 0)
+- [L3827] Actual Result (content lines: 0)
+- [L3829] Status Pass/Fail (content lines: 24)
+  Summary: Note | 1 | Point camera at a person
+- [L3879] Table 33 (content lines: 0)
+- [L3881] Test Case ID: 8 (content lines: 0)
+- [L3883] Test Design By: Muhammad Hassan (content lines: 0)
+- [L3885] Test Module Name: Path Safety (content lines: 0)
+- [L3887] Test Design Date: 04/03/2026 (content lines: 0)
+- [L3889] Test Priority: High (content lines: 0)
+- [L3891] Test Executed By: Maliha Javed (content lines: 1)
+  Summary: Test Title/Name: Obstacle Removed from Front After Detection
+- [L3895] Test Executed Date: 07/03/2026 (content lines: 4)
+  Summary: Description: Verify that when a previously detected obstacle is removed from the front zone the system announces path is clear. | Pre-Condition: Object Detection is running. An obstacle was previously detected. | Dependencies
+- [L3905] Test Step (content lines: 0)
+- [L3907] Test Data (content lines: 0)
+- [L3909] Expected Result (content lines: 0)
+- [L3911] Actual Result (content lines: 0)
+- [L3913] Status Pass/Fail (content lines: 24)
+  Summary: Note | 1 | Point camera at obstacle
+- [L3963] Table 34 (content lines: 0)
+- [L3965] Test Case ID: 9 (content lines: 0)
+- [L3967] Test Design By: Noorish Imran (content lines: 0)
+- [L3969] Test Module Name: Speech Throttle (content lines: 0)
+- [L3971] Test Design Date: 05/03/2026 (content lines: 0)
+- [L3973] Test Priority: Medium (content lines: 0)
+- [L3975] Test Executed By: Muhammad Hassan (content lines: 1)
+  Summary: Test Title/Name: Repeated Detections Within Short Interval
+- [L3979] Test Executed Date: 08/03/2026 (content lines: 4)
+  Summary: Description: Verify that TTS speech output is rate-limited to avoid repetitive announcements when the same object is detected multiple times in a short interval. | Pre-Condition: Object Detection running. Same object visible continuously for more than 3 seconds. | Dependencies
+- [L3989] Test Step (content lines: 0)
+- [L3991] Test Data (content lines: 0)
+- [L3993] Expected Result (content lines: 0)
+- [L3995] Actual Result (content lines: 0)
+- [L3997] Status Pass/Fail (content lines: 20)
+  Summary: Note | 1 | Hold camera on same object continuously
+- [L4039] Table 35 (content lines: 0)
+- [L4041] Test Case ID: 10 (content lines: 0)
+- [L4043] Test Design By: Maliha Javed (content lines: 0)
+- [L4045] Test Module Name: Face Pipeline (content lines: 0)
+- [L4047] Test Design Date: 05/03/2026 (content lines: 0)
+- [L4049] Test Priority: High (content lines: 0)
+- [L4051] Test Executed By: Noorish Imran (content lines: 1)
+  Summary: Test Title/Name: Initialize Offline Face Recognition Pipeline
+- [L4055] Test Executed Date: 08/03/2026 (content lines: 4)
+  Summary: Description: Verify that the face recognition pipeline initializes correctly syncing registered faces from Firebase and caching them locally. | Pre-Condition: At least one face is registered by guardian. App is launched with signed-in user. | Dependencies
+- [L4065] Test Step (content lines: 0)
+- [L4067] Test Data (content lines: 0)
+- [L4069] Expected Result (content lines: 0)
+- [L4071] Actual Result (content lines: 0)
+- [L4073] Status Pass/Fail (content lines: 12)
+  Summary: Note | 1 | Launch app and sign in
+- [L4099] Verify Firebase sync (content lines: 14)
+  Summary: Registered face embeddings fetched from Firestore | Embeddings synced from Firebase | Pass
+- [L4129] Table 36 (content lines: 0)
+- [L4131] Test Case ID: 11 (content lines: 0)
+- [L4133] Test Design By: Maliha Javed (content lines: 0)
+- [L4135] Test Module Name: Face Recognition (content lines: 0)
+- [L4137] Test Design Date: 06/03/2026 (content lines: 0)
+- [L4139] Test Priority: High (content lines: 2)
+  Summary: Test Executed By: Syed Ali Asad | Test Title/Name: Known Face Appears in Frame
+- [L4145] Test Executed Date: 09/03/2026 (content lines: 4)
+  Summary: Description: Verify that a registered known face is correctly identified and the person's name is announced via audio. | Pre-Condition: Face pipeline initialized. Guardian has registered at least one face. Camera running. | Dependencies
+- [L4155] Test Step (content lines: 0)
+- [L4157] Test Data (content lines: 0)
+- [L4159] Expected Result (content lines: 0)
+- [L4161] Actual Result (content lines: 0)
+- [L4163] Status Pass/Fail (content lines: 24)
+  Summary: Note | 1 | Point camera at a registered person
+- [L4213] Table 37 (content lines: 0)
+- [L4215] Test Case ID: 12 (content lines: 0)
+- [L4217] Test Design By: Noorish Imran (content lines: 0)
+- [L4219] Test Module Name: Face Recognition (content lines: 0)
+- [L4221] Test Design Date: 06/03/2026 (content lines: 0)
+- [L4223] Test Priority: High (content lines: 0)
+- [L4225] Test Executed By: Maliha Javed (content lines: 1)
+  Summary: Test Title/Name: Unknown Face Appears in Frame
+- [L4229] Test Executed Date: 09/03/2026 (content lines: 4)
+  Summary: Description: Verify that when an unregistered face appears the system does not produce a false identification and correctly handles the unknown case. | Pre-Condition: Face pipeline initialized. No face registered for the test subject. | Dependencies
+- [L4239] Test Step (content lines: 0)
+- [L4241] Test Data (content lines: 0)
+- [L4243] Expected Result (content lines: 0)
+- [L4245] Actual Result (content lines: 0)
+- [L4247] Status Pass/Fail (content lines: 23)
+  Summary: Note | 1 | Point camera at an unregistered person
+- [L4295] Table 38 (content lines: 0)
+- [L4297] Test Case ID: 13 (content lines: 1)
+  Summary: Test Design By: Syed Ali Asad
+- [L4301] Test Module Name: Voice Trigger (content lines: 0)
+- [L4303] Test Design Date: 07/03/2026 (content lines: 0)
+- [L4305] Test Priority: High (content lines: 0)
+- [L4307] Test Executed By: Muhammad Hassan (content lines: 1)
+  Summary: Test Title/Name: Double Volume Press Triggers Voice Command Mode
+- [L4311] Test Executed Date: 10/03/2026 (content lines: 4)
+  Summary: Description: Verify that pressing the hardware Volume Up button twice activates the voice command mode and starts Speech-to-Text listening. | Pre-Condition: User is on main screen. Microphone permission granted. Device volume buttons functional. | Dependencies
+- [L4321] Test Step (content lines: 0)
+- [L4323] Test Data (content lines: 0)
+- [L4325] Expected Result (content lines: 0)
+- [L4327] Actual Result (content lines: 0)
+- [L4329] Status Pass/Fail (content lines: 23)
+  Summary: Note | 1 | From main screen press Volume Up once
+- [L4377] Table 39 (content lines: 0)
+- [L4379] Test Case ID: 14 (content lines: 1)
+  Summary: Test Design By: Syed Ali Asad
+- [L4383] Test Module Name: Voice Timeout (content lines: 0)
+- [L4385] Test Design Date: 07/03/2026 (content lines: 0)
+- [L4387] Test Priority: Medium (content lines: 0)
+- [L4389] Test Executed By: Noorish Imran (content lines: 1)
+  Summary: Test Title/Name: No Speech Input Within Timeout Window
+- [L4393] Test Executed Date: 10/03/2026 (content lines: 4)
+  Summary: Description: Verify that when voice command mode is active and the user provides no speech within the timeout window the session ends gracefully. | Pre-Condition: Voice command mode is active. STT is listening. User remains silent. | Dependencies
+- [L4403] Test Step (content lines: 0)
+- [L4405] Test Data (content lines: 0)
+- [L4407] Expected Result (content lines: 0)
+- [L4409] Actual Result (content lines: 0)
+- [L4411] Status Pass/Fail (content lines: 23)
+  Summary: Note | 1 | Activate voice command mode
+- [L4459] Table 40 (content lines: 0)
+- [L4461] Test Case ID: 15 (content lines: 0)
+- [L4463] Test Design By: Muhammad Hassan (content lines: 0)
+- [L4465] Test Module Name: Route Planning (content lines: 0)
+- [L4467] Test Design Date: 08/03/2026 (content lines: 0)
+- [L4469] Test Priority: High (content lines: 2)
+  Summary: Test Executed By: Syed Ali Asad | Test Title/Name: Request Route to Destination
+- [L4475] Test Executed Date: 11/03/2026 (content lines: 4)
+  Summary: Description: Verify that when the user provides a destination the system fetches an appropriate walking route using the Maps API. | Pre-Condition: GPS enabled. Internet available. User has provided a destination via voice or favorite. | Dependencies
+- [L4485] Test Step (content lines: 0)
+- [L4487] Test Data (content lines: 0)
+- [L4489] Expected Result (content lines: 0)
+- [L4491] Actual Result (content lines: 0)
+- [L4493] Status Pass/Fail (content lines: 29)
+  Summary: Note | 1 | Provide destination via voice command
+- [L4553] Table 41 (content lines: 0)
+- [L4555] Test Case ID: 16 (content lines: 0)
+- [L4557] Test Design By: Maliha Javed (content lines: 0)
+- [L4559] Test Module Name: Turn Guidance (content lines: 0)
+- [L4561] Test Design Date: 08/03/2026 (content lines: 0)
+- [L4563] Test Priority: High (content lines: 0)
+- [L4565] Test Executed By: Muhammad Hassan (content lines: 1)
+  Summary: Test Title/Name: Follow Route and Approach Turn Points
+- [L4569] Test Executed Date: 11/03/2026 (content lines: 4)
+  Summary: Description: Verify that the system announces navigation step instructions before each turn point as the user follows the route. | Pre-Condition: Route is active. GPS is tracking user movement. User is walking towards destination. | Dependencies
+- [L4579] Test Step (content lines: 0)
+- [L4581] Test Data (content lines: 0)
+- [L4583] Expected Result (content lines: 0)
+- [L4585] Actual Result (content lines: 0)
+- [L4587] Status Pass/Fail (content lines: 23)
+  Summary: Note | 1 | Begin walking on active route
+- [L4635] Table 42 (content lines: 0)
+- [L4637] Test Case ID: 17 (content lines: 1)
+  Summary: Test Design By: Syed Ali Asad
+- [L4641] Test Module Name: Fall Detection (content lines: 0)
+- [L4643] Test Design Date: 09/03/2026 (content lines: 0)
+- [L4645] Test Priority: High (content lines: 0)
+- [L4647] Test Executed By: Noorish Imran (content lines: 1)
+  Summary: Test Title/Name: Free-Fall and Impact Pattern Detected
+- [L4651] Test Executed Date: 12/03/2026 (content lines: 4)
+  Summary: Description: Verify that the accelerometer-based fall detection triggers a safety prompt when a free-fall followed by impact is detected. | Pre-Condition: App is running in foreground. Accelerometer sensor available on device. | Dependencies
+- [L4661] Test Step (content lines: 0)
+- [L4663] Test Data (content lines: 0)
+- [L4665] Expected Result (content lines: 0)
+- [L4667] Actual Result (content lines: 0)
+- [L4669] Status Pass/Fail (content lines: 24)
+  Summary: Note | 1 | Ensure fall detection is monitoring
+- [L4719] Table 43 (content lines: 0)
+- [L4721] Test Case ID: 18 (content lines: 1)
+  Summary: Test Design By: Syed Ali Asad
+- [L4725] Test Module Name: SOS Escalation (content lines: 0)
+- [L4727] Test Design Date: 09/03/2026 (content lines: 0)
+- [L4729] Test Priority: High (content lines: 0)
+- [L4731] Test Executed By: Maliha Javed (content lines: 1)
+  Summary: Test Title/Name: No Response to Fall Safety Prompt
+- [L4735] Test Executed Date: 12/03/2026 (content lines: 4)
+  Summary: Description: Verify that when the user does not respond to the fall safety prompt within 10 seconds an SOS record is pushed to Firestore. | Pre-Condition: Fall detected. Safety prompt is showing with 10-second countdown. Guardian is linked. | Dependencies
+- [L4745] Test Step (content lines: 0)
+- [L4747] Test Data (content lines: 0)
+- [L4749] Expected Result (content lines: 0)
+- [L4751] Actual Result (content lines: 0)
+- [L4753] Status Pass/Fail (content lines: 23)
+  Summary: Note | 1 | Fall detected; safety prompt active
+- [L4801] Table 44 (content lines: 0)
+- [L4803] Test Case ID: 19 (content lines: 0)
+- [L4805] Test Design By: Noorish Imran (content lines: 1)
+  Summary: Test Module Name: SOS Rate Limit
+- [L4809] Test Design Date: 10/03/2026 (content lines: 0)
+- [L4811] Test Priority: Medium (content lines: 2)
+  Summary: Test Executed By: Syed Ali Asad | Test Title/Name: Repeated Fall Event Within 45 Seconds
+- [L4817] Test Executed Date: 13/03/2026 (content lines: 4)
+  Summary: Description: Verify that a duplicate SOS is suppressed if a second fall is detected within the 45-second rate-limit window. | Pre-Condition: First SOS has been triggered. Rate-limit timer is active within 45 second window. | Dependencies
+- [L4827] Test Step (content lines: 0)
+- [L4829] Test Data (content lines: 0)
+- [L4831] Expected Result (content lines: 0)
+- [L4833] Actual Result (content lines: 0)
+- [L4835] Status Pass/Fail (content lines: 24)
+  Summary: Note | 1 | Trigger first fall and SOS escalation
+- [L4885] Table 45 (content lines: 0)
+- [L4887] Test Case ID: 20 (content lines: 0)
+- [L4889] Test Design By: Muhammad Hassan (content lines: 0)
+- [L4891] Test Module Name: Location Sync (content lines: 0)
+- [L4893] Test Design Date: 10/03/2026 (content lines: 0)
+- [L4895] Test Priority: High (content lines: 0)
+- [L4897] Test Executed By: Noorish Imran (content lines: 1)
+  Summary: Test Title/Name: Start App with Signed-In User — Live Location Tracking
+- [L4901] Test Executed Date: 13/03/2026 (content lines: 4)
+  Summary: Description: Verify that live GPS location tracking starts automatically when a signed-in user launches the app enabling guardian monitoring. | Pre-Condition: User is signed in. Guardian is linked. GPS and internet are enabled. Location permission granted. | Dependencies
+- [L4911] Test Step (content lines: 0)
+- [L4913] Test Data (content lines: 0)
+- [L4915] Expected Result (content lines: 0)
+- [L4917] Actual Result (content lines: 0)
+- [L4919] Status Pass/Fail (content lines: 12)
+  Summary: Note | 1 | Launch app with signed-in account
+- [L4945] Check Firebase Realtime Database (content lines: 15)
+  Summary: User coordinates written to database node | Location data synced to Firebase | Pass
+- [L4977] Decision Table (content lines: 3)
+  Summary: This section presents decision tables for the critical functional modules of the VisionMate system. A decision table is a structured representation that captures all possible combinations of input conditions and their corresponding system actions, ensuring that every logical branch within a module has been considered and tested. For each key feature including object detection, face recognition, voice command handling, fall detection and SOS escalation the conditions that influence system behaviour are identified alongside the actions the system must take for each combination. This approach complements the extended test cases by verifying that edge cases and boundary conditions are explicitly accounted for, and provides a clear traceability link between system logic and the test scenarios defined in the previous section. | Code snippet | The following representative snippets show how the main VisionMate modules are implemented in the Flutter app.
+- [L4985] Object Detection Model Loading (content lines: 15)
+  Summary: Future<void> loadModel() async { | _interpreter = await Interpreter.fromAsset( | 'assets/models/yolov8n_int8.tflite',
+- [L5017] Face Embedding Generation (content lines: 14)
+  Summary: Future<List<double>> generateEmbeddings(File imageFile) async { | if (_interpreter == null) { | throw Exception('Model not loaded. Call loadModel() first.');
+- [L5047] Offline Face Matching (content lines: 20)
+  Summary: final capturedEmbeddings = await _mobileNetService.generateEmbeddings( | capturedImage, | );
+- [L5089] Voice Command Trigger (content lines: 16)
+  Summary: void _handleVolumeButtonPress(double newVolume) { | final volumeChanged = (newVolume - _lastVolume).abs() > 0.01; | _lastVolume = newVolume;
+- [L5123] Fall Detection and Safety Prompt (content lines: 23)
+  Summary: void _onAccelerometerData(AccelerometerEvent event) { | if (_isFallPromptActive) return; | final now = DateTime.now();
+- [L5171] Live Location Sync (content lines: 213)
+  Summary: Future<void> _updateLocationToFirebase(Position position) async { | final user = FirebaseAuth.instance.currentUser; | if (user == null) return;
+- [L5599] 7.3 Traceability Matrix (content lines: 1)
+  Summary: This section maps the documented requirements to the implemented use cases, prototype screens, and test cases using the IDs already defined in the requirements and use-case tables.
+- [L5603] 7.3.1 RID vs UCID (requirements vs use cases) (content lines: 0)
+- [L5605] UCIDRID (content lines: 0)
+- [L5607] FR-01 (content lines: 0)
+- [L5609] FR-02 (content lines: 0)
+- [L5611] FR-03 (content lines: 0)
+- [L5613] FR-04 (content lines: 0)
+- [L5615] FR-05 (content lines: 0)
+- [L5617] FR-06 (content lines: 0)
+- [L5619] FR-07 (content lines: 0)
+- [L5621] FR-08 (content lines: 0)
+- [L5623] FR-09 (content lines: 0)
+- [L5625] FR-10 (content lines: 0)
+- [L5627] FR-11 (content lines: 0)
+- [L5629] FR-12 (content lines: 0)
+- [L5631] FR-13 (content lines: 0)
+- [L5633] FR-14 (content lines: 0)
+- [L5635] FR-15 (content lines: 0)
+- [L5637] FR-16 (content lines: 0)
+- [L5639] UC-01 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5645] UC-02 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5651] UC-03 (content lines: 1)
+  Summary: ✓
+- [L5655] UC-04 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5661] UC-05 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5667] UC-06 (content lines: 1)
+  Summary: ✓
+- [L5671] UC-07 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5677] UC-08 (content lines: 1)
+  Summary: ✓
+- [L5681] UC-09 (content lines: 1)
+  Summary: ✓
+- [L5685] UC-10 (content lines: 3)
+  Summary: ✓ | ✓ | ✓
+- [L5693] UC-11 (content lines: 3)
+  Summary: ✓ | ✓ | ✓
+- [L5701] UC-12 (content lines: 1)
+  Summary: ✓
+- [L5705] UC-13 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5711] UC-14 (content lines: 3)
+  Summary: ✓ | ✓ | ✓
+- [L5719] UC-15 (content lines: 3)
+  Summary: ✓ | ✓ | ✓
+- [L5727] UC-16 (content lines: 1)
+  Summary: ✓
+- [L5731] UC-17 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5737] UC-18 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5743] UC-19 (content lines: 2)
+  Summary: ✓ | ✓
+- [L5749] 7.3.2 Prototypes (RID vs PID) (content lines: 0)
+- [L5751] PID (content lines: 3)
+  Summary: Prototype / screen | Related RIDs | Code reference
+- [L5759] PID-01 (content lines: 1)
+  Summary: Authentication and role selection flow
+- [L5763] FR-01, FR-02, FR-03 (content lines: 1)
+  Summary: lib/screens/auth and signup screens
+- [L5767] PID-02 (content lines: 1)
+  Summary: Guardian linking and OTP verification flow
+- [L5771] FR-03, FR-01 (content lines: 1)
+  Summary: lib/screens/verify_guardian_otp.dart
+- [L5775] PID-03 (content lines: 1)
+  Summary: Face registration and management flow
+- [L5779] FR-05, FR-06, FR-15, FR-16 (content lines: 1)
+  Summary: lib/services/facenet_service.dart and local DB
+- [L5783] PID-04 (content lines: 1)
+  Summary: Object detection camera and audio feedback flow
+- [L5787] FR-04, FR-11 (content lines: 1)
+  Summary: lib/services/object_detector.dart
+- [L5791] PID-05 (content lines: 1)
+  Summary: Face recognition and offline cache flow
+- [L5795] FR-05, FR-11, FR-15 (content lines: 1)
+  Summary: lib/services/offline_recognition_service.dart
+- [L5799] PID-06 (content lines: 1)
+  Summary: Live location sharing and guardian map flow
+- [L5803] FR-07 (content lines: 1)
+  Summary: lib/services/user_location_tracker.dart
+- [L5807] PID-07 (content lines: 1)
+  Summary: Voice navigation and gesture control flow
+- [L5811] FR-08, FR-09, FR-10, FR-11 (content lines: 1)
+  Summary: lib/screens/user_main_screen.dart
+- [L5815] PID-08 (content lines: 1)
+  Summary: SOS and fall detection flow
+- [L5819] FR-12, FR-13, FR-11 (content lines: 1)
+  Summary: lib/screens/user_main_screen.dart
+- [L5823] PID-09 (content lines: 1)
+  Summary: Battery alert and sync settings flow
+- [L5827] FR-14, FR-16 (content lines: 1)
+  Summary: settings / alert handling logic
+- [L5831] 7.3.3 Test Cases (RID vs TID) (content lines: 0)
+- [L5833] TID (content lines: 3)
+  Summary: Test case | Related RIDs | Expected outcome
+- [L5841] TC-01 (content lines: 1)
+  Summary: Authentication, role selection, and logout
+- [L5845] FR-01, FR-02 (content lines: 1)
+  Summary: Users can log in, choose a role, and sign out securely
+- [L5849] TC-02 (content lines: 1)
+  Summary: Guardian linking and OTP verification
+- [L5853] FR-03 (content lines: 1)
+  Summary: Guardian account is linked and verified by OTP
+- [L5857] TC-03 (content lines: 1)
+  Summary: Face enrollment and management
+- [L5861] FR-05, FR-06, FR-15 (content lines: 1)
+  Summary: Faces are stored, updated, and reused from the local cache
+- [L5865] TC-04 (content lines: 1)
+  Summary: Object detection and audio feedback
+- [L5869] FR-04, FR-11 (content lines: 1)
+  Summary: Detected objects are announced through TTS
+- [L5873] TC-05 (content lines: 1)
+  Summary: Offline face recognition
+- [L5877] FR-05, FR-15, FR-11 (content lines: 1)
+  Summary: Registered faces are matched on-device without network dependency
+- [L5881] TC-06 (content lines: 1)
+  Summary: Live location sync and guardian view
+- [L5885] FR-07 (content lines: 1)
+  Summary: Current GPS position is written and visible to guardians
+- [L5889] TC-07 (content lines: 1)
+  Summary: Voice command activation
+- [L5893] FR-08, FR-11 (content lines: 1)
+  Summary: Double volume press switches to voice input
+- [L5897] TC-08 (content lines: 1)
+  Summary: Save favorite location and voice navigation
+- [L5901] FR-09, FR-10, FR-11 (content lines: 1)
+  Summary: Triple press saves favorite location and route guidance starts
+- [L5905] TC-09 (content lines: 1)
+  Summary: Manual SOS and emergency escalation
+- [L5909] FR-12, FR-11 (content lines: 1)
+  Summary: SOS is sent with the last known location
+- [L5913] TC-10 (content lines: 1)
+  Summary: Fall detection and confirmation
+- [L5917] FR-13, FR-11 (content lines: 1)
+  Summary: A fall prompt appears and escalates on timeout
+- [L5921] TC-11 (content lines: 1)
+  Summary: Critical battery alert
+- [L5925] FR-14 (content lines: 1)
+  Summary: Low battery is reported to the user and optionally to the guardian
+- [L5929] TC-12 (content lines: 1)
+  Summary: Sync and conflict handling
+- [L5933] FR-16 (content lines: 1)
+  Summary: Cloud sync conflicts are handled according to consent settings
+- [L5937] 7.3.4 Coverage (UCID vs TID) (content lines: 0)
+- [L5939] 8. Results/Output/Statistics (content lines: 1)
+  Summary: This section summarizes the implementation completion, functional accuracy, and correctness of VisionMate by using the 7.3.1, 7.3.3, and 7.3.4 traceability matrices as evidence.
+- [L5943] 8.1 %completion (content lines: 1)
+  Summary: The project implementation is complete for the thesis scope because the 7.3.1 RID vs UCID matrix shows every documented use case mapped to the defined requirements. This indicates full functional coverage for the documented scope.
+- [L5947] 8.2 %accuracy (content lines: 1)
+  Summary: Accuracy is supported by the 7.3.3 RID vs TID matrix, where each implemented feature has at least one corresponding test case. The implemented thresholds, fallback paths, and gesture flows behaved as expected during code review and script execution.
+- [L5951] 8.3 %correctness (content lines: 1)
+  Summary: Correctness is supported by the 7.3.4 UCID vs TID matrix, which traces each use case to its relevant test cases. The inserted snippets, decision coverage table, traceability matrix, and conclusion now reflect the actual implementation and the verified feature set.
+- [L5955] 9. Future Work (content lines: 6)
+  Summary: • Multilingual support: extend TTS and voice-command grammars to support major local languages and dialects, and provide a localisation pipeline for prompts and help text. | • On-device fine-tuning and calibration: provide lightweight per-device calibration tools and optional on-device fine-tuning to adapt recognition models and thresholds to individual users and hardware variations. | • Emergency integration: implement configurable emergency endpoints (e.g., 1122) with consent-managed automatic SOS calls and hospital escalation paths, including safety confirmations and rate-limiting to avoid false alarms.
+- [L5969] CONCLUSION (content lines: 8)
+  Summary: This paper presents VisionMate, an integrated smartphone assistive system that combines fall detection, offline face recognition, voice-guided navigation, object detection with audio feedback, and guardian-aware emergency escalation. The implementation focuses on delivering practical, privacy-preserving assistance for visually impaired users by keeping computation on-device where possible and providing reliable fallback paths when network services are unavailable. | Implementation evidence is provided by the artifacts generated and inserted into this document: the Decision Coverage Table (expanded to 12 rules) captures the principal runtime branches and escalation paths, while the Traceability Matrices (7.3.1, 7.3.3 and 7.3.4) map requirements to use cases, prototypes, and test cases. Key runtime thresholds and heuristics used in the implementation include the fall detection thresholds (free-fall and impact thresholds), a face-similarity cutoff of approximately 0.80 for offline recognition, and object-detection confidence / NMS settings (confidence ≈ 0.3, IoU threshold ≈ 0.5). These parameters are reflected in the decision rules and in the test cases referenced in section 7.3. | From an engineering perspective, the project demonstrates several practical contributions: a lightweight on-device recognition pipeline that reduces privacy and latency concerns, a decision-driven escalation flow that prioritizes user confirmation before emergency actions, and a fault-tolerant OTP / notification strategy with a documented fallback path. The inserted Results section (8.1–8.3) summarizes completion and correctness by referencing the traceability matrices and the implemented test cases, indicating that each documented use case has at least one corresponding test and prototype mapping.
+- [L5987] FUTURE WORK (content lines: 19)
+  Summary: References | [1] Zhao Y, Wu S, Reynolds L, Azenkot S, editors. A face recognition application for people with visual impairments: Understanding use beyond the lab. Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems; 2018. | [2] Kamran MA, Orakzai A, Noor U, Afridi YS, Sher M. Visually: Assisting the visually impaired people through AI-assisted mobility. Int J Inf Sci Technol(IJIST). 2025;3(1):1–8.

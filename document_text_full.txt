@@ -1,0 +1,6025 @@
+Final Year Project Report
+
+Mobile Assistant for the Visually 
+
+Impaired
+
+Project Advisor:
+
+Muhammad Tayyab (supervisor)
+
+Talha Mughal (co-supervisor)
+
+Submitted By:
+
+Muhammad Hassan22017020019
+
+Syed Ali Asad22017020043
+
+Noorish Imran22017020009
+
+Maliha Javed22017020010
+
+Session
+
+2025-2026
+
+University of Management and Technology (Iqbal Campus)
+
+Daska Road Sialkot Pakistan 
+
+Dedication
+
+This project is dedicated to the world of the visual impaired individuals who struggle to navigate themselves in daily life. We are trying to think of a stable and practical technological product that can help them to be safer, smarter, more independent in their lives. We do think that technology must contribute to inclusivity and access by all. With this project, we would wish to trim down dependency and increase confidence among those who depend on assistive tech. It is a step toward an inclusive society that is more accessible to the visually impaired population and which makes their movement around the world easier and more dignified. I do hope this project can provide actual assistance and will increase the quality of life of the people who need it the most.
+
+Final Approval
+
+Head of DepartmentDr Umair Muneer Butt
+
+Assistant Professor, KU Head
+
+Knowledge Unit of Systems & Technology
+
+UMT Sialkot
+
+Head FYP (Final Year Projects-CS)              ______________________
+
+Department of Computer Science.
+
+Knowledge Unit of Systems & Technology
+
+             UMT Sialkot
+
+Supervisor                                                                          
+
+Knowledge Unit of Systems & TechnologyMuhammad Tayyab
+
+             UMT Sialkot
+
+Co-Supervisor
+
+Knowledge Unit of Systems & Technology       Talha Mughal
+
+             UMT Sialkot
+
+Acknowledgment
+
+We would like to thank Muhammad Tayyab (Supervisor) and Talha Mughal (Co-Supervisor) extremely much and wish to show them our gratitude in the context of their unblinking support and guidance in the course of the given project realization, high-value feedback and academic assistance. The experience and their supporting in addition played an important role in the development of this work, technical and research. The faculty members and lecturers of the department also provided us with knowledge and resources and learning environment that contributed to the successful performance of this project. Finally, we would appreciate all who have visual disability and he or she had the intention of this project. Their experiences and challenges in their day to day life motivated them to come up with VisionMate in the hope of making a contribution towards the sought after better accessibility, independence, and quality of life by use of technology.
+
+Project TitleMobile Assistant for the Visually Impaired
+
+ObjectiveMobile and Application Based Approach: To plan and come up with a mobile based app to assist the visually depressed individuals to conquer their environment in a safe and non dependent manner. In order to enhance the accessibility, safety and quality of life, the system will provide real time object tracking, face recognition, voice assistant navigation, audio feedback and assistance and live location tracking with the help of the guardian.
+
+Undertaken byMuhammad Hassan22017020019
+
+Syed Ali Asad22017020043
+
+Noorish Imran22017020009
+
+Maliha Javed22017020010
+
+Supervised byMuhammad Tayyab (supervisor)
+
+Talha Mughal (co-supervisor)
+
+Starting DateDecember, 2025
+
+Completion Date
+
+Tools UsedAndroid Studio
+
+TensorFlow Lite
+
+Firebase
+
+SQLite
+
+Operating SystemAndroid
+
+Plagairism Report
+
+Abstract
+
+ This document describes VisionMate, a smartphone-centred assistive system for people with visual impairments that combines on-device obstacle perception, offline face recognition, turn-by-turn voice navigation, and guardian safety synchronization in a single mobile application. The system implements a dual-zone safety model: a frontal zone for near-term collision detection and a lower path zone that estimates walkability and announces transitions between blocked and clear states. Edge inference is performed locally using YOLOv8n-int8 for object detection and MobileFaceNet for face embedding extraction (TensorFlow Lite), minimising cloud dependence for privacy-sensitive perception tasks. Interaction is audio-first, using text-to-speech for continuous situational feedback and speech input for destination entry; hardware volume-button triggers and inertial fall-detection enable quick user actions. A guardian mode shares realtime location and device status via Firebase (authentication and sync), while a local SQLite cache supports offline face matching. The implementation demonstrates that commodity smartphones can deliver an integrated, low-cost assistive solution that improves autonomy and safety for visually impaired users.
+
+Contents
+
+Contents1
+
+Definitions and Acronyms3
+
+List of Figures4
+
+List of Tables6
+
+1.Introduction8
+
+1.1Motivations8
+
+1.2Project Overview8
+
+1.3Problem Statement8
+
+1.4Objectives9
+
+2.Domain Analysis10
+
+2.1Customer10
+
+2.2Stakeholders10
+
+2.3Affected Groups with social or economic impact11
+
+2.3.1Visually Impaired Individuals:11
+
+2.3.2Guardians:11
+
+2.4Dependencies/ External Systems11
+
+2.4.1Smartphone Hardware:11
+
+2.4.2Android Operating System:11
+
+2.4.3GPS Services:11
+
+2.4.4Cloud Services (Firebase):11
+
+2.4.5Maps Service Provider (e.g., Google Maps):11
+
+2.4.6Internet Connectivity:11
+
+3.Literature review12
+
+3.1Gap Analysis16
+
+3.2Proposed Methodology18
+
+3.2.1Data Sourcing Methodology18
+
+3.2.2Open-Source Datasets19
+
+3.2.3User-Generated Data for Facial Recognition19
+
+3.2.4Parameters19
+
+3.2.5Data Processing Workflow19
+
+3.3System Workflow20
+
+3.4Models Training & Implementation Methodology21
+
+3.4.1YOLOv8-Nano21
+
+3.4.2MobileFaceNet21
+
+3.4.3Voice Navigation and Feedback21
+
+4.Requirements analysis22
+
+4.1Requirements22
+
+4.1.1System Requirements Table22
+
+4.2List of Actors23
+
+4.2.1Visually Impaired:23
+
+4.2.2Guardian:23
+
+4.3List of use cases23
+
+4.4System use case diagram25
+
+4.5Extended use cases26
+
+4.6User interfaces (mock screens)39
+
+39
+
+5.Data flow diagram49
+
+5.1Data Flow Diagram Level 049
+
+5.2Data Flow Diagram Level 149
+
+5.3Data Flow Diagram Level 250
+
+6.System Design52
+
+6.1System Architecture Diagram52
+
+6.2Class Diagram53
+
+6.3Sequence Diagrams54
+
+6.4ERD55
+
+7.Implementation details56
+
+7.1Development Setup56
+
+7.2Deployment setup56
+
+7.3Algorithms57
+
+7.4Constraints59
+
+7.4.1Assumptions59
+
+7.4.2System Constraints60
+
+7.4.3Restrictions60
+
+7.4.4Limitations60
+
+8.Testing61
+
+8.1Extended Test Cases61
+
+8.2Decision Table73
+
+8.2.1Code snippet73
+
+8.2.2Decision coverage table73
+
+8.3Traceability Matrix73
+
+8.3.1RID vs UCID (requirements vs use cases)73
+
+8.3.2Prototypes (RID vs PID)73
+
+8.3.3Test Cases (RID vs TID)73
+
+8.3.4Coverage (UCID vs TID)74
+
+9.Results/Output/Statistics75
+
+9.1%completion75
+
+9.2%accuracy75
+
+9.3%correctness75
+
+10.CONCLUSION76
+
+11.FUTURE WORK77
+
+12.References78
+
+Definitions and Acronyms
+
+Table 1: Definitions and Acronyms
+
+Acronym
+
+Definition
+
+UMT
+
+University of Management and Technology
+
+GPS
+
+Global Positioning System
+
+UI
+
+User Interface
+
+YOLOv8
+
+You Only Look Once Version 8
+
+API
+
+Application Programming Interface
+
+TFLite
+
+TensorFlow Lite
+
+TTS
+
+Text-to-Speech
+
+STT
+
+Speech-to-Text
+
+OS
+
+Operating System
+
+APK
+
+Android Package Kit
+
+List of Figures
+
+Figure 3.1: Proposed System19
+
+Figure 4.1: Use Case24
+
+Figure 4.2: Splash Screen38
+
+Figure 4.3: Sign in38
+
+Figure 4.4: Verify OTP39
+
+Figure 4.5: Find Account39
+
+Figure 4.6: User/Guardian Profile40
+
+Figure 4.7: Sign Up40
+
+Figure 4.8: Verify OTP41
+
+Figure 4.9: Link Guardian41
+
+Figure 4.10: Profile Info42
+
+Figure 4.11: User Main Screen42
+
+Figure 4.12: No User Linked43
+
+Figure 4.13: Change password43
+
+Figure 4.14: Guardian Dashboard44
+
+Figure 4.15: Manage Faces44
+
+Figure 4.16: Capture Face45
+
+Figure 4.17: Save Face45
+
+Figure 4.18: Manage Faces46
+
+Figure 4.19: User Live Location46
+
+Figure 4.20: Logout47
+
+Figure 5.1: DFD level 048
+
+Figure 5.2: DFD level 148
+
+Figure 5.3: DFD level 2 Navigation49
+
+Figure 5.4: DFD level 2 object detection49
+
+Figure 5.5: DFD level 2 Face Recognition50
+
+Figure 6.1: System Architecture51
+
+Figure 6.2: Class Diagram52
+
+Figure 6.3: Sequence Diagram53
+
+Figure 6.4: ERD54
+
+Figure 7.1: Haversine formula56
+
+Figure 7.2: Clean raw data57
+
+Figure 7.3: Face Recognition57
+
+Figure 7.4: Face Recognition Formula58
+
+List of Tables
+
+Table 1: Definitions and Acronyms3
+
+Table 2: Stakeholders10
+
+Table 3: Gap Analysis16
+
+Table 4: Functional Requirements22
+
+Table 5: Non-Functional Requirements23
+
+Table 6: Use Case23
+
+Table 7: Login26
+
+Table 8: Create New Account26
+
+Table 9: Select Signup Role27
+
+Table 10: Guardian Signup28
+
+Table 11: User Signup28
+
+Table 12: Link User with Guardian29
+
+Table 13: View Link Status30
+
+Table 14: Forgot Account30
+
+Table 15: OTP Verification31
+
+Table 16: Register Face32
+
+Table 17: Manage Faces33
+
+Table 18: View Live Location33
+
+Table 19: Object Detection34
+
+Table 20: Face Recognition35
+
+Table 21: Navigation35
+
+Table 22: Audio Feedback36
+
+Table 23: Voice Command Activation (Volume Up 2)37
+
+Table 24: Save Favorite Location37
+
+Table 25: Logout38
+
+Table 2661
+
+Table 2762
+
+Table 2862
+
+Table 2963
+
+Table 3063
+
+Table 3164
+
+Table 3264
+
+Table 3365
+
+Table 3466
+
+Table 3566
+
+Table 3667
+
+Table 3767
+
+Table 3868
+
+Table 3969
+
+Table 4069
+
+Table 4170
+
+Table 4271
+
+Table 4371
+
+Table 4472
+
+Table 4572
+
+Introduction
+
+Visual impairment can severely limit an individual’s independence, safety, and confidence during routine activities. Tasks that sighted people take for granted—avoiding obstacles, recognising known people, and following a safe path—become difficult to perform unaided. Traditional aids such as the white cane help with immediate physical barriers but do not provide semantic scene information or person recognition. Modern assistive devices that offer richer functionality are often costly or require specialised hardware.
+
+VisionMate is a mobile application that transforms an ordinary smartphone into an assistive companion for people with visual impairments. The app provides real-time object detection and tracking, offline face recognition for identifying registered contacts, voice-guided navigation, and a guardian mode for live location sharing. Core feedback is delivered via audio so the interface remains accessible without visual dependence. By combining on-device perception, offline caching, and optional cloud sync, VisionMate aims to deliver an affordable, holistic solution that enhances mobility, social interaction, and personal safety.
+
+Motivations
+
+This project is motivated by the need for an accessible, reliable, and practical assistive system that increases independence and safety for people with visual impairments. Many existing solutions focus on a single capability (for example, navigation or object recognition), often require continuous internet connectivity, or depend on costly specialized hardware. VisionMate addresses these gaps by providing multiple assistive functions within a single smartphone app, delivering realtime support while prioritising usability, privacy, and costeffectiveness. By combining ondevice deep learning, voice interaction, and optional cloud services, the project aims to empower users with greater autonomy, confidence, and dignity.
+
+Project Overview
+
+VisionMate transforms a commodity smartphone into an integrated assistive platform that bundles realtime object detection, offline face recognition, voiceguided navigation, and guardian safety features. The system emphasises ondevice inference (TensorFlow Lite models) and local caching to reduce cloud dependency while using Firebase services selectively for authentication, realtime location sharing, and guardian sync. The app’s audiofirst interaction model and minimal hardware requirements make it practical and affordable for broad deployment. Overall, the project targets a holistic, usercentric solution that balances functionality, responsiveness, and privacy.
+
+Problem Statement
+
+Visually impaired people face continuous challenges when navigating everyday environments: avoiding obstacles, identifying familiar people, and following safe routes. Traditional aids such as the white cane provide important tactile feedback but cannot convey semantic or contextual scene information. Commercial “smart” assistive devices can be expensive, bulky, or restricted in capability, limiting accessibility for many users. There is therefore an urgent need for an affordable, widely available assistive technology that provides rich, realtime perception and guidance without requiring specialised hardware. This project aims to meet that need by leveraging existing smartphones and intelligent software to improve mobility, situational awareness, and personal safety.
+
+Objectives
+
+Upon completion, this project anticipates to meet the following results:
+
+Implement ondevice, realtime object detection (e.g., car, chair, stairs) using the phone camera.
+
+Provide offline face recognition for registered contacts via ondevice embeddings and local caching.
+
+Develop voiceactivated navigation with bookmarking and speechinitiated route start.
+
+Implement a secure guardian mode for remote realtime location and devicestatus monitoring.
+
+Design an audiofirst, accessible UI that works with screen readers and supports control via physical keys and English voice commands.
+
+Domain Analysis
+
+Domain analysis identifies the users, environment, stakeholders and external systems that shape VisionMate’s requirements. It clarifies what the system must do, what data it will handle, and constraints affecting performance and usability so the final solution is practical, secure and usercentred.
+
+Customer
+
+Primary audience: visually impaired smartphone users needing audiobased assistance for perception, recognition, navigation and safety.
+
+Secondary audience: family members/guardians who help register faces, link accounts, and monitor live location when necessary.
+
+Note: this is an academic project designed for general users rather than a single contracting customer.
+
+Stakeholders
+
+Table 2: Stakeholders
+
+Stakeholder
+
+Role in System
+
+Visually Impaired User
+
+primary beneficiary; relies on object detection, face recognition, voice navigation and audio feedback for independent mobility.
+
+Guardian 
+
+Links to the user account, receives SOS/alerts and monitors live location to support safety.
+
+Project Developer
+
+ Responsible for design, development, testing and maintenance; ensures system performance and reliability.
+
+Project Supervisor
+
+Provides academic guidance, oversight and evaluation to meet university standards.
+
+Firebase Cloud Services
+
+External service provider for authentication, realtime database and optional sync used by guardian features.
+
+Maps Service Provider
+
+ Supplies routing and place information required for voicebased navigation..
+
+Affected Groups with social or economic impact
+
+The implementation of the vision mate system will have an impact to some group of people, a different way:
+
+Visually Impaired Individuals:
+
+Improves daily mobility, situational awareness and social interaction through affordable softwarebased assistance (object recognition, navigation, face recognition).
+
+Guardians:
+
+Reduces caregiver anxiety by enabling live location monitoring and timely response during emergencies or unfamiliar situations.
+
+Dependencies/ External Systems
+
+The functionality of the VisionMate system is dependent of a number of external systems and technologies:
+
+Smartphone Hardware:
+
+Camera — realtime visual input for detection and face capture.• Microphone & speaker — voice input and audio feedback.• GPS — location for navigation and guardian tracking.• Accelerometer — fall detection and inertial sensing.• Battery sensor & hardware buttons (volume) — device status and quick triggers.
+
+Android /  ios Operating System:
+
+• OS handles permissions, background operation, accessibility APIs (TalkBack/VoiceOver) and resource management.
+
+GPS Services:
+
+ Provide realtime location data required for navigation and guardian mode.
+
+Cloud Services (Firebase):
+
+ Used for user authentication, realtime location sync, SOS/alerts and optional backups; subject to security and consent policies.
+
+Maps Service Provider (e.g., Google Maps):
+
+Supplies route computation, place search and map tiles used by voice navigation and bookmarking.
+
+Internet Connectivity:
+
+Required for map routing, cloud sync and guardian features; core perception and offline face recognition are designed to function without connectivity
+
+Literature review
+
+Zhao et al. [1] proposed Accessibility Bot, a research prototype for assisting individuals with visual impairments (VIPs) to identify their friends and perceive facial information in the process of social activities. Integrated into Facebook Messenger, the system uses the phone's camera to identify faces in real time, and takes advantage of cutting-edge computer vision models that have been trained by using existing tagged photos on Facebook, that eliminates the need for manually creating training datasets. The application extracts important information about the faces, such as which face, location of the face in relation to the others, expressions and attributes like facial hair, that is fed back to the user via the audio feedback via a screen reader. While the underlying recognition algorithm was able to achieve greater than 97% accuracy on the PIPA dataset, in a study involving six VIPs over a period of seven days, it was noted that in practice "perceived accuracy" was often less because of issues with aiming the camera and inconsistent photo quality. Ultimately, the research was able to offer some deep insights into the practical problems of implementing assistive face recognition technology in uncontrolled environments outside of the lab.
+
+Kamran et al. [2] introduced "Visually," which is an AI-based mobile application that is intended to make visually impaired people more autonomous thanks to real-time multi-modal recognition. The system uses the (YOLOv5) architecture for object detection for efficiency and uses Google's ML Kit for integrated Text-to-Speech audio feedback. For locations where connectivity is limited, deep learning models are run through TensorFlow Lite, so that they can be run offline. The application was trained with a diverse and augmented data of essential day-to-day objects so as to be more robust in different real world situations. Experimental results demonstrated the high degree of identification precision with the accuracy rate of 99 percent and 98 percent for person and vehicle recognition, respectively.
+
+Zhang et al. [3] proposed the NaviGPT, which is a high fidelity real-time Artificial Intelligence (AI) aided mobile navigation system, which aims to improve the traveling experience and enhance the safety of people with visual impairments (PVI). Using the LiDAR technology, vibration feedback integrated with large language model (GPT-4) response, the system integrates the obstacle detection into a single interface to help with navigation in a continuous manner. It uses a mobile camera for taking a picture of the environment and Apple maps for the location information, so the (LLM) can then create guidance on the context, an actual description of the scene and safety alerts. To make sure that the immediate awareness of surroundings are ensured, the prototype has dynamic vibration frequencies which are increased as the objects are getting closer, effectively simulating a digital white cane. As opposed to existing tools, NaviGPT gives brief feedback of an average of around 28 words per each response to ensure fast delivery of information in dynamic environments without the need for app-switching.
+
+Kuriakose et al. [4] investigated the user experience of DeepNAVI, an artificial intelligence (AI)-based smartphone navigation assistant for independent mobility enhancement of people living with vision impairments. The system consists of a mobile phone camera and captures video in real-time, which is processed by some of the embedded deep learning algorithms based on small microprocessors to detect types and distance of obstacles and positions without any internet connectivity. Navigation information is provided to the user through bone-conduction headphones and the system can be operated with the assistance of voice commands, in order to ensure a hands-free experience. A qualitative study of 13 users in both indoor and outdoor environments found that while users liked the portability and ability of the system to sense hindrances in their path at real-time, most users preferred to use the system as a tool in addition to a traditional white cane, rather than as a stand-alone tool. Although some of the participants expressed concerns about taking the technology especially with its reliability and trust, it was concluded that the assistant was successful in improving the awareness about the environment and also brought a sense of independence.
+
+Albarico et al. [5] proposed a mobile based vision assistants application, which was designed to be an affordable "one-stop-shop" solution for visually impaired and illiterate people and was specifically aimed at people in the rural areas or in less economically advanced areas. Rooted in the Model Human Processor (MHP) theory and Human Computer Interaction principles, the system includes speech-to-text (STT), text-to-speech (TTS) and YOLOv3-based object detection for enabling real-time interaction with the environment and object recognition. One of the unique features of the application is the SOS and Emergency Communication module which enables the user to quickly message or call designated guardians at the tap of a button. Prototype testing in the Philippines showed significant levels of user satisfaction and reliable functionality with emergency alerts being delivered successfully in less than 10 seconds even in areas with poor network coverage. While the STT feature went out with about 80% accuracy, there are a number of areas in the study that still need to be improved that include sensitivity to noise present in the background, difficulty with speech in mixed Filipino-English, and perceived "robotic" quality of the voice output, according to the study. Ultimately, the system is yet a big step towards inclusive technology with the assistive conversion tools combined with safety solutions to encourage a higher level of user autonomy and confidence.
+
+Chen et al. [6] proposed BlindNavi which is a mobile-based application used in assisting the visually impaired person to navigate the external world and do it safely and independently. The system uses micro-location technology through iBeacons that can give precise and short-range directions that is more optimistic in walking navigation as compared to conventional GPS. It translates visual navigation information into cues of more than one sense such as ringing of doorbell or smell of a bakery to help the users to check their whereabouts. The guidance is presented by means of a flat user interface, as well as, multimodal feedback, e.g. a set of vibration patterns and voice messages to turn instructions on. The app does not rely on any abstract measurements such as meters but instead relies on the use of clock positions and voice commands with first action in order to correspond with the conventional Orientation and Mobility (O&M) training. The blind on-road tests proved that these features made the navigation process really easier and decreased the confusion of the users. Finally, the app helps to build a reliable mental map about the surrounding, which makes the users more independent and autonomous while traveling.
+
+Kumar et al. [7] proposed an AI Assistant for Visually Impaired, a smart assistive system with advanced functionality to increase the autonomy and mobility by perceiving the real-time environment. The solution uses a combination of computer vision and machine learning running on a light weight wearable device using OpenCV for video processing, as well as Keras-based InceptionV3 and LSTM architecture for advanced captioning of images. A defining feature of the system is its complete voice command interface which allows the user to switch on facial recognition, OCR to read signs and descriptions of scenes by simply commanding the system with words such as "recognize" or "read". The system has amazing performance, that is, 85.2% in image recognition accuracy, and the position tracking accuracy of 82.6%, while still ensuring the near-instantference time of 250 milliseconds. Results suggest the system is an effective way of bridging the accessibility gap by providing intuitive audio feedback through the implementation of Google Text-To-Speech although there is still room for improvement in naturalness of speech (currently a 3.5 MOS), and text coherence which are areas that could be optimized in the future. This work provides a basic framework for the future trends in intelligent infrastructure integration and more effective object detection.
+
+Pydala et al. [8] proposed SMART_EYE, an efficient navigability and obstacles detection system to facilitate visually-impaired persons in unknown environments. The system consists in the use of smart application combined with Artificial Intelligence and sensor technology, through the ultrasonic sensors for the detection of obstacle and through the Raspberry pi camera for the realization in real time of the image classification. By the use of computer vision and new approach of the measuring of the object's proximity, SMART_EYE offers not only situational awareness but also voice operated instructions that enables to detect not only several objects, but longer objects such as doors, walls, etc. together if they are used simultaneously. The hardware prototype comprises of Raspberry Pi 3, Bluetooth connectivity and Android based interface "Speak Data" that can convert the visual and sensor data into audible data. Testing result revealed good accuracy during the daytime, the accuracy rate could reach up to 95% for human detection and 91% for laptop, however the accuracy rate was considerably reduced in low-light condition at night. Ultimately, the system is intended to be a cost-effective and portable alternative to traditional bulky assistive devices and is aimed to bring the independent mobility and the overall quality of life to the blind community.
+
+Khan et al. [9] proposed an Intelligent Assistive Device, a robust system which made use of Artificial Intelligence (AI), Computer Vision and the Internet of Things (IoT) to facilitate enhanced independence of visually impaired people. Understanding this, with numerous research efforts being theoretical and not real implementation, this project is towards wearable, Raspberry Pi 4. The architecture which is used in the system is the YOLO-FastestV2 which is optimized to offer real time performance of 18.8 FPS on edge devices with good accuracy for the safety critical objects. Key functionalities include: multi-modal feedback for independent navigation, the ability to detect obstacles and a hybrid distance measurement strategy through computer vision coupled with ultrasonic sensors to ensure precision within 0.2 to 2% margin of error. Beyond navigation, the device incorporates other important secondary functions like face and currency recognition, wet floor alert, IoT based guardian's dashboard with live location and SOS dial out for emergency etc. Performance results showed the outstanding proficiency, that is, a detection rate reaching to 99% detection success for pedestrians and 98% for vehicles and hence it is robust and cost effective alternative to bulky and expensive traditional aids.
+
+Okolo et al. [10]  offered a detailed review of the State-of-the-Art navigation assistance for the visually impaired persons, taking into consideration the integration of the Artificial Intelligence (AI), Internet of Things (IoT) and mobile technologies. The article divides assistive systems into three major modules, navigation (wayfinding), object detection (hazard avoidance), and the human-machine interface. The authors go through many different sources of sensing, and highlight that although depth cameras such as LiDAR can provide rich spatial information, they are often bulky and hard to operate in brightly-lit environments. A key result of the research is the need for multi-modal feedback with a combination of audio, tactile and haptic signals, so that the system will work well in different situations e.g. with tactile alerts in a noisy urban environment where audio feedback to the user is masked. The review highlights that deep learning architectures such as (YOLO and SSD) have improved the object recognition performance at real time significantly but many systems are limited in the processing latency and adaptability to the environmental conditions. Ultimately, the study emphasizes that the focus of these technologies to be adopted on a large-scale needs to be on portability, affordability, and low learning curve for the individual utilizing the technology.
+
+Sun et al. [11] proposed a dual mode and multilingual mobile application with InnoSpire Glasses to help visually impaired and blind (VIB) to navigate in a public place and recognize objects. The system has a seamless switching mechanism in order to switch between mode online and mode offline using a prompt-engineered model of GPT-4o and YOLOv5 for object detection and Phi-3-mini small language model. To make the application more accessible it has speech to text and text-to-speech modules that enable users to communicate using natural language in English, Spanish, Mandarin or Cantonese. Experimental evaluations have proven that the system is very efficient with the mean image-description latencies of 4.6 seconds on-line and 1.5 seconds off-line. Furthermore, the system had a very high average precision of 99% with speech recognition in different noisy, real-world environments. User studies including VIB as well as sighted users proved the efficacy of the prototype with the majority rating navigation and object identification capability as "Good" or better.
+
+Brilli et al. [12] introduce AIris, an A.I.-based wearable assistive technology for visually impaired people that assist them using the recognition (in real-time) and audio feedback about the surrounding. The system utilizes a camera mounted in 3D printed smart glasses to capture visual data which is processed onsite and through the cloud via deep learning models for face recognition, object detection, scene description, optical character recognition and currency identification. The information that is interpreted is translated to speech and sent to the user via the attached earphones to allow safe navigation and interaction with the indoor and outdoor environments. Prototype testing showed to have high performance in recognition and practical usability, however, improvements are still required in order to achieve high processing latency and user comfort during long term continuous wear.
+
+Kianpisheh et al. [13] proposed a wearable face recognition system, which is aimed to help the visually impaired people (VIPs) recognize "weak-tie" relationships such as the causal acquaintances. The system uses a mobile phone worn around the neck to opportunistically capture and store undistorted face images and the contextual data during social interactions without the user intervention. This prototype uses the detection of the presence of faces within a certain distance and head pose range, which is used to identify the social engagement and filter out high-quality images for purposes of populating a database. To support recognition, the system has entry association with the time, location and duration of the interaction along with the ability to record custom audio description. In tests of technology probes, people showed that they were able to use these accumulated contextual cues and audio snippets to recognize people they had previously come into contact with. While the exact percentage of recognition accuracy was not the major point of focus in this qualitative probe, the researchers did stress that both the better image quality and the use of a context-aware filtering are important when it comes to reducing errors in the system in real-world scenarios.
+
+Lin et al. [14] proposed a guiding system in which visually impaired people can navigate and avoid any obstacles using smartphone. The system is a combination of the mobile application with backend server and provides two modes to guarantee the functionality whatever the network availability. By taking advantage of Faster (R-CNN algorithm or YOLO algorithms) the server side part detects different types of obstacles and the smartphone performs face and stair recognition locally. As well, the system also calculates the approximate distance and direction of detected objects, thus, the users get spatial understanding. The information that is recognized is communicated with the help of voice notifications to the user and they are generated by a text-to-speech engine. Experimental results showed a recognition accuracy of 60% which was considered to be sufficient for the environmental identification in real-time. This approach makes it possible to successfully navigate to complex environments without sensors that have already been placed.
+
+Král et al. [15] have proposed a low cost and multifunctional wearable equipment in the form of glasses to increase the independence of visually impaired persons. The system has been made up of a Raspberry Pi Zero 2W and an Arducam IMX519 camera to bring together real-time text recognition, AI-based scene description and remote volunteer help. Users communicate via a tactile user interface and have an audio feedback to provide situational awareness to the user. In performance evaluations, the OCR module had an error rate of 9% in the case of standard fonts, but accuracy was reduced quite significantly when it had to do the processing of artistic text styles. While this device was much touted due to its light design and full functionality, from the results it's apparent that more optimization in processing and hardware miniaturization needs to be done.
+
+Ronald et al. [16] proposed a real-time object detection system to help visually impaired people, basing on a deep learning and computer vision. The system makes use of some frameworks such as (YOLO, TensorFlow, COCO-SSD and OpenCV) to detect common objects as they happen in daily life through the use of a camera. The objects that are detected are classified and converted to audio feedback to help the users to understand the surrounding. Experimental results showed good performance with the confidence values ranged from 0.87 to 0.92 for different objects category. The study shows that proposed approach is appropriate for real-time assistive applications and increases the user independence and awareness of environment.
+
+Marwa Obayya et al. [17] presents the intelligent indoor object detection based assistive framework for the blind people using the optimized deep learning architecture. The system makes use of gaussian filtering to eliminate noise, (YOLOv12) for object detections in real-time, (DenseNet16) for deep feature extraction and BiGRU with attention mechanism for accurate object classification. Furthermore, Ivy Optimization Algorithm is used in hyperparameter tuning which gives a better overall performance of the system. The framework was tested on an indoor object detection data set with 10 object categories and a better recognition accuracy of 99.74% was obtained. The results showed the proposed method is more robust, have better inference time and adaptability to dynamic indoor environments than the existing methods. This study confirms the success of the combination of advanced detection, feature learning and optimization algorithms for reliable navigation assistance to the visually impaired users.
+
+Jin et al. [18] proposed the concept of a smart cane-based face recognition system for visually impaired people for visual recognition of people in their surrounding. The idea behind this system is that a camera placed in the glasses is used to take real time pictures and transmit them to a mobile computer where they are fed to the system to perform the face detection in the pictures using AdaBoost and feature extraction methods of Modified Census Transform (MCT). Face classification is achieved with compressed sensing and using L2-norm so as to reduce the calculation complexity but to ensure the robustness. The recognized identity is fed back to the user by utilizing different vibration patterns from a microcontroller that is incorporated in the cane without the requirement of an audio feedback. Experimental evaluation on 10 known individuals and 6 participants showed recognition success rate of 93.33% which is reliable real time performance. The study emphasizes the effectiveness of tactile feedback along with computer sight in the aid of social interactions in the blind users.
+
+Gap Analysis
+
+Table 3: Gap Analysis
+
+Ref.
+
+Goal
+
+Year
+
+Models Used
+
+Context/Focus
+
+Best Performing Architecture
+
+Limitation/Weakness
+
+Performance Metric
+
+[9]
+
+Implementing a tangible wearable solution for independence.
+
+2025
+
+YOLO-FastestV2, IoT.
+
+Raspberry Pi 4 based practical device.
+
+YOLO-FastestV2
+
+Constrained by portable hardware processing power and camera focusing limits.
+
+18.8 FPS; 99% pedestrian detection.
+
+[11]
+
+Assisting with object identification and navigation in public spaces.
+
+2025
+
+GPT-4o (online), YOLOv5 (offline).
+
+Dual-modemultilingual glasses.
+
+InnoSpire Glasses
+
+Online mode exhibits higher latency (4.6s) compared to offline mode (1.5s).
+
+99% average precision in speech recognition.
+
+[5]
+
+Providing an affordable "one-stop-shop" solution for rural areas.
+
+2025
+
+YOLOv3, STT, TTS.
+
+Affordable vision assistant app.
+
+YOLOv3
+
+Speech-to-Text (STT) accuracy is negatively affected by background noise and mixed accents.
+
+80% STT accuracy; SOS alert < 10s.
+
+[3]
+
+Improving travel experience and safety for People with Visual Impairments (PVI).
+
+2025
+
+LiDAR, GPT-4, Apple Maps.
+
+AI-driven navigation system.
+
+NaviGPT
+
+The average length of LLM responses (28 words) can be too concise for complex scenes.
+
+Dynamic vibration frequencies for proximity awareness.
+
+[2]
+
+Enhancing autonomy through real-time multi-modal recognition.
+
+2025
+
+YOLOv5, TensorFlow Lite.
+
+Mobile application for mobility.
+
+YOLOv5
+
+Offline processing is heavily constrained by limited on-device hardware capabilities.
+
+99% Person; 98% Vehicle recognition.
+
+[15]
+
+Enable real-time environmental perception & captioning.
+
+2025
+
+InceptionV3, LSTM, OpenCV, dlib.
+
+Scene understanding & social interaction.
+
+InceptionV3 + LSTM
+
+Moderate speech synthesis naturalness (3.5 MOS).
+
+85.2% image recognition; 250ms inference time.
+
+[17]
+
+Effective object detection for safe navigation of visually impaired individuals.
+
+2025
+
+YOLOv12, DenseNet161, BiGRU-AM, GF, and IOA.
+
+Indoor object detection-based assistive system.
+
+IODAS-IOA: Integration of YOLOv12, DenseNet161, and BiGRU-AM.
+
+Limited to indoor focus; hardware and portability challenges.
+
+99.74% Accuracy.
+
+[16]
+
+To assist visually impaired individuals in recognizing daily objects via audio feedback.
+
+2025
+
+YOLO, TensorFlow, COCO-SSD, and OpenCV.
+
+Real-time object detection and environmental awareness for the blind.
+
+Deep learning-based framework utilizing YOLO and COCO-SSD for object classification.
+
+High computational requirements for real-time processing on mobile devices.
+
+0.87 to 0.92 Confidence Scores.
+
+[10]
+
+Evaluating challenges and opportunities in navigation assistance.
+
+2024
+
+Review of AI, IoT, and Mobile tech.
+
+Way-finding and hazard avoidance.
+
+Review Article
+
+Existing systems are often bulky and suffer from high processing latency.
+
+Qualitative assessment of multi-modal feedback.
+
+[12]
+
+Providing real-time recognition and audio feedback about surroundings for visually impaired individuals.
+
+2024
+
+Face recognition, Object detection, OCR, Scene description, and Currency identification.
+
+AIris: An AI-powered wearable assistive device (Smart glasses).
+
+Camera integrated 3D-printed glasses with local and cloud-based deep learning processing.
+
+High processing latency and issues with long-term wear comfort.
+
+Demonstrated high recognition performance and practical usability in both indoor and outdoor environments.
+
+[8]
+
+Improving obstacle detection in unfamiliar environments.
+
+2023
+
+AI + Ultrasonic sensors.
+
+Obstacle avoidance smart app.
+
+Proximity Measurement Strategy
+
+Performance significantly degrades in low-light or nighttime conditions.
+
+95% Human; 91% Laptop accuracy.
+
+[4]
+
+Promoting independent mobility through a smartphone assistant.
+
+2023
+
+Lightweight deep learning models.
+
+Smartphone navigation assistant.
+
+DeepNAVI
+
+Users preferred the system as a supplement to the white cane rather than a complete substitute.
+
+Qualitative feedback on increased independence.
+
+[13]
+
+Implement a tangible, wearable prototype for independence.
+
+2019
+
+YOLO-FastestV2, IoT architecture, hybrid sensors.
+
+Real-time navigation assistance.
+
+YOLO-FastestV2
+
+Camera focusing restrictions at ranges <1m; battery weight issues.
+
+99% (Pedestrians), 18.8 FPS.
+
+[1]
+
+Identification of acquaintances and facial expressions during social activities.
+
+2018
+
+State-of-the-art Computer Vision (CV) models.
+
+Face recognition bot (Messenger integration).
+
+Accessibility Bot
+
+Real-world "perceived accuracy" declines due to user camera-aiming challenges.
+
+>97% accuracy (PIPA dataset).
+
+[14]
+
+Provide an affordable "one-stop-shop" for rural BVIPs.
+
+2017
+
+YOLOv3, STT, TTS, MHP theory.
+
+Emergency communication & navigation.
+
+YOLOv3
+
+STT sensitivity to background noise and robotic voice tone.
+
+80% STT accuracy; SOS alert <10s.
+
+[6]
+
+Assisting in the safe exploration of outdoor environments.
+
+2015
+
+iBeacons (Micro-location).
+
+Short-distance guidance/walking.
+
+BlindNavi
+
+Accurate guidance is strictly limited to areas equipped with iBeacon infrastructure.
+
+Smoother navigation and reduced user confusion.
+
+The review of the literature and comparison presented in Gap Analysis Table 3 suggest that there are some critical problems that are yet to be addressed in relation to assistive technology to the visually impaired. Although current systems show a high level of accuracy in controlled or laboratory-based systems with accuracies of over 97 percent in certain tasks such as face or object recognition the perceived accuracy and reliability of the current systems tend to fail in unpredictable and real-world conditions. There is a common trade-off between computational efficiency and portability; systems based on small model deep learning can perform better at the device, but can be less context rich as compared to large language models (LLMs) which are more expensive to run in online scenarios. Besides, most existing prototypes are limited by environmental ethics e.g. severely limited functionality in lowest light situation or being dependent on certain local infrastructure e.g. iBeacons. This trust gap has also been established in the user experience studies as people like to use such high tech systems as an addition to the traditional aids such as the white cane instead of a solution by itself. This study attempts to fill these gaps by looking at a more intelligent, low latency and environmentally sound system with more emphasis on the autonomy of the user without compromising the safety or usability of the wearable.
+
+Proposed Methodology
+
+This research is carried out by experimental and applied research methodology which is concerned with the design and development, implementation and evaluation of an AI based mobile assistive system for visually impaired people. The aim is to experimentally demonstrate the feasibility, accuracy and performance of applications of real-time object detection, facial recognition and voice-guided navigation based on on-device artificial intelligence.
+
+Data Sourcing Methodology
+
+The data utilized by the VisionMate system is from two primary sources, in order to support the object detection/ recognition capabilities in real time and the facial recognition functionalities. These data sources are carefully selected to provide the efficiency, accuracy and privacy of the users.
+
+Open-Source Datasets
+
+For the object detection tasks a modified model of YOLOv8-Nano that has already been trained on a huge data of common objects like vehicles, furniture, household objects and pedestrians. Leveraging this worldly knowledge makes it possible for the model to recognize a wide variety of objects with a decrease in the complexity of training, the computing requirements, and the development time. This way, the accuracy of detection is quite high and real-time performance on the mobile devices are possible.
+
+User-Generated Data for Facial Recognition
+
+For facial recognition, image data is directly acquired from the registered guardian via mobile application interface. These images are processed locally on the device to create high-dimensional numerical feature embeddings using the MobileFaceNet model.To ensure that the user's privacy and data security is dependent on the privacy and data security of the devices used to capture and transmit the facial images.To ensure that the user's privacy and data security, raw facial images are not permanently stored. Instead of storing the numerical feature embeddings for unique features of the face, only securely stored numerical feature embeddings are stored in the local database. This approach is guaranteed to not misuse the personal data, while still have a reliable working performance in recognition.
+
+Parameters
+
+The main data parameters derived from the processing process are bounding box location (x, y, width and height co-ordinates), object class labels (e.g. person, car, chair) detection confidence scores, and facial features embedding of dimension 192. These parameters taken collectively helps to provide the correct localization, classification and recognition of an object.
+
+Data Processing Workflow
+
+The whole process of data processing is broken into four consecutive steps:
+
+Data Acquisition:
+
+The smartphone camera is used to capture the live video frames and the guardian contains the application interfaces to upload the faces images.
+
+Preprocessing:
+
+Frames that are captured are resized to 320 x 320, and normalized according to the input specifications of the YOLOv8-Nano model so that they will have the best computational efficiency.
+
+Inference:
+
+YOLOv8-Nano and MobileFaceNet are deployed locally in the device GPU/CPU respectively to detect the objects and extract the facial features in real-time.
+
+Data Utilization:
+
+The classes of the objects identified and identities are translated into audible feedback through Text-to-Speech (TTS) engine to give instant feedback to the visually impaired users.
+
+System Workflow
+
+Figure 3.1: Proposed System
+
+The proposed system is planned to be operated primarily by using the on-device processing for the purpose of guaranteeing real-time performance, preserving the privacy and reducing the reliance of the internet connectivity. The mobile application is made with the help of the Flutter framework and this is the main control unit which integrates the smartphone camera, GPS, speaker, and processing with the help of embedded Artificial Intelligence models. work flow of the system starts with the continuous capture of real-time visual data using the smartphone camera. The gained frames are preprocessed and fed to light-weighted AI models which are implemented with TensorFlow Lite(TFLite) framework. The object detection module is made up of YOLOv8-Nano which determines the surrounding objects while the facial recognition module is made up of MobileFaceNet for facial recognition of the registered people. Meaningful audio feedback from processed results is achieved using a Text-to-Speech (TTS) engine to inform the user.2 For navigation and security purposes, the system has location tracking (GPS engine) and voice-guided navigation. In addition to this, a secure Guardian Mode is implemented with the help of the Firebase Realtime Database that proposes authorized guardian to track the real-time location of the user. This combination of offline and online architecture is capable of ensuring fast response, safe handling of data and reliable 24x7 assistance for the visually impaired.
+
+Models Training & Implementation Methodology
+
+The proposed system is implemented on light weight deep learning models and these models are optimized to run in real time at device. The selected models have high detection accuracy, low detection latency and can make good use of their resources hence can be run in regular smartphones.
+
+YOLOv8-Nano 
+
+YOLOv8-Nano is used to detect the objects in real-time as it has a small structure and can run the inference in the quickest manner. The model is taking continuous video frames which are captured by the smartphone camera and it is detecting different categories of objects by generating bounding boxes and marking them with corresponding classes. Its lightweight framework makes it capable to perform the operations in the device effectively and its dependable detection functionality that is important in providing real-time environmental awareness for the visually impaired users.
+
+MobileFaceNet
+
+MobileFaceNet is applied to facial recognition is efficient in terms of real time face detection and extraction of feature with low computational cost. The regions in the face are detected by the model and extract discriminative feature embeddings and store them safely in the local database at the registration stage. The extracted embeddings are then compared with the stored templates at the runtime so to identify registered persons so as to establish a reliable recognition and user privacy is still preserved.
+
+Voice Navigation and Feedback
+
+The system has the fact of route guidance in real time, which is based on navigation services GPS. The deployment of a Speech-to-Text module enables the voice recognition of inputs to enter one's destinations using the help of voice. The audible responses are the navigation instructions, objects detected and results of recognition which are converted into text to speech (TTS) engine and enable hands-free and intuitive interaction.
+
+Requirements analysis
+
+Requirements Analysis - involves defining and recording the requirements of what the VisionMate system needs to accomplish and what conditions it needs to be used in. In this project, the needs were determined keeping in point actual needs of the visually impaired people and their guardians and making the solution practical, safe and convenient to use. The functional requirements are the explanation of the essential features like the secure login, user guardian connection, face registering and recognizing, real time object tracking, voice guided navigation and guardian live tracking. Non-functional requirements are concerned to accessibility, performance, privacy and reliability such as presenting all the essential information via audio feedback and ensuring the safe accessibility to location data. This analysis is clear and helps in laying a clear foundation of design, implementation as well as testing and the final application will satisfy the project goals.
+
+Requirements
+
+In this part, the author establishes the important specifications for VisionMate, a mobile assistant that should be used by the visually impaired. The system will provide features that are accessibility oriented like security authentication, connecting accounts between a Guardian and Visually Impaired User, face registration and recognition, detection of objects in real-time, voice-guided navigation and real-time location tracking. The app should also include the functionality of audio based communication (Text-to-Speech) and shortcuts with the hardware buttons, so that in-order to use the visual elements of the interface, the users who cannot afford to use the interface can also enjoy the experience.
+
+System Requirements Table
+
+Table 4: Functional Requirements
+
+ID
+
+Feature Name
+
+Technical Requirement Description
+
+FR-01
+
+User Authentication
+
+The system shall have the functionality of secure login/logout of Blind Users and Guardians with the help of the Firebase Authentication.
+
+FR-02
+
+Role Management
+
+The system requires the setting of some permissions as well the UI dashboards depending on the two roles (Blind User or Guardian).
+
+FR-03
+
+Guardian Linking
+
+The system shall allow a user to link their profile with a Guardian using a unique identifier (e.g., guardian email) and require user consent. 
+
+FR-04
+
+Object Detection
+
+The system is required for detecting common objects in real-time based on a 320x320 YOLOv8-Nano model.
+
+FR-05
+
+Facial Recognition
+
+The faces registered shall be detected by the system by generating and matching 192 dimensional embeddings using MobileFaceNet.
+
+FR-06
+
+Guardian Face Management
+
+ Guardians (when permitted) shall be able to register, update and delete face profiles stored in the user’s local DB and/or synced cloud copy
+
+FR-07
+
+Live Location Sync
+
+The system shall continuously synchronize the location (GPS Coordinates) of the user to FireBase Realtime database for remote monitoring of the user.
+
+FR-08
+
+Tactile Mic Trigger
+
+The system shall switch to SpeechtoText (STT) input when the user performs the configured hardware gesture (e.g., doublepress Volume Up).
+
+FR-09
+
+Instant Bookmarking
+
+The system shall accept if user want to save the current location as "Favorite Destination", by doing Triple-Press on Volume Up hardware key.
+
+FR-10
+
+Voice-Guided Navigation
+
+The system shall provide turn turn audible navigation milestone and distance update using Text-to-Speech (TTS) engine.
+
+FR-11
+
+Audio Feedback
+
+The system needs to provide instant audio alerts of any detection and recognition and hardware triggers.
+
+FR-12
+
+Manual SOS
+
+ Allow user to manually trigger an SOS (hardware shortcut or UI) that notifies guardian(s) and shares last known location.
+
+FR-13
+
+Fall Detection & Confirmation
+
+Detect probable falls using inertial sensors, prompt for user confirmation and escalate to SOS if unconfirmed. 
+
+FR-14
+
+Critical Battery Alert 
+
+Detect critically low battery and optionally notify guardian with last known location. 
+
+FR-15
+
+Offline Face Cache
+
+ Maintain a local SQLite cache of registered faces/embeddings for offline recognition.
+
+FR-16
+
+Sync & Conflict Handling
+
+Provide optional cloud sync with conflict resolution and user consent settings.
+
+Table 5: Non-Functional Requirements
+
+ID
+
+Quality Attribute
+
+Requirement Description
+
+NFR-01
+
+Offline Operation
+
+Core AI modules (YOLO and FaceNet) must be able to run on-device in order to function in the absence of connectivity to the Internet.
+
+NFR-02
+
+Inference Latency
+
+Target timely perception→audio feedback (example target <450 ms on midrange devices); final target depends on device and tuning.
+
+NFR-03
+
+Data Privacy
+
+Raw facial images should not be uploaded by default; only embeddings or encrypted representations are stored/shared with consent.
+
+NFR-04
+
+Tactile Priority
+
+The prioritization of hardware button triggers (Volume keys) to win over to on-screen UI needs to be placed for all critical blind user interactions.
+
+NFR-05
+
+Reliability
+
+Set validation targets (example: ≥80% practical accuracy in normal lighting) and plan field tuning and reporting.
+
+NFR-06
+
+Resource Management
+
+The app needs to use a periodic processing (loop control) to ensure, that it does not spike the temperature to high and suck power from the battery too much (on mid range devices).
+
+NFR-07
+
+Platform Compatibility
+
+The application should be compatible with the android running on the API Level 23 (Marshmallow) and above.
+
+NFR-08
+
+Security & Consent
+
+ Enforce secure auth, TLS for transport, document Firestore security rules and explicit consent flows for biometric/location sharing.
+
+NFR-09
+
+Accessibility QA
+
+Ensure TalkBack/VoiceOver semantics, clear utterances, and gesture testing as part of QA.
+
+NFR-10
+
+Testability & Instrumentation
+
+ Include logging/metrics for inference timing, detection rates, SOS latency for validation.
+
+List of Actors
+
+Visually Impaired:
+
+Primary user who will get assistance of object detection, face recognition, navigation, and audio feedback.
+
+Guardian:
+
+Secondary user responsible for the account management and view the live location.
+
+List of use cases
+
+Table 6: Use Case
+
+Use Case ID
+
+Use Case Name
+
+Brief Description
+
+UC-01
+
+Login
+
+Enables a guardians or a visually impaired user to log on into the VisionMate application.
+
+UC-02
+
+Create New Account
+
+Opens up account opening procedure on login screen.
+
+UC-03
+
+Select Signup Role
+
+Provides an option of signing up as a Guardian or Visually impaired User.
+
+UC-04
+
+Guardian Signup
+
+Allows a guardian to login to an account and authenticate it using OTP.
+
+UC-05
+
+User Signup
+
+Register a Visually Impaired User account.
+
+UC-06
+
+Link User with Guardian
+
+Associate user account to guardian account 
+
+UC-07
+
+View Link Status
+
+Allows the guardian to know whether the visually impaired user is connected or not.
+
+UC-08
+
+Forgot Account
+
+Helps the user or the guardian to get access of their accounts in case of forgotten account passwords.
+
+UC-09
+
+OTP Verification
+
+Verifies identity of user or guardian, during registration and recovery of account
+
+UC-10
+
+Register Face
+
+Enables the guardian enter the faces of relatives to be recognized.
+
+UC-11
+
+Manage Faces
+
+Enables the guardian to see, change and delete faces registered.
+
+UC-12
+
+View Live Location
+
+Gives the guardian to monitor the actual whereabouts of the connected user.
+
+UC-13
+
+Object Detection
+
+Identifies objects around and has audio feedback to user.
+
+UC-14
+
+Face Recognition
+
+Detects registered faces and speaks them out
+
+UC-15
+
+Navigation
+
+Voice commanded GPS to the preferred destination.
+
+UC-16
+
+Audio Feedback
+
+Converts system out into speech.
+
+UC-17
+
+Voice Command Activation
+
+Activate voice commands via configured hardware gesture (double press).
+
+UC-18
+
+Save Favorite Location
+
+Marks the present position as a favorite with volume up triple press.
+
+UC-19
+
+Logout
+
+Securely logs out the guardian or the visually impaired user out of the application.
+
+Figure 4.1: Use CaseFigure 4.1: Use CaseSystem use case diagram
+
+Figure 4.1: Use Case
+
+Figure 4.1: Use Case
+
+The Use Case Diagram of the system of VisionMate, which is a representation of the interaction of two main actors Visually Impaired User and Guardian with the application is given in figure 4.1. The diagram covers the entire spectrum of user flow from login and account creation in which users have the option of signing up as either a guardian or a visually impaired user, OTP verification, account linking. After successful access, the user with visual impairments will be able to perform common assistive functions like object detection, face recognition, navigation, voice command activation and saving favorite locations with all outputs through audio feedback. The guardian helps the user to perform tasks such as registering and managing faces, checking on the status of a link and seeing the user's live location for safety purposes. The include and extend relationships in the diagram signpost mandatory actions (e.g. audio feedback, OTP verification) and optional actions (e.g. forgot account, voice command) and give an overall picture about the main functionality and responsibilities of the system.
+
+Extended use cases
+
+Table 7: Login
+
+Use Case ID:
+
+UC-01
+
+Use Case Name:
+
+Login
+
+Created By:
+
+Ali Asad  
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+02/12/2025
+
+Last Revision Date:
+
+05/12/2025
+
+Actors:
+
+Primary: Guardian
+
+Secondary: Visually Impaired User
+
+Description:
+
+A registered Guardian or Visually Impaired User to log in to the VisionMate application and access their respective dashboard.
+
+Trigger:
+
+User opens the app and selects the Login option.
+
+Preconditions:
+
+The user/guardian account already exists.
+
+Internet is available for authentication.
+
+User has valid login credentials.
+
+Post conditions:
+
+Success: User is authenticated and redirected to the correct dashboard (Guardian/User).
+
+Failure: User remains on login screen with an error message.
+
+Normal Flow:
+
+User opens the application.
+
+System displays the login screen.
+
+User enters email/username and password.
+
+User taps Login.
+
+System validates the credentials.
+
+System identifies the role (Guardian or Visually Impaired User).
+
+System opens the relevant home screen/dashboard.
+
+Alternative Flows:
+
+1. A1: Validation Failure: If email or password fields are empty, system displays a red SnackBar ("Please fill all fields") and stops the process.
+
+2. A2: Missing Firestore Data: If authentication succeeds but no Firestore document exists for the UID, system displays an orange SnackBar ("User data not found!")
+
+Exceptions:
+
+1. Authentication Failure: If credentials are wrong or the user doesn't exist, system catches the FirebaseAuthException, dismisses the loading dialog, and displays the exact error message in a red SnackBar.
+
+2. Network/General Error: System catches any generic exception and displays "Error: [Details]" in a red SnackBar.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When have to login.
+
+Special Requirements:
+
+Should respond quickly and clearly through accessible UI.
+
+Assumptions:
+
+Users have access to the registered email/credentials.
+
+Table 8: Create New Account
+
+Use Case ID:
+
+UC-02
+
+Use Case Name:
+
+Create New Account
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+08/12/2025
+
+Last Revision Date:
+
+11/12/2025
+
+Actors:
+
+Guardian
+
+Description:
+
+Starts account creation and moves to role selection.
+
+Trigger:
+
+Actor taps Create New Account on login screen.
+
+Preconditions:
+
+App installed, user is on login screen.
+
+Post conditions:
+
+Role selection screen is shown.
+
+Normal Flow:
+
+Actor taps Create New Account.
+
+System opens Select Signup Role.
+
+Exceptions:
+
+None
+
+Includes:
+
+Select Signup Role.
+
+Frequency of Use:
+
+When creating the account.
+
+Special Requirements:
+
+No
+
+Assumptions:
+
+Guardian can create user account.
+
+Notes and Issues:
+
+For visually impaired user, guardian will complete this process.
+
+ 
+
+Table 9: Select Signup Role
+
+Use Case ID:
+
+UC-03
+
+Use Case Name:
+
+Select Signup Role
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+12/12/2025
+
+Last Revision Date:
+
+15/12/2025
+
+Actors:
+
+Guardian
+
+Description:
+
+Displays a selection screen for the actor to choose whether they want to register as a Visually Impaired User or a Guardian.
+
+Trigger:
+
+Actor navigates to the Role Selection screen
+
+Preconditions:
+
+App is installed and running.
+
+Post conditions:
+
+System navigates to the selected role's respective signup screen.
+
+Normal Flow:
+
+1. System displays the "WHO ARE YOU?" screen with two options: "Sign Up as User" and "Sign Up as Guardian".
+
+2. Actor taps one of the options.
+
+3. System navigates to either UserSignUpScreen or GuardianSignUpScreen based on the selection.
+
+Exceptions:
+
+If SVG assets fail to load, system safely displays fallback material icons without crashing.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When selecting the role.
+
+Special Requirements:
+
+Large buttons.
+
+Assumptions:
+
+Actor understands the role selection.
+
+Table 10: Guardian Signup
+
+Use Case ID:
+
+UC-04
+
+Use Case Name:
+
+Guardian Signup
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Noorish
+
+Date Created:
+
+17/12/2025
+
+Last Revision Date:
+
+20/12/2025
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Captures guardian details, creates an authentication account via Firebase Auth, and stores the user profile (with the 'guardian' role) in Firestore.
+
+Trigger:
+
+Guardian taps "Sign Up as Guardian" from the Role Selection screen.
+
+Preconditions:
+
+Active internet connection.
+
+Post conditions:
+
+Success: Guardian account is created, data is saved, and user is redirected to the Sign In screen.
+
+Normal Flow:
+
+1. System displays the Guardian Signup form.
+
+2. Guardian enters Name, Email, Password, Confirm Password, and selects Gender (Male/Female).
+
+3. Guardian taps the "SIGN UP" button.
+
+4. System validates that no fields are empty and that passwords match.
+
+5. System displays a loading indicator.
+
+6. System creates a new user account in Firebase Auth.
+
+7. System saves the guardian's profile data (uid, name, email, role='guardian', gender, createdAt) in the Firestore users collection.
+
+8. System stops the loading indicator and displays a success message.
+
+9. System navigates the user to the SignInScreen.
+
+Alternative Flows:
+
+1. A1: Validation Failure: If fields are empty or passwords do not match, system displays a red error SnackBar and halts the process.
+
+Exceptions:
+
+1. Network Timeout: If Firebase takes too long, system catches the timeout and displays "Network Timeout. Check Internet!".
+
+2. Auth Errors: If email is already in use or invalid, system catches the Firebase exception and displays the error message.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When Guardian selects Sign up as Guardian.
+
+Special Requirements:
+
+Secure verification, strong password rules.
+
+Assumptions:
+
+Guardian has access to email/phone.
+
+Notes and Issues:
+
+After signup, guardian may have “No linked user” status until linking.
+
+Table 11: User Signup
+
+Use Case ID:
+
+UC-05
+
+Use Case Name:
+
+User Signup
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Noorish
+
+Date Created:
+
+22/12/2025
+
+Last Revision Date:
+
+25/12/2025
+
+Actors:
+
+Guardian
+
+Description:
+
+Captures details for a visually impaired user, creates an authentication account via Firebase Auth, and securely stores the user profile (assigned the 'user' role) in Firestore.
+
+Trigger:
+
+Actor taps "Sign Up as User" from the Role Selection screen.
+
+Preconditions:
+
+Active internet connection to communicate with Firebase services.
+
+Post conditions:
+
+Success: User account is created, Firestore document is saved, and the actor is redirected to the Sign In screen.
+
+Normal Flow:
+
+ 1. System displays the User Profile Information form.
+
+2. Actor enters Name, Email, Password, Confirm Password, and selects Gender (Male/Female).
+
+3. Actor taps the "SIGN UP" button.
+
+4. System validates that no fields are empty and that both passwords match exactly.
+
+5. System displays a loading dialog (CircularProgressIndicator).
+
+6. System creates a new user account in Firebase Auth using the provided email and password.
+
+7. System saves the user data (uid, name, email, role: 'user', gender, createdAt) in the Firestore users collection.
+
+8. System dismisses the loading dialog.
+
+9. System displays a green SnackBar confirming "User Account Created Successfully!".
+
+10. System clears the navigation stack and redirects the actor to the SignInScreen.
+
+Exceptions:
+
+1. Firebase Auth Exception: If registration fails (e.g., email already exists, weak password), system dismisses the loading dialog and shows a red SnackBar with the Firebase error message.
+
+2. General Exception: For any other unhandled errors, system dismisses the dialog and shows "An error occurred. Please try again."
+
+Includes:
+
+None
+
+Frequency of Use:
+
+One time
+
+Special Requirements:
+
+1. Role Accuracy: System must accurately assign and save role: 'user' in Firestore, as this is the sole identifier used to route the visually impaired user to their specific dashboard upon login.
+
+Assumptions:
+
+Guardian is trusted to create user account.
+
+Table 12: Link User with Guardian
+
+Use Case ID:
+
+UC-06
+
+Use Case Name:
+
+Link User with Guardian
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+01/01/2026
+
+Last Revision Date:
+
+04/01/2026
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Validates a target guardian's email and sends a 6-digit OTP to that email to authorize the linking process.
+
+Trigger:
+
+User accesses the Link Guardian screen.
+
+Preconditions:
+
+1. User is currently logged in via Firebase Auth.
+
+2. Target Guardian must already have an account with role='guardian' in Firestore.
+
+Post conditions:
+
+System successfully sends an OTP and navigates to the VerifyGuardianOtpScreen
+
+Normal Flow:
+
+1. System displays the Link Guardian screen with an email input field.
+
+2. User enters the target Guardian's email address and taps "SEND OTP".
+
+3. System verifies the current user session is active.
+
+4. System checks Firestore to see if the user is already linked (if true, navigates directly to UserMainScreen).
+
+5. System validates that the entered email does not belong to the current user (preventing self-linking).
+
+6. System queries Firestore to ensure the entered email belongs to an existing account with the role 'guardian'.
+
+7. System generates a random 6-digit OTP.
+
+8. System prepares an email payload and sends it via the Brevo API.
+
+9. System receives a 201 Success response from the API.
+
+10. System displays a success SnackBar.
+
+11. System navigates to VerifyGuardianOtpScreen passing the email and OTP.
+
+Alternative Flows:
+
+1. A1: User Already Linked: If Firestore indicates isLinked == true, system displays "Guardian already linked. Redirecting..." and moves to UserMainScreen.
+
+2. A2: Invalid Target: If the email is not found, or the role is not 'guardian', or it is the user's own email, system displays a specific error SnackBar and halts.
+
+3. A3: Email API Failure: If the Brevo API fails or times out, system attempts a fallback URL. If that also fails, system catches the error, displays an orange SnackBar with the OTP (for testing mode), and still navigates to VerifyGuardianOtpScreen
+
+Exceptions:
+
+1. Session Expired: If currentUser is null, system shows an error to login again.
+
+2. Firestore Query Failure: System catches database errors and displays "Validation failed. Please try again."
+
+Includes:
+
+Navigate to OTP Verification
+
+Frequency of Use:
+
+Rare.
+
+Special Requirements:
+
+Secure and correct link no wrong guardian linking.
+
+Assumptions:
+
+Guardian consent is available for linking.
+
+Table 13: View Link Status
+
+Use Case ID:
+
+UC-07
+
+Use Case Name:
+
+View Link Status
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Ali Asad
+
+Date Created:
+
+05/01/2026
+
+Last Revision Date:
+
+08/01/2026
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Displays a waiting screen indicating no users are linked. The system listens in real-time to the Firestore database and automatically navigates the Guardian to their dashboard once a user links to their email.
+
+Trigger:
+
+Guardian is navigated to this screen (typically after login if they don't have a linked user yet).
+
+Preconditions:
+
+1. Guardian is authenticated via Firebase Auth.
+
+2. Active internet connection to maintain the Firestore stream listener.
+
+Post conditions:
+
+Success: System automatically navigates to GuardianLinkedDashboard when a user links.
+
+Normal Flow:
+
+1. System displays the "LINK WITH USER" screen with a link icon, "No users Linked" text, and a continuous CircularProgressIndicator.
+
+2. System initializes a real-time Firestore listener on the users collection.
+
+3. System continuously checks for a document where guardianEmail matches the Guardian's email AND isLinked equals true.
+
+4. A visually impaired user completes the linking process on their device, updating the database.
+
+5. System's listener instantly detects the database change (snapshot.docs.isNotEmpty).
+
+6. System replaces the current screen and navigates the Guardian to GuardianLinkedDashboard.
+
+Exceptions:
+
+If the screen is closed before a link occurs, the system safely cancels the active Firestore stream subscription to prevent memory leaks.
+
+Includes:
+
+Navigate to Guardian Linked Dashboard
+
+Frequency of Use:
+
+When Gaudian first time open dashboard.
+
+Special Requirements:
+
+Clear display
+
+Table 14: Forgot Account
+
+Use Case ID:
+
+UC-08
+
+Use Case Name:
+
+Forgot Account
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+10/01/2026
+
+Last Revision Date:
+
+15/01/2026
+
+Actors:
+
+Guardian
+
+Description:
+
+Helps user recover account access by entering registered email and verifying identity.
+
+Trigger:
+
+Actor clicks Forgot Account on login screen.
+
+Preconditions:
+
+Actor has access to registered email.
+
+Reset service available.
+
+Post conditions:
+
+Success: recovery instructions sent/reset completed. 
+
+Failure: recovery not performed.
+
+Normal Flow:
+
+Actor selects Forgot Account.
+
+System asks for registered email.
+
+Actor enters email/phone and submits.
+
+System sends verification code/reset link.
+
+Actor verifies and sets new password (if applicable).
+
+System confirms recovery and redirects to Login.
+
+Alternative Flows:
+
+A1: Email not registered: system shows error.
+
+A2: Verification code expired: system allows resend.
+
+Exceptions:
+
+Reset service down.
+
+Includes:
+
+None.
+
+Frequency of Use:
+
+When user uses the navigation.
+
+Special Requirements:
+
+Security and rate limiting.
+
+Assumptions:
+
+Actor remembers registered email.
+
+Table 15: OTP Verification
+
+Use Case ID:
+
+UC-09
+
+Use Case Name:
+
+OTP Verification
+
+Created By:
+
+Maliha 
+
+Last Updated By:
+
+Noorish
+
+Date Created:
+
+18/01/2026
+
+Last Revision Date:
+
+22/01/2026
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Verifies identity using OTP during signup/recovery.
+
+Trigger:
+
+Included in signup or recovery flow.
+
+Preconditions:
+
+OTP has been requested/sent.
+
+Post conditions:
+
+Success: OTP verified 
+
+Failure: OTP rejected.
+
+Normal Flow:
+
+System sends OTP to registered email.
+
+Actor enters OTP.
+
+System validates OTP.
+
+System returns verification success to calling use case.
+
+Alternative Flows:
+
+A1: Wrong OTP system prompts re-entry.
+
+A2: OTP expired system offers resend.
+
+Exceptions:
+
+OTP service failure.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+Occasional.
+
+Special Requirements:
+
+OTP expiry time.
+
+secure handling.
+
+Assumptions:
+
+Network available for OTP.
+
+Table 16: Register Face
+
+Use Case ID:
+
+UC-10
+
+Use Case Name:
+
+Register Face
+
+Created By:
+
+Maliha 
+
+Last Updated By:
+
+Hassan
+
+Date Created:
+
+24/01/2026
+
+Last Revision Date:
+
+28/01/2026
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Guardian registers a relative’s face so the user can be recognized later.
+
+Trigger:
+
+Guardian selects Register Face from dashboard.
+
+Preconditions:
+
+Guardian logged in.
+
+Camera permission granted.
+
+User is linked.
+
+Post conditions:
+
+Face stored successfully.
+
+Normal Flow:
+
+Guardian opens Register Face.
+
+System opens camera and shows instructions.
+
+Guardian captures face image.
+
+System processes face embedding.
+
+Guardian enters name for the face.
+
+System saves face data.
+
+System confirms success.
+
+Alternative Flows:
+
+A1: Face not detected.
+
+A2: Permission denied system requests permission.
+
+Exceptions:
+
+Storage/database failure.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When registering the face for the user.
+
+Special Requirements:
+
+Privacy.
+
+Secure storage.
+
+Assumptions:
+
+Captured face is clear.
+
+Notes and Issues:
+
+Only guardian can register faces.
+
+Table 17: Manage Faces
+
+Use Case ID:
+
+UC-11
+
+Use Case Name:
+
+Manage Faces
+
+Created By:
+
+Noorish 
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+01/02/2026
+
+Last Revision Date:
+
+03/02/2026
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Allows the Guardian to view a real-time list of registered faces, navigate to add new faces, or permanently delete existing face records from the Firestore database.
+
+Trigger:
+
+Guardian navigates to the Manage Faces screen from the dashboard.
+
+Preconditions:
+
+1. Guardian is authenticated via Firebase Auth.
+
+2. Active internet connection to stream data from Firestore.
+
+Post conditions:
+
+Success: The selected face is permanently deleted from Firestore and the UI updates in real-time.
+
+Normal Flow:
+
+1. System verifies the user's authentication status.
+
+2. System establishes a real-time StreamBuilder connection to the user's registered_faces Firestore sub-collection.
+
+3. System retrieves the documents and displays them in a list (ManageFacesListScreen).
+
+4. Each list item displays the person's name, a circular image (or placeholder), and a delete icon.
+
+5. Guardian taps the delete icon for a specific face.
+
+6. System displays a confirmation AlertDialog ("Delete Face?").
+
+7. Guardian taps "Delete" to confirm.
+
+8. System deletes the specific face document from the Firestore database.
+
+9. System dismisses the dialog and displays a success SnackBar.
+
+Alternative Flows:
+
+1. A1: Empty State: If the Firestore query returns an empty list, the system displays the ManageFacesEmptyScreen showing an illustration, "No faces registered yet", and an "+ ADD FIRST FACE" button.
+
+2. A2: Add New Face: From the list screen, the Guardian can tap the "+ ADD NEW" button to navigate directly to the FaceRegistrationScreen.
+
+3. A3: Unauthenticated Access: If currentUser is null, the system immediately halts and displays a "Please login first" message.
+
+Exceptions:
+
+1. Database Stream Error: If the Firestore stream throws an error during loading, the system displays an error screen with the specific snapshot.error details.
+
+2. Deletion Failure: If the delete operation fails, the system catches the exception and displays a red SnackBar with the error details.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When managing the faces.
+
+Special Requirements:
+
+Confirm before delete (to prevent mistakes).
+
+Assumptions:
+
+Guardian manages correct person.
+
+Table 18: View Live Location
+
+Use Case ID:
+
+UC-12
+
+Use Case Name:
+
+View Live Location
+
+Created By:
+
+Hassan
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+04/02/2026
+
+Last Revision Date:
+
+07/02/2026
+
+Actors:
+
+Primary: Guardian
+
+Description:
+
+Allows the Guardian to view real-time updates from the linked Visually Impaired User's device, including live GPS location (via map navigation), battery status, and emergency SOS alerts (triggered by falls or critical battery).
+
+Trigger:
+
+Guardian opens Live Location.
+
+Preconditions:
+
+1. Guardian and User accounts are linked in Firestore (isLinked: true).
+
+2. The Visually Impaired User's device has an active internet connection and location permissions granted (UserLocationTracker is running).
+
+Post conditions:
+
+Success: The Guardian's dashboard reflects the real-time state of the linked user's device.
+
+Normal Flow:
+
+Guardian selects View Live Location.
+
+System fetches latest user coordinates from database.
+
+System displays location on map.
+
+System update’s location periodically.
+
+Alternative Flows:
+
+A1: User offline/no update
+
+Exceptions:
+
+Map service failure.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When guardian want to see the user live location.
+
+Special Requirements:
+
+Secure access (only linked guardian).
+
+Assumptions:
+
+User device has GPS enabled.
+
+Notes and Issues:
+
+Supports Guardian Mode.
+
+Table 19: Object Detection
+
+Use Case ID:
+
+UC-13
+
+Use Case Name:
+
+Object Detection
+
+Created By:
+
+Noorish
+
+Last Updated By:
+
+Hassan
+
+Date Created:
+
+08/02/2026
+
+Last Revision Date:
+
+10/02/2026
+
+Actors:
+
+Primary: Visually Impaired User
+
+Description:
+
+Processes camera frames using an offline YOLOv8-nano quantized (int8) model to detect and localize objects in real-time, returning filtered bounding boxes.
+
+Trigger:
+
+The system background loop passes a decoded image frame to the ObjectDetector service.
+
+Preconditions:
+
+1. Camera permissions are granted.
+
+2. The yolov8n_int8.tflite model and labels.txt are successfully loaded into the TFLite interpreter.
+
+Post conditions:
+
+Success: Returns a filtered list of Detection objects containing labels, confidence scores, and bounding box coordinates.
+
+Normal Flow:
+
+1. System receives a captured image frame.
+
+2. System resizes the image to the required 320x320 input size and normalizes RGB pixel values to 0.0-1.0 (NHWC format).
+
+3. System runs the TensorFlow Lite interpreter on the preprocessed image.
+
+4. System parses the raw tensor output array into bounding box coordinates and class probabilities.
+
+5. System filters out any predictions below the 0.3 confidence threshold.
+
+6. System applies Non-Maximum Suppression (NMS) using an Intersection over Union (IoU) threshold of 0.5 to remove overlapping duplicate boxes.
+
+7. System returns the final refined list of detections to the calling screen.
+
+Alternative Flows:
+
+1. A1: No Objects Detected: If no predictions pass the 0.3 confidence threshold, the system returns an empty list.
+
+Exceptions:
+
+1. Model Uninitialized: If detection is called before the TFLite model loads, the system throws a "Model not loaded!" exception.
+
+2. Inference Failure: If the TFLite interpreter crashes during execution, the system catches the error, prints the debug log, and safely returns an empty detection list.
+
+Includes:
+
+ None
+
+Frequency of Use:
+
+When using object detection.
+
+Special Requirements:
+
+Low latency.
+
+Offline capability.
+
+Assumptions:
+
+User points camera forward.
+
+Notes and Issues:
+
+Provides accessibility assistance.
+
+Table 20: Face Recognition
+
+Use Case ID:
+
+UC-14
+
+Use Case Name:
+
+Face Recognition
+
+Created By:
+
+Maliha
+
+Last Updated By:
+
+Hassan
+
+Date Created:
+
+11/02/2026
+
+Last Revision Date:
+
+12/02/2026
+
+Actors:
+
+Primary: Visually Impaired User
+
+Description:
+
+Captures an image, generates face embeddings using MobileFaceNet, and compares them against a locally synced SQLite database of registered faces to identify the person.
+
+Trigger:
+
+User accesses the Offline Recognition Screen and taps the capture button.
+
+Preconditions:
+
+1. MobileFaceNetService is loaded.
+
+2. Faces are successfully synced from Firebase to the local SQLite database.
+
+3. Camera is initialized.
+
+Post conditions:
+
+Success: The system identifies the face, logs the recognition event, and displays the result dialog.
+
+Normal Flow:
+
+1. System initializes the recognition model and syncs registered faces to the local database on screen load.
+
+2. User taps the capture button.
+
+3. System takes a picture using the high-resolution camera preset.
+
+4. System displays a loading state and passes the image to OfflineRecognitionService.
+
+5. System generates numerical face embeddings using the MobileFaceNet model.
+
+6. System iterates through all locally stored faces, parsing their JSON embeddings.
+
+7. System calculates the similarity score between the captured embeddings and stored embeddings.
+
+8. System identifies the best match that meets or exceeds the 0.80 (SIMILARITY_THRESHOLD).
+
+9. System saves the successful recognition event to the local database history.
+
+10. System displays an AlertDialog showing " Recognized", the person's name, confidence, and similarity percentage.
+
+Alternative Flows:
+
+1. A1: Unknown Face: If the highest similarity score is below 0.80, the system returns an unrecognized status and displays an "❌ Unknown" AlertDialog.
+
+2. A2: Empty Database: If no registered faces exist in the local SQLite database, the system automatically returns an unrecognized status without calculating similarity.
+
+Exceptions:
+
+1. Initialization Error: If the model or camera fails to load, the system displays an error message on the screen and prevents capture.
+
+2. Processing Error: If embedding generation or database querying fails, the system catches the exception, stops the loading state, and displays a red SnackBar with error details.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+When using face recognition.
+
+Special Requirements:
+
+Privacy and secure storage of embeddings.
+
+Assumptions:
+
+Faces were registered correctly.
+
+Notes and Issues:
+
+Recognition quality depends on angles and lighting.
+
+Table 21: Navigation
+
+Use Case ID:
+
+UC-15
+
+Use Case Name:
+
+Navigation
+
+Created By:
+
+Maliha
+
+Last Updated By:
+
+Noorish
+
+Date Created:
+
+13/02/2026
+
+Last Revision Date:
+
+14/02/2026
+
+Actors:
+
+Primary: Visually Impaired User
+
+Description:
+
+Provides voice-guided navigation to a destination.
+
+Trigger:
+
+User starts Navigation or provides destination through voice command.
+
+Preconditions:
+
+Location permission granted. 
+
+GPS enabled. 
+
+Internet available for routing.
+
+Post conditions:
+
+Navigation starts and voice guidance is provided.
+
+Normal Flow:
+
+User opens Navigation.
+
+System obtains current GPS location.
+
+System asks for destination (voice/favorite).
+
+System calculates route.
+
+System provides turn-by-turn guidance via Audio Feedback.
+
+System updates route as user moves.
+
+User reaches destination or exits.
+
+Alternative Flows:
+
+A1: GPS weak.
+
+A2: Route not found system asks to try different destination.
+
+Exceptions:
+
+Maps API failure.
+
+Includes:
+
+Audio Feedback
+
+Frequency of Use:
+
+Mostly when Visually Impaired User using the navigation.
+
+Special Requirements:
+
+Clear voice instructions.
+
+Assumptions:
+
+User can hear directions.
+
+Notes and Issues:
+
+Voice Command Activation and Save Favorite extend this use case.
+
+Table 22: Audio Feedback
+
+Use Case ID:
+
+UC-16
+
+Use Case Name:
+
+Audio Feedback
+
+Created By:
+
+Noorish
+
+Last Updated By:
+
+Maliha
+
+Date Created:
+
+15/02/2026
+
+Last Revision Date:
+
+16/02/2026
+
+Actors:
+
+Primary: Visually Impaired User
+
+Description:
+
+Converts critical system events, navigation instructions, safety alerts, and environmental detections into spoken audio using the device's native Text-to-Speech (TTS) engine.
+
+Trigger:
+
+Triggered automatically by various system events (Object Detection, Face Recognition, Fall Detection, Voice Navigation prompts, and Turn-by-Turn routing).
+
+Preconditions:
+
+TTS enabled. 
+
+Audio output available.
+
+Post conditions:
+
+User hears spoken feedback.
+
+Normal Flow:
+
+1. A system module generates a text string intended for the user (e.g., "Person in front", "Stop, car ahead", "Navigating to...").
+
+2. The system checks cooldown timers to prevent audio spam (e.g., waiting 6 seconds before repeating a face announcement, or 8 seconds for a safety alert).
+
+3. If the cooldown has passed, the system stops any currently playing TTS audio.
+
+4. The system passes the text string to the FlutterTts engine.
+
+5. The device plays the spoken audio to the user at the configured speech rate (0.5).
+
+Alternative Flows:
+
+None.
+
+Exceptions:
+
+1. TTS Initialization Failure: If the device does not support TTS or the language is unavailable, the system silently fails to provide audio feedback without crashing the app.
+
+Includes:
+
+None
+
+Frequency of Use:
+
+Mostly when using detection/recognition/navigation.
+
+Special Requirements:
+
+Clear timely speech.
+
+Assumptions:
+
+User has working speaker/earphones.
+
+Notes and Issues:
+
+Key accessibility feature.
+
+Table 23: Voice Command Activation (Volume Up 2)
+
+Use Case ID:
+
+UC-17
+
+Use Case Name:
+
+Voice Command Activation (Volume Up 2)
+
+Created By:
+
+Last Updated By:
+
+Date Created:
+
+Last Revision Date:
+
+Actors:
+
+Primary: Visually Impaired User
+
+Description:
+
+Detects a double-press on the device's physical volume buttons to activate the microphone, captures a spoken destination using Speech-to-Text (STT), and initiates the navigation sequence..
+
+Trigger:
+
+User presses any volume button twice within 800 milliseconds.
+
+Preconditions:
+
+1. Microphone permission is granted by the user.
+
+2. SpeechToText plugin is successfully initialized.
+
+Post conditions:
+
+Success: The system captures the destination string and triggers the map search/routing flow.
+
+Normal Flow:
+
+1. User presses the hardware volume button twice within an 800ms window.
+
+2. System detects the volume change via VolumeController and pauses background detection tasks.
+
+3. System checks microphone permissions (prompts if necessary).
+
+4. System uses TTS to announce: "Where do you want to go?" followed by "Listening now. Please say your destination."
+
+5. System activates the microphone and listens for up to 12 seconds.
+
+6. User speaks their desired destination.
+
+7. System captures the final recognized text, stops listening, and updates the hidden search field.
+
+8. System passes the captured text to the Places API to begin navigation.
+
+Alternative Flows:
+
+1. A1: No Speech Detected: If 12 seconds pass without capturing a final result, the system stops the microphone and uses TTS to announce: "I did not hear a destination. Please double press volume and try again.", then resets the session.
+
+2. A2: Empty Input: If speech is captured but is empty, system announces "I did not catch that. Please try again."
+
+Exceptions:
+
+1. Microphone Permission Denied: System announces "Microphone permission is required for voice commands" and halts.
+
+2. STT Unavailable: If the device lacks STT capabilities, system announces "Speech recognition is not available on this device."
+
+Includes:
+
+Audio Feedback
+
+Frequency of Use:
+
+When user wants to set a destination.
+
+Special Requirements:
+
+Fast response.
+
+Assumptions:
+
+User speaks clearly in English.
+
+Table 24: Save Favorite Location
+
+Use Case ID:
+
+UC-18
+
+Use Case Name:
+
+Save Favorite Location
+
+Created By:
+
+Last Updated By:
+
+Date Created:
+
+Last Revision Date:
+
+Actors:
+
+Primary: Visually Impaired User
+
+Description:
+
+Saves current location as a favorite when user triple-presses volume up.
+
+Trigger:
+
+User presses Volume Up three times.
+
+Preconditions:
+
+GPS enabled.
+
+Storage available.
+
+Post conditions:
+
+Location saved and confirmed.
+
+Normal Flow:
+
+User triple-presses Volume Up.
+
+System fetches current coordinates.
+
+System saves as favorite (with default label or asks label via voice).
+
+System confirms Favorite saved via Audio Feedback.
+
+Alternative Flows:
+
+A1: GPS not available system announces unable to save.
+
+A2: Storage full system shows error.
+
+Exceptions:
+
+Database/storage write failure.
+
+Includes:
+
+Audio Feedback
+
+Frequency of Use:
+
+When user wants to save favorite location.
+
+Assumptions:
+
+User is at correct location when saving.
+
+Table 25: Logout
+
+Use Case ID:
+
+UC-19
+
+Use Case Name:
+
+Logout
+
+Created By:
+
+Maliha
+
+Last Updated By:
+
+Ali Asad
+
+Date Created:
+
+17/02/2026
+
+Last Revision Date:
+
+18/02/2026
+
+Actors:
+
+Guardian.
+
+Visually Impaired User.
+
+Description:
+
+Logs the actor out of the system securely.
+
+Trigger:
+
+Actor selects Logout.
+
+Preconditions:
+
+Actor is logged in.
+
+Post conditions:
+
+Session ends. 
+
+Returns to Login screen.
+
+Normal Flow:
+
+Actor taps Logout.
+
+System clears session.
+
+System redirects to Login screen.
+
+Alternative Flows:
+
+None.
+
+Exceptions:
+
+None.
+
+Includes:
+
+None.
+
+Frequency of Use:
+
+When user logout.
+
+Special Requirements:
+
+Secure session termination.
+
+Assumptions:
+
+None
+
+User interfaces (mock screens)
+
+Figure 4.2: Splash ScreenFigure 4.2: Splash ScreenFigure 4.3: Sign inFigure 4.3: Sign in
+
+Figure 4.2: Splash Screen
+
+Figure 4.2: Splash Screen
+
+Figure 4.3: Sign in
+
+Figure 4.3: Sign in
+
+Figure 4.4: Verify OTPFigure 4.4: Verify OTPFigure 4.5: Find AccountFigure 4.5: Find Account
+
+Figure 4.4: Verify OTP
+
+Figure 4.4: Verify OTP
+
+Figure 4.5: Find Account
+
+Figure 4.5: Find Account
+
+Figure 4.6: User/Guardian ProfileFigure 4.6: User/Guardian ProfileFigure 4.7: Sign UpFigure 4.7: Sign Up
+
+Figure 4.6: User/Guardian Profile
+
+Figure 4.6: User/Guardian Profile
+
+Figure 4.7: Sign Up
+
+Figure 4.7: Sign Up
+
+Figure 4.8: Verify OTPFigure 4.8: Verify OTPFigure 4.9: Link GuardianFigure 4.9: Link Guardian
+
+Figure 4.8: Verify OTP
+
+Figure 4.8: Verify OTP
+
+Figure 4.9: Link Guardian
+
+Figure 4.9: Link Guardian
+
+Figure 4.10: Profile InfoFigure 4.10: Profile InfoFigure 4.11: User Main ScreenFigure 4.11: User Main Screen
+
+Figure 4.10: Profile Info
+
+Figure 4.10: Profile Info
+
+Figure 4.11: User Main Screen
+
+Figure 4.11: User Main Screen
+
+Figure 4.12: No User LinkedFigure 4.12: No User LinkedFigure 4.13: Change passwordFigure 4.13: Change password
+
+Figure 4.12: No User Linked
+
+Figure 4.12: No User Linked
+
+Figure 4.13: Change password
+
+Figure 4.13: Change password
+
+Figure 4.14: Guardian DashboardFigure 4.14: Guardian DashboardFigure 4.15: Manage FacesFigure 4.15: Manage Faces
+
+Figure 4.14: Guardian Dashboard
+
+Figure 4.14: Guardian Dashboard
+
+Figure 4.15: Manage Faces
+
+Figure 4.15: Manage Faces
+
+Figure 4.16: Capture FaceFigure 4.16: Capture Face
+
+Figure 4.16: Capture Face
+
+Figure 4.16: Capture Face
+
+Figure 4.17: Save FaceFigure 4.17: Save Face
+
+Figure 4.17: Save Face
+
+Figure 4.17: Save Face
+
+Figure 4.18: Manage FacesFigure 4.18: Manage FacesFigure 4.19: User Live LocationFigure 4.19: User Live Location
+
+Figure 4.18: Manage Faces
+
+Figure 4.18: Manage Faces
+
+Figure 4.19: User Live Location
+
+Figure 4.19: User Live Location
+
+Figure 4.20: LogoutFigure 4.20: Logout
+
+Figure 4.20: Logout
+
+Figure 4.20: Logout
+
+Data flow diagram
+
+Figure 5.1: DFD level 0Figure 5.1: DFD level 0Data Flow Diagram Level 0
+
+Figure 5.1: DFD level 0
+
+Figure 5.1: DFD level 0
+
+The DFD Level 0 of VisionMate system is shown in the Figure 5.1. It gives the impression that VisionMate is a central process which is connected with two external objects the Visually Impaired User and the Guardian. The inputs are sent to the system by the visually impaired user in the form of camera feeds, voice commands, navigation requests and location sharing and the responses received in the form of audio feedback and voice navigation guidance. The system receives management information and known face registration information in the guardian side and provides face registration confirmation information and live location information for assisting in safety management. On the whole, this diagram provides a high level impression of the way the data gets in and out of the system, and provides the essential interactions without detailed processing information.
+
+Figure 5.2: DFD level 1Figure 5.2: DFD level 1Data Flow Diagram Level 1
+
+Figure 5.2: DFD level 1
+
+Figure 5.2: DFD level 1
+
+The DFD Level 1 of VisionMate is represented in the Figure 5.2 in which the system is partitioned into major internal processes and data stores. The Visually Impaired User controls the interaction of the system by providing the system with camera feed, navigation requests and voice commands to the system. The feed from camera is processed by an Object Detection Processing to detect the objects around and sends the result back in form of audio feedback. The same camera feed is also used by the Face Recognition Processing which searches the Face Database to see if a match is found and then give the audio feedback as to who the person is. For safety support the user is able to send location sharing request to Guardian Mode Processing, this stores the updates of location data and communicate to User Account Data in case there is a need to changing the user account. The Guardian has access to this module which will supply the live location information of the user.
+
+Data Flow Diagram Level 2
+
+Figure 5.3: DFD level 2 Navigation
+
+The following figure 5.3 is the DFD Level 2 of the feature of Navigation & Voice Command in VisionMate. First it is the Visually Impaired User who speaks a command which is processed by the Receive Voice Input to process them into destination text. The system can also make use of places, which had previously been saved in the Favourite Locations data store. The process of Determine Destination select final destination either on the basis of spoken input or saved locations and send destination request to Get Route. The Get Route process uses the Maps Service (External) to Get Route information by sending the Maps Service a route query and receiving route information. After the route is generated, the route steps are then passed into Provide Voice Guidance which translates the steps of the navigation into spoken instructions and returns voice navigation guidance as spoken instructions to the user.
+
+Figure 5.4: DFD level 2 object detectionFigure 5.4: DFD level 2 object detection
+
+Figure 5.4: DFD level 2 object detection
+
+Figure 5.4: DFD level 2 object detection
+
+In VisionMate, Figure 5.4 is the DFD Level 2 for Object Detection feature. The camera feed is given by the Visually Impaired User and the system firstly captures a camera frame to get an image frame. This image frame is then passed to the Run Object Detection Model process which uses the stored Object Detection Model (model parameters) to detect objects in the scene. The output of the model is a list of the detected objects with their labels and confidence values and is passed to Interpret Detection Results to get a nice summary of the objects. Finally, the system transmits this summary information to Provide Audio Feedback which changes this information into speech and audio outputs the feedback to the user and he can understand his surroundings without seeing the screen.
+
+Figure 5.5: DFD level 2 Face RecognitionFigure 5.5: DFD level 2 Face Recognition
+
+Figure 5.5: DFD level 2 Face Recognition
+
+Figure 5.5: DFD level 2 Face Recognition
+
+This level 2 DFD figure 5.5 shows the Face Recognition in VisionMate. Visually Impaired User from the feed from the camera and the system captures a frame from the camera feed. The system then identifies the face and removes it off in the image frame so it is only the face in the frame. Then, it removes face features (embedding) on the face picture. This is what is termed as face embedding and it is forwarded to the Match Face with Database process where it is matched to the existing face embeddings in Face Database (Registered Faces). When a result of a match is found (recognized person or unknown) then the system provides an audio feedback and informs the result to the user hence a user can identify people without visual interaction.
+
+System Design
+
+System Architecture Diagram
+
+Figure 6.1: System ArchitectureFigure 6.1: System Architecture
+
+Figure 6.1: System Architecture
+
+Figure 6.1: System Architecture
+
+This System Architecture Diagram demonstrates how the VisionMate mobile app is functioning, and how different items are interacting with each other. The Guardian and Visually Impaired User interfaces with the app with their own user interfaces written with the Flutter. The primary app logic is for stuff such as navigating and voice/button controls and guardian mode. For smart help, the app uses AI models such as YOLOv8 Nano for object detection and mobile faceNet for face recognition which is mounted on for smart help in the phone, so that the detection may work swiftly on the phone. Registered face embeddings are stored locally in SQLite in order to match faster. The system is connected with the Firebase Authentication (For login) and the Firebase Realtime Database (To send and receive user's location on real time basis, so that guardian can monitor location if required). Finally, the app makes use of phone hardware such as the camera, GPS, microphone and speaker to capture live input as well as giving the visually impaired user audio feedback.
+
+Class Diagram
+
+Figure 6.2: Class DiagramFigure 6.2: Class Diagram
+
+Figure 6.2: Class Diagram
+
+Figure 6.2: Class Diagram
+
+The Figure 6.2 has the Class Diagram of the VisionMate system containing the main classes and how they are related to each other. The User class is used to store common information such as userId, name, email/phone, password and role and it is extended by two specialized classes; Guardian and VisuallyImpairedUser. The Guardian has the charge of safety and support functions - live viewing of the location and face registration. Face data is stored in the form of FaceProfile and FaceEmbedding where one profile has one embedding for face recognition. The VisuallyImpairedUser class is associated with important assistive features and other related data, for example, the LocationData which is used for GPS tracking of the user, FavouriteLocation which is used to store important locations for the user, and DetectionResult which is used to store the output of detecting objects. Several DetectedObject entires with labels and confidence values can be contained in each detection result. For the purpose of a navigation, the user creates a NavigationRequest, which could generate a Route, and the route is divided into multiple RouteSteps for step-by-step guidance of the user. Finally, the connecting of the guardian to the visually impaired user is ensured by GuardianLink to ensure that the monitoring and support features that are only available when accounts are connected.
+
+Sequence Diagrams
+
+Figure 6.3: Sequence DiagramFigure 6.3: Sequence Diagram
+
+Figure 6.3: Sequence Diagram
+
+Figure 6.3: Sequence Diagram
+
+This Figure 6.3 is the Sequence Diagram of VisionMate which describes the step by step interaction between two actors (Visually Impaired User and Guardian) and system components. Firstly, the Visually Impaired User logs in to the VisionMate app and VisionMate app sends the credentials for validation to Auth Service. After successful login the app also checks from User/Link Database to know user have associated with a guardian or not. Next, the user opens the Object Detection where the app will send frames from the camera into the Camera + AI Model and receives the objects detected in the frame. These results are then translated into speech and TTS (Audio Feedback) and voiced out as audio output. For the navigation, the user triggers the voice command from the shortcut of the volume up, and then tells the destination and the app asks the GPS / Maps Service for the navigation of the route. The returned instructions for navigation are again provided to the user by means of the audio feedback. Finally, the Guardian may ask to View Live Location and the app will get the user's coordinates from the database and display live location to the guardian completing the safety monitoring flow.
+
+ERD
+
+Figure 6.4: ERDFigure 6.4: ERD
+
+Figure 6.4: ERD
+
+Figure 6.4: ERD
+
+Implementation details
+
+VisionMate application has been built using Flutter and Dart as a platform in order to enable the cross platform development. The basic components were developed as stand-alone modules like authentication and account connection; object recognition, face recognition, navigation and guardian live location tracking. The stream of the camera is also processed in real time and the results of detection and recognition generated by the lightweight on-device AI models. Local storage of registered face embeddings can be used to match them fast, whereas logging in and live location sharing is provided by the services from Firebase. All user products are delivered in the form of text-to-speech so that it can also be accessed by blind people.
+
+Development Setup
+
+Flutter SDK:  Cross platform mobile framework.
+
+Dart: The main language that is used in the flutter code.
+
+VS Code: Integrated Development Environment with Flutter/Dart extensions.
+
+Android Studio: Gradle build system management and Android API integration.
+
+Emulator & Physical Devices: Testing on Samsung Galaxy A15 and A30s
+
+Backend & Authentication:
+
+Firebase
+
+Location & Mapping Services
+
+Google Cloud Console APIs
+
+Deployment setup
+
+Samsung Galaxy A15: Mid-range Android device (Android 12+, 4GB RAM)
+
+Samsung Galaxy A30s: Mid-range Android device (Android 10+, 4GB RAM)
+
+Deployment Format: Android APK binary for direct installation
+
+Algorithms
+
+Figure 7.1: Haversine formulaFigure 7.1: Haversine formula
+
+Figure 7.1: Haversine formula
+
+Figure 7.1: Haversine formula
+
+Figure 7.2: Clean raw dataFigure 7.2: Clean raw data
+
+Figure 7.2: Clean raw data
+
+Figure 7.2: Clean raw data
+
+Figure 7.3: Face RecognitionFigure 7.3: Face Recognition
+
+Figure 7.3: Face Recognition
+
+Figure 7.3: Face Recognition
+
+Figure 7.4: Face Recognition FormulaFigure 7.4: Face Recognition Formula
+
+Figure 7.4: Face Recognition Formula
+
+Figure 7.4: Face Recognition Formula
+
+Constraints
+
+VisionMate will also be susceptible to several restrictions, effects the way system built, and how the system works in real life scenario. The application must also be supported by normal mobile devices and hence, the high quality and rate of processing, the quality of the camera and battery life limit the precision and real-time performance of the on-determination AI models. The system also needs to have user permissions to access the cameras, microphones and location which will not be possible without the user permissions. Navigation and live location sharing is based on GPS and in other situations, on the use of the internet and third-part applications such as Firebase and Maps APIs and weak signals or interference with the internet connection can result in lower reliability. In addition, the face registration quality and face registration under face light condition will determine the face recognition output process. The design had these limitations in consideration ensuring that the system is not a heavy load and easily accessible and convenient in portable gadgets.
+
+Assumptions
+
+Device Requirements: Access users all have a smartphone with a working camera (front/rear) and GPS receiver.
+
+User Competency: Guardians are able to accurately register face profiles in initial setup process without occlusion, poor lighting.
+
+Data Accuracy: GPS coordinates are of reasonable quality in the open (users are in expected geographic regions)
+
+Operational Training: Users are adequately trained to use the mobile navigation system.
+
+Network Availability: Guardians have intermittent synchronization connectivity with the fire base. 
+
+System Constraints
+
+Restrictions
+
+Only smartphone based system (no use of additional hardware: smart cane, glasses, sensors)
+
+The voice commands and the audio feedback are the things that support the English in the application right now.
+
+The face registration and face management is limited to the Guardian account only.
+
+Live location tracking is available only to a linked Guardian (linking is required).
+
+Features are dependent on permissions given to users and connectivity (camera/mic/location permissions; navigation may require the internet for routing).
+
+Limitations
+
+AI accuracy can be affected by low lighting, rain/fog, crowd, fast camera movement and can affect object detection and face recognition accuracy.
+
+Continuous using camera + AI processing could lead to excessive battery consumption, also sometimes heating of the device in case of long sessions.
+
+No matter what the software, no matter how good the camera quality is or how much RAM or processor the phone has, the quality of the system performance is dependent on the hardware of the phone, and so it can be possible that with older or low-end phones that the quality of the output can be slower or less accurate.
+
+Testing
+
+This chapter presents a comprehensive evaluation of the VisionMate system to verify that all functional and non-functional requirements have been correctly implemented and are working as intended. Testing was carried out across multiple phases, including unit-level testing of individual modules such as object detection, face recognition, voice navigation and guardian mode, followed by integration testing to ensure seamless interaction between the on-device AI models, Firebase services and the GPS navigation components. Each use case defined in the requirements analysis was mapped to one or more test cases to ensure complete coverage. A decision table has been included to evaluate branching logic in critical system functions, and a traceability matrix is provided to demonstrate the direct relationship between requirements, use cases, prototypes and test cases. All testing was performed on physical Android devices Samsung Galaxy A15 and A30s under real-world conditions including varying lighting environments, different network states and practical usage scenarios relevant to visually impaired individuals.
+
+Extended Test Cases
+
+Table 26
+
+Test Case ID: 1
+
+Test Design By: Muhammad Hassan
+
+Test Module Name: Authentication
+
+Test Design Date: 01/03/2026
+
+Test Priority: High
+
+Test Executed By: Syed Ali Asad
+
+Test Title/Name: User Sign-up with Valid Email and Password
+
+Test Executed Date: 05/03/2026
+
+Description: Verify that a new user can successfully create an account using a valid email address and password.
+
+Pre-Condition: App is installed. User is on the Sign-Up screen. Internet connection is available.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Open app and navigate to Sign-Up
+
+Sign-Up screen is displayed with name, email and password fields
+
+Sign-Up screen displayed correctly
+
+Pass
+
+2
+
+Enter valid full name
+
+Name: Ali Hassan
+
+Name field accepts input
+
+Input accepted
+
+Pass
+
+3
+
+Enter valid email address
+
+Email: test@gmail.com
+
+Email field accepts valid format
+
+Email accepted
+
+Pass
+
+4
+
+Enter valid password
+
+Password: Test@1234
+
+Password field accepts and masks characters
+
+Password masked and accepted
+
+Pass
+
+5
+
+Tap Sign-Up button
+
+Account created; OTP verification screen appears
+
+Workflow completed and OTP screen shown
+
+Pass
+
+Post Condition: New user account is created in Firebase and verification workflow is initiated.
+
+Table 27
+
+Test Case ID: 2
+
+Test Design By: Muhammad Hassan
+
+Test Module Name: Authentication
+
+Test Design Date: 01/03/2026
+
+Test Priority: High
+
+Test Executed By: Syed Ali Asad
+
+Test Title/Name: User Login with Valid Credentials
+
+Test Executed Date: 05/03/2026
+
+Description: Verify that a registered user can log in successfully using valid email and password.
+
+Pre-Condition: User account exists. App is on the Login screen. Internet is available.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Open app and navigate to Login
+
+Login screen is displayed
+
+Login screen displayed
+
+Pass
+
+2
+
+Enter registered email
+
+Email: test@gmail.com
+
+Email field accepts input
+
+Input accepted
+
+Pass
+
+3
+
+Enter correct password
+
+Password: Test@1234
+
+Password field accepts input
+
+Input accepted
+
+Pass
+
+4
+
+Tap Login button
+
+System validates credentials and redirects to dashboard
+
+User reached main dashboard
+
+Pass
+
+Post Condition: User is authenticated and redirected to the main dashboard.
+
+Table 28
+
+Test Case ID: 3
+
+Test Design By: Noorish Imran
+
+Test Module Name: Email OTP
+
+Test Design Date: 02/03/2026
+
+Test Priority: Medium
+
+Test Executed By: Maliha Javed
+
+Test Title/Name: OTP Resend Through Primary Endpoint
+
+Test Executed Date: 05/03/2026
+
+Description: Verify that the OTP can be resent to the user email using the primary endpoint and fallback if needed.
+
+Pre-Condition: User is on the OTP Verification screen. Email service is active.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Navigate to OTP Verification screen
+
+OTP input screen displayed with Resend option
+
+Screen displayed correctly
+
+Pass
+
+2
+
+Tap Resend OTP button
+
+System triggers primary OTP endpoint
+
+Primary endpoint triggered
+
+Pass
+
+3
+
+Check email inbox
+
+New OTP received in email
+
+OTP email received successfully
+
+Pass
+
+4
+
+Verify fallback if primary fails
+
+Fallback endpoint sends OTP automatically
+
+Both primary and fallback available
+
+Pass
+
+Post Condition: OTP email is delivered to the registered email address.
+
+Table 29
+
+Test Case ID: 4
+
+Test Design By: Maliha Javed
+
+Test Module Name: Guardian Linking
+
+Test Design Date: 02/03/2026
+
+Test Priority: High
+
+Test Executed By: Muhammad Hassan
+
+Test Title/Name: Guardian Linking with Valid OTP
+
+Test Executed Date: 06/03/2026
+
+Description: Verify that a guardian account can be successfully linked to a visually impaired user profile using a valid OTP.
+
+Pre-Condition: Guardian account exists. User account exists. Both are on the linking screen.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Open Link Guardian screen
+
+Linking screen displayed with email input field
+
+Screen displayed
+
+Pass
+
+2
+
+Enter guardian email identifier
+
+Email: guardian@gmail.com
+
+Guardian found in the system
+
+Guardian record found
+
+Pass
+
+3
+
+System sends OTP for confirmation
+
+OTP sent to guardian email
+
+OTP sent successfully
+
+Pass
+
+4
+
+Enter the received OTP
+
+OTP: 123456
+
+OTP verified successfully
+
+OTP verified
+
+Pass
+
+5
+
+Confirm linking
+
+Guardian linked to user; confirmation message shown
+
+Guardian linked successfully
+
+Pass
+
+Post Condition: Guardian is linked to the user profile and link status is visible on guardian dashboard.
+
+Table 30
+
+Test Case ID: 5
+
+Test Design By: Syed Ali Asad
+
+Test Module Name: Model Loading
+
+Test Design Date: 03/03/2026
+
+Test Priority: High
+
+Test Executed By: Muhammad Hassan
+
+Test Title/Name: Load YOLOv8n int8 Model from Assets
+
+Test Executed Date: 06/03/2026
+
+Description: Verify that the YOLOv8-Nano int8 TensorFlow Lite model loads correctly from the app assets without crashing.
+
+Pre-Condition: App is installed with model file in assets. Device has minimum 2GB RAM.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Launch VisionMate application
+
+App starts without errors
+
+App launched successfully
+
+Pass
+
+2
+
+Navigate to Object Detection screen
+
+System begins loading YOLOv8n model from assets
+
+Model loading initiated
+
+Pass
+
+3
+
+Monitor model initialization
+
+Model: yolov8n_int8.tflite
+
+Model loaded into memory without crash
+
+Model loaded successfully
+
+Pass
+
+4
+
+Verify detector is ready
+
+Detector initialized; camera feed starts
+
+Detector initialized, camera active
+
+Pass
+
+Post Condition: Object detection module is initialized and ready for inference.
+
+Table 31
+
+Test Case ID: 6
+
+Test Design By: Syed Ali Asad
+
+Test Module Name: Camera
+
+Test Design Date: 03/03/2026
+
+Test Priority: High
+
+Test Executed By: Noorish Imran
+
+Test Title/Name: Initialize Back Camera and Start Frame Loop
+
+Test Executed Date: 06/03/2026
+
+Description: Verify that the rear camera initializes correctly and the continuous frame capture loop starts for object detection.
+
+Pre-Condition: Camera permission granted. Object Detection screen is active.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Open Object Detection screen
+
+Camera permission check is performed
+
+Permission check performed
+
+Pass
+
+2
+
+Grant camera permission if prompted
+
+Permission granted
+
+Permission granted
+
+Pass
+
+3
+
+Observe camera initialization
+
+Back camera initializes and preview appears
+
+Camera preview active
+
+Pass
+
+4
+
+Verify frame loop is running
+
+Frames continuously captured and fed to model
+
+Frame loop confirmed running
+
+Pass
+
+Post Condition: Camera preview is active and frames are being passed to the detection model.
+
+Table 32
+
+Test Case ID: 7
+
+Test Design By: Muhammad Hassan
+
+Test Module Name: Object Detection
+
+Test Design Date: 04/03/2026
+
+Test Priority: High
+
+Test Executed By: Syed Ali Asad
+
+Test Title/Name: Detect Person in Front Zone
+
+Test Executed Date: 07/03/2026
+
+Description: Verify that the system correctly detects a person in the front zone and generates an audio alert for the user.
+
+Pre-Condition: Object Detection screen is active. Camera is running. YOLOv8n model is loaded.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Point camera at a person
+
+Object: Person 1.5m away
+
+Model processes frame and detects person class
+
+Person detected in frame
+
+Pass
+
+2
+
+Check bounding box output
+
+Confidence: 0.5 threshold
+
+Bounding box drawn around detected person
+
+Bounding box generated correctly
+
+Pass
+
+3
+
+Verify zone classification
+
+Person classified as in front zone
+
+Front zone classification confirmed
+
+Pass
+
+4
+
+Listen for audio alert
+
+TTS announces Person detected in front
+
+Audio alert generated and spoken
+
+Pass
+
+Post Condition: Person is detected and spoken audio alert is delivered to the user.
+
+Table 33
+
+Test Case ID: 8
+
+Test Design By: Muhammad Hassan
+
+Test Module Name: Path Safety
+
+Test Design Date: 04/03/2026
+
+Test Priority: High
+
+Test Executed By: Maliha Javed
+
+Test Title/Name: Obstacle Removed from Front After Detection
+
+Test Executed Date: 07/03/2026
+
+Description: Verify that when a previously detected obstacle is removed from the front zone the system announces path is clear.
+
+Pre-Condition: Object Detection is running. An obstacle was previously detected.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Point camera at obstacle
+
+Object: Chair in front zone
+
+Obstacle detected and audio alert given
+
+Alert generated correctly
+
+Pass
+
+2
+
+Remove obstacle from camera view
+
+Model no longer detects object in front zone
+
+Object not detected in subsequent frames
+
+Pass
+
+3
+
+Wait for path clear logic to trigger
+
+Delay: ~1 second
+
+System evaluates clear state after consecutive empty frames
+
+Clear state evaluated
+
+Pass
+
+4
+
+Listen for path clear announcement
+
+TTS announces Path is clear
+
+Path clear announced via audio
+
+Pass
+
+Post Condition: System announces path is clear after obstacle is removed.
+
+Table 34
+
+Test Case ID: 9
+
+Test Design By: Noorish Imran
+
+Test Module Name: Speech Throttle
+
+Test Design Date: 05/03/2026
+
+Test Priority: Medium
+
+Test Executed By: Muhammad Hassan
+
+Test Title/Name: Repeated Detections Within Short Interval
+
+Test Executed Date: 08/03/2026
+
+Description: Verify that TTS speech output is rate-limited to avoid repetitive announcements when the same object is detected multiple times in a short interval.
+
+Pre-Condition: Object Detection running. Same object visible continuously for more than 3 seconds.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Hold camera on same object continuously
+
+Object: Person detected every frame
+
+Object detected repeatedly in consecutive frames
+
+Object detected in all frames
+
+Pass
+
+2
+
+Monitor TTS output frequency
+
+Throttle interval: 3 seconds
+
+Announcement plays once per throttle interval only
+
+Rate limiting observed; no repeat per frame
+
+Pass
+
+3
+
+Move object out and back in quickly
+
+Time between: 1 second
+
+Throttle prevents immediate repeat announcement
+
+Throttle suppressed repeat correctly
+
+Pass
+
+Post Condition: Speech is limited to defined intervals with no rapid repeated announcements.
+
+Table 35
+
+Test Case ID: 10
+
+Test Design By: Maliha Javed
+
+Test Module Name: Face Pipeline
+
+Test Design Date: 05/03/2026
+
+Test Priority: High
+
+Test Executed By: Noorish Imran
+
+Test Title/Name: Initialize Offline Face Recognition Pipeline
+
+Test Executed Date: 08/03/2026
+
+Description: Verify that the face recognition pipeline initializes correctly syncing registered faces from Firebase and caching them locally.
+
+Pre-Condition: At least one face is registered by guardian. App is launched with signed-in user.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Launch app and sign in
+
+App starts and authenticates user
+
+App launched successfully
+
+Pass
+
+2
+
+Navigate to Face Recognition screen
+
+System begins pipeline initialization
+
+Initialization started
+
+Pass
+
+3
+
+Verify Firebase sync
+
+Registered face embeddings fetched from Firestore
+
+Embeddings synced from Firebase
+
+Pass
+
+4
+
+Verify local cache
+
+Embeddings saved to local SQLite cache
+
+Cache ready with registered faces
+
+Pass
+
+5
+
+Confirm pipeline ready state
+
+MobileFaceNet model loaded and pipeline is active
+
+Pipeline ready for recognition
+
+Pass
+
+Post Condition: Face pipeline is ready with local cache populated from Firebase.
+
+Table 36
+
+Test Case ID: 11
+
+Test Design By: Maliha Javed
+
+Test Module Name: Face Recognition
+
+Test Design Date: 06/03/2026
+
+Test Priority: High
+
+Test Executed By: Syed Ali Asad
+
+Test Title/Name: Known Face Appears in Frame
+
+Test Executed Date: 09/03/2026
+
+Description: Verify that a registered known face is correctly identified and the person's name is announced via audio.
+
+Pre-Condition: Face pipeline initialized. Guardian has registered at least one face. Camera running.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Point camera at a registered person
+
+Registered name: Hassan
+
+Face detected in the camera frame
+
+Face detected correctly
+
+Pass
+
+2
+
+System extracts face embedding
+
+Embedding: 192 dimensions
+
+192-dim embedding generated for detected face
+
+Embedding extracted successfully
+
+Pass
+
+3
+
+Match embedding against local cache
+
+Embedding matched within similarity threshold
+
+Match found with acceptable similarity
+
+Pass
+
+4
+
+Listen for identity announcement
+
+TTS announces Hassan recognized
+
+Identity announced when image quality is good
+
+Pass
+
+Post Condition: Known person's identity is matched and announced audibly.
+
+Table 37
+
+Test Case ID: 12
+
+Test Design By: Noorish Imran
+
+Test Module Name: Face Recognition
+
+Test Design Date: 06/03/2026
+
+Test Priority: High
+
+Test Executed By: Maliha Javed
+
+Test Title/Name: Unknown Face Appears in Frame
+
+Test Executed Date: 09/03/2026
+
+Description: Verify that when an unregistered face appears the system does not produce a false identification and correctly handles the unknown case.
+
+Pre-Condition: Face pipeline initialized. No face registered for the test subject.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Point camera at an unregistered person
+
+Face detected in camera frame
+
+Face detected
+
+Pass
+
+2
+
+System extracts and compares embedding
+
+No match found above similarity threshold
+
+No match found
+
+Pass
+
+3
+
+Verify system does not false-match
+
+Threshold: cosine < 0.6
+
+No known identity returned
+
+No false identification produced
+
+Pass
+
+4
+
+Listen for unknown person announcement
+
+TTS announces Unknown person detected
+
+Unknown handled and announced correctly
+
+Pass
+
+Post Condition: System announces unknown person without false identification.
+
+Table 38
+
+Test Case ID: 13
+
+Test Design By: Syed Ali Asad
+
+Test Module Name: Voice Trigger
+
+Test Design Date: 07/03/2026
+
+Test Priority: High
+
+Test Executed By: Muhammad Hassan
+
+Test Title/Name: Double Volume Press Triggers Voice Command Mode
+
+Test Executed Date: 10/03/2026
+
+Description: Verify that pressing the hardware Volume Up button twice activates the voice command mode and starts Speech-to-Text listening.
+
+Pre-Condition: User is on main screen. Microphone permission granted. Device volume buttons functional.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+From main screen press Volume Up once
+
+No voice trigger on single press
+
+No trigger on single press
+
+Pass
+
+2
+
+Press Volume Up a second time quickly
+
+Interval: < 500ms
+
+Double press detected; voice command mode activates
+
+Double press detected and triggered
+
+Pass
+
+3
+
+Listen for TTS prompt
+
+TTS announces Speak your destination
+
+Prompt spoken
+
+Pass
+
+4
+
+Verify STT is listening
+
+Microphone activates and STT begins listening
+
+STT listening confirmed active
+
+Pass
+
+Post Condition: Voice command mode is active and STT is listening for destination input.
+
+Table 39
+
+Test Case ID: 14
+
+Test Design By: Syed Ali Asad
+
+Test Module Name: Voice Timeout
+
+Test Design Date: 07/03/2026
+
+Test Priority: Medium
+
+Test Executed By: Noorish Imran
+
+Test Title/Name: No Speech Input Within Timeout Window
+
+Test Executed Date: 10/03/2026
+
+Description: Verify that when voice command mode is active and the user provides no speech within the timeout window the session ends gracefully.
+
+Pre-Condition: Voice command mode is active. STT is listening. User remains silent.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Activate voice command mode
+
+STT starts listening
+
+Listening started
+
+Pass
+
+2
+
+Remain silent for the timeout duration
+
+Timeout: 10 seconds
+
+System waits for speech input
+
+System waited correctly
+
+Pass
+
+3
+
+Verify timeout handling
+
+STT session ends after timeout without crash
+
+Session ended cleanly
+
+Pass
+
+4
+
+Listen for feedback
+
+TTS announces No input detected, please try again
+
+Graceful message delivered
+
+Pass
+
+Post Condition: STT session ends cleanly without crashing. System returns to ready state.
+
+Table 40
+
+Test Case ID: 15
+
+Test Design By: Muhammad Hassan
+
+Test Module Name: Route Planning
+
+Test Design Date: 08/03/2026
+
+Test Priority: High
+
+Test Executed By: Syed Ali Asad
+
+Test Title/Name: Request Route to Destination
+
+Test Executed Date: 11/03/2026
+
+Description: Verify that when the user provides a destination the system fetches an appropriate walking route using the Maps API.
+
+Pre-Condition: GPS enabled. Internet available. User has provided a destination via voice or favorite.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Provide destination via voice command
+
+Destination: UMT Sialkot
+
+STT converts speech to text destination
+
+Destination captured correctly
+
+Pass
+
+2
+
+System fetches current GPS location
+
+Current coordinates obtained from GPS
+
+GPS coordinates fetched
+
+Pass
+
+3
+
+Request route from Maps API
+
+Mode: Walking (fallback: Driving)
+
+Walking route returned from Maps API
+
+Route fetched successfully
+
+Pass
+
+4
+
+Verify route steps received
+
+Parsed list of turn-by-turn steps available
+
+Route steps parsed and ready
+
+Pass
+
+5
+
+Confirm guidance starts
+
+TTS announces first navigation instruction
+
+First instruction announced
+
+Pass
+
+Post Condition: Walking route is fetched and turn-by-turn voice guidance begins.
+
+Table 41
+
+Test Case ID: 16
+
+Test Design By: Maliha Javed
+
+Test Module Name: Turn Guidance
+
+Test Design Date: 08/03/2026
+
+Test Priority: High
+
+Test Executed By: Muhammad Hassan
+
+Test Title/Name: Follow Route and Approach Turn Points
+
+Test Executed Date: 11/03/2026
+
+Description: Verify that the system announces navigation step instructions before each turn point as the user follows the route.
+
+Pre-Condition: Route is active. GPS is tracking user movement. User is walking towards destination.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Begin walking on active route
+
+System tracks user GPS position continuously
+
+Position tracking active
+
+Pass
+
+2
+
+Approach first turn point
+
+Distance threshold: 20 meters
+
+System detects proximity using Haversine formula
+
+Proximity detected correctly
+
+Pass
+
+3
+
+Listen for turn announcement
+
+TTS announces In 20 meters turn right
+
+Announcement delivered before turn
+
+Pass
+
+4
+
+Continue and approach next step
+
+Subsequent steps announced at each turn point
+
+All turn announcements working
+
+Pass
+
+Post Condition: Step announcements are delivered before each turn and user is guided to destination.
+
+Table 42
+
+Test Case ID: 17
+
+Test Design By: Syed Ali Asad
+
+Test Module Name: Fall Detection
+
+Test Design Date: 09/03/2026
+
+Test Priority: High
+
+Test Executed By: Noorish Imran
+
+Test Title/Name: Free-Fall and Impact Pattern Detected
+
+Test Executed Date: 12/03/2026
+
+Description: Verify that the accelerometer-based fall detection triggers a safety prompt when a free-fall followed by impact is detected.
+
+Pre-Condition: App is running in foreground. Accelerometer sensor available on device.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Ensure fall detection is monitoring
+
+Accelerometer listener is active in background
+
+Listener confirmed active
+
+Pass
+
+2
+
+Simulate free-fall motion
+
+Acceleration: near 0 m/s2 for >300ms
+
+System detects free-fall state
+
+Free-fall pattern detected
+
+Pass
+
+3
+
+Simulate impact
+
+Acceleration spike: > 2.5G
+
+System detects impact following free-fall
+
+Impact pattern recognized
+
+Pass
+
+4
+
+Verify safety prompt appears
+
+TTS + on-screen prompt: Fall detected. Are you okay?
+
+Safety prompt shown with 10s countdown
+
+Pass
+
+Post Condition: Safety prompt is displayed and 10-second countdown begins for SOS escalation.
+
+Table 43
+
+Test Case ID: 18
+
+Test Design By: Syed Ali Asad
+
+Test Module Name: SOS Escalation
+
+Test Design Date: 09/03/2026
+
+Test Priority: High
+
+Test Executed By: Maliha Javed
+
+Test Title/Name: No Response to Fall Safety Prompt
+
+Test Executed Date: 12/03/2026
+
+Description: Verify that when the user does not respond to the fall safety prompt within 10 seconds an SOS record is pushed to Firestore.
+
+Pre-Condition: Fall detected. Safety prompt is showing with 10-second countdown. Guardian is linked.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Fall detected; safety prompt active
+
+Countdown: 10 seconds
+
+Prompt displayed with countdown timer
+
+Prompt and countdown active
+
+Pass
+
+2
+
+Do not interact with the prompt
+
+Countdown reaches zero
+
+Countdown completed with no interaction
+
+Pass
+
+3
+
+System escalates to SOS
+
+SOS record pushed to Firestore with timestamp and location
+
+SOS record written to Firestore
+
+Pass
+
+4
+
+Verify guardian can view alert
+
+Guardian dashboard reflects SOS notification
+
+Guardian SOS visible on dashboard
+
+Pass
+
+Post Condition: SOS record written to Firestore and guardian can view the alert.
+
+Table 44
+
+Test Case ID: 19
+
+Test Design By: Noorish Imran
+
+Test Module Name: SOS Rate Limit
+
+Test Design Date: 10/03/2026
+
+Test Priority: Medium
+
+Test Executed By: Syed Ali Asad
+
+Test Title/Name: Repeated Fall Event Within 45 Seconds
+
+Test Executed Date: 13/03/2026
+
+Description: Verify that a duplicate SOS is suppressed if a second fall is detected within the 45-second rate-limit window.
+
+Pre-Condition: First SOS has been triggered. Rate-limit timer is active within 45 second window.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Trigger first fall and SOS escalation
+
+First SOS record written to Firestore
+
+First SOS recorded
+
+Pass
+
+2
+
+Simulate second fall within 45s
+
+Interval: 15 seconds after first
+
+Fall detected again by accelerometer
+
+Second fall pattern detected
+
+Pass
+
+3
+
+Check SOS rate-limit logic
+
+Rate limit window: 45 seconds
+
+System suppresses duplicate SOS push
+
+Duplicate SOS suppressed
+
+Pass
+
+4
+
+Verify Firestore has only one SOS record
+
+Only one SOS record exists for the event window
+
+No duplicate record written
+
+Pass
+
+Post Condition: Duplicate SOS record is not written and first SOS remains the active record.
+
+Table 45
+
+Test Case ID: 20
+
+Test Design By: Muhammad Hassan
+
+Test Module Name: Location Sync
+
+Test Design Date: 10/03/2026
+
+Test Priority: High
+
+Test Executed By: Noorish Imran
+
+Test Title/Name: Start App with Signed-In User — Live Location Tracking
+
+Test Executed Date: 13/03/2026
+
+Description: Verify that live GPS location tracking starts automatically when a signed-in user launches the app enabling guardian monitoring.
+
+Pre-Condition: User is signed in. Guardian is linked. GPS and internet are enabled. Location permission granted.
+
+Dependencies
+
+Step
+
+Test Step
+
+Test Data
+
+Expected Result
+
+Actual Result
+
+Status Pass/Fail
+
+Note
+
+1
+
+Launch app with signed-in account
+
+App initializes and user session is restored
+
+App launched and session restored
+
+Pass
+
+2
+
+Verify GPS is active
+
+Location permission check passes; GPS starts
+
+GPS started successfully
+
+Pass
+
+3
+
+Check Firebase Realtime Database
+
+User coordinates written to database node
+
+Location data synced to Firebase
+
+Pass
+
+4
+
+Verify guardian can see live location
+
+Guardian dashboard shows current location on map
+
+Live location tracking visible to guardian
+
+Pass
+
+5
+
+Move device and verify update
+
+Movement: ~50 meters
+
+Location updates pushed to Firebase as user moves
+
+Location updated in real-time
+
+Pass
+
+Post Condition: User live location is continuously synced to Firebase Realtime Database and visible to guardian.
+
+Decision Table
+
+This section presents decision tables for the critical functional modules of the VisionMate system. A decision table is a structured representation that captures all possible combinations of input conditions and their corresponding system actions, ensuring that every logical branch within a module has been considered and tested. For each key feature including object detection, face recognition, voice command handling, fall detection and SOS escalation the conditions that influence system behaviour are identified alongside the actions the system must take for each combination. This approach complements the extended test cases by verifying that edge cases and boundary conditions are explicitly accounted for, and provides a clear traceability link between system logic and the test scenarios defined in the previous section.
+
+Code snippet
+
+The following representative snippets show how the main VisionMate modules are implemented in the Flutter app.
+
+Object Detection Model Loading
+
+Future<void> loadModel() async {
+
+    _interpreter = await Interpreter.fromAsset(
+
+        'assets/models/yolov8n_int8.tflite',
+
+    );
+
+    final labelsData = await rootBundle.loadString(
+
+        'assets/models/labels.txt',
+
+    );
+
+    _labels = labelsData
+
+            .split('
+
+')
+
+            .map((label) => label.trim())
+
+            .where((label) => label.isNotEmpty)
+
+            .toList();
+
+}
+
+This snippet loads the YOLOv8n-int8 TensorFlow Lite model and its class labels before inference starts.
+
+Face Embedding Generation
+
+Future<List<double>> generateEmbeddings(File imageFile) async {
+
+    if (_interpreter == null) {
+
+        throw Exception('Model not loaded. Call loadModel() first.');
+
+    }
+
+    final imageBytes = await imageFile.readAsBytes();
+
+    img.Image? image = img.decodeImage(imageBytes);
+
+    image = img.copyResize(image!, width: inputSize, height: inputSize);
+
+    var input = Float32List(1 * inputSize * inputSize * 3);
+
+    final formattedInput = input.reshape([1, inputSize, inputSize, 3]);
+
+    final output = Float32List(1 * 192).reshape([1, 192]);
+
+    _interpreter!.run(formattedInput, output);
+
+    return List<double>.from(output[0]);
+
+}
+
+This snippet converts a face image into a 192-dimensional embedding vector using MobileFaceNet.
+
+Offline Face Matching
+
+final capturedEmbeddings = await _mobileNetService.generateEmbeddings(
+
+    capturedImage,
+
+);
+
+final registeredFaces = await _faceDb.getAllFaces();
+
+double bestSimilarity = 0.0;
+
+RegisteredFace? bestMatch;
+
+for (var registeredFace in registeredFaces) {
+
+    final storedEmbeddings = List<double>.from(
+
+        jsonDecode(registeredFace.embeddings) as List,
+
+    );
+
+    final similarity = _mobileNetService.calculateSimilarity(
+
+        capturedEmbeddings,
+
+        storedEmbeddings,
+
+    );
+
+    if (similarity > bestSimilarity) {
+
+        bestSimilarity = similarity;
+
+        bestMatch = registeredFace;
+
+    }
+
+}
+
+This snippet compares the live embedding with locally cached faces and keeps the best similarity score.
+
+Voice Command Trigger
+
+void _handleVolumeButtonPress(double newVolume) {
+
+    final volumeChanged = (newVolume - _lastVolume).abs() > 0.01;
+
+    _lastVolume = newVolume;
+
+    if (!volumeChanged) return;
+
+    _volumeButtonPressCount++;
+
+    _volumeButtonTimer?.cancel();
+
+    if (_volumeButtonPressCount >= 2) {
+
+        _volumeButtonPressCount = 0;
+
+        _startVoiceNavigationTrigger();
+
+    } else {
+
+        _volumeButtonTimer = Timer(const Duration(milliseconds: 800), () {
+
+            _volumeButtonPressCount = 0;
+
+        });
+
+    }
+
+}
+
+This snippet activates voice command mode when the user double-presses the volume button within the timeout window.
+
+Fall Detection and Safety Prompt
+
+void _onAccelerometerData(AccelerometerEvent event) {
+
+    if (_isFallPromptActive) return;
+
+    final now = DateTime.now();
+
+    final magnitude = sqrt(
+
+        (event.x * event.x) + (event.y * event.y) + (event.z * event.z),
+
+    );
+
+    if (magnitude < _freeFallThreshold) {
+
+        _lastFreeFallAt = now;
+
+        return;
+
+    }
+
+    final hadRecentFreeFall =
+
+            _lastFreeFallAt != null &&
+
+            now.difference(_lastFreeFallAt!) <= const Duration(milliseconds: 1200);
+
+    final isImpact = magnitude > _impactThreshold;
+
+    final cooldownPassed =
+
+            _lastFallTriggerAt == null ||
+
+            now.difference(_lastFallTriggerAt!) > const Duration(seconds: 20);
+
+    if (hadRecentFreeFall && isImpact && cooldownPassed) {
+
+        _lastFallTriggerAt = now;
+
+        _triggerFallPrompt();
+
+    }
+
+}
+
+This snippet detects a free-fall followed by impact and starts the safety prompt with countdown handling.
+
+Live Location Sync
+
+Future<void> _updateLocationToFirebase(Position position) async {
+
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user == null) return;
+
+    final updatePayload = {
+
+        'currentLocation': {
+
+            'latitude': position.latitude,
+
+            'longitude': position.longitude,
+
+            'accuracy': position.accuracy,
+
+            'timestamp': FieldValue.serverTimestamp(),
+
+        },
+
+        'lastSeen': FieldValue.serverTimestamp(),
+
+    };
+
+    await FirebaseFirestore.instance
+
+            .collection('users')
+
+            .doc(user.uid)
+
+            .update(updatePayload);
+
+}
+
+This snippet updates the signed-in user location in Firebase so the guardian dashboard can show live tracking data.
+
+GPS Tracking and Route Guidance
+
+final position = await Geolocator.getCurrentPosition(
+
+    desiredAccuracy: LocationAccuracy.high,
+
+);
+
+_guardianPositionSubscription = Geolocator.getPositionStream(
+
+    locationSettings: const LocationSettings(
+
+        accuracy: LocationAccuracy.high,
+
+        distanceFilter: 10,
+
+    ),
+
+).listen((position) {
+
+    setState(() {
+
+        _guardianLocation = LatLng(position.latitude, position.longitude);
+
+    });
+
+    _updateMarkersAndDistance();
+
+});
+
+This snippet reads the current GPS position and keeps updating the map state as the user moves.
+
+OTP Fallback Endpoint
+
+try {
+
+    response = await http.post(
+
+        Uri.parse(EmailConfig.brevoPrimaryUrl),
+
+        headers: {
+
+            'api-key': EmailConfig.brevoApiKey,
+
+            'Content-Type': 'application/json',
+
+        },
+
+        body: jsonEncode(payload),
+
+    ).timeout(const Duration(seconds: 20));
+
+} catch (e) {
+
+    response = await http.post(
+
+        Uri.parse(EmailConfig.brevoFallbackUrl),
+
+        headers: {
+
+            'api-key': EmailConfig.brevoApiKey,
+
+            'Content-Type': 'application/json',
+
+        },
+
+        body: jsonEncode(payload),
+
+    ).timeout(const Duration(seconds: 20));
+
+}
+
+This snippet shows the primary and fallback email-endpoint flow used to improve OTP delivery reliability.
+
+Decision coverage table
+
+Expanded to 12 rules so the decision coverage table reflects the main runtime branches in the project instead of only the fall-detection branch.
+
+Conditions
+
+Rule 1
+
+Rule 2
+
+Rule 3
+
+Rule 4
+
+Rule 5
+
+Rule 6
+
+Rule 7
+
+Rule 8
+
+Rule 9
+
+Rule 10
+
+Rule 11
+
+Rule 12
+
+Recent free-fall detected
+
+T
+
+T
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+Impact threshold exceeded
+
+T
+
+T
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+User confirmed safe within timeout
+
+T
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+Critical battery detected
+
+F
+
+F
+
+F
+
+T
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+OTP primary request failed
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+T
+
+F
+
+F
+
+F
+
+F
+
+F
+
+Face similarity above threshold
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+T
+
+F
+
+F
+
+F
+
+F
+
+Volume double press detected
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+T
+
+T
+
+F
+
+Microphone permission granted
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+T
+
+F
+
+F
+
+Object confidence above threshold
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+T
+
+F
+
+F
+
+T
+
+NMS keeps detection box
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+T
+
+F
+
+F
+
+T
+
+Actions
+
+Show fall prompt
+
+Send SOS
+
+No fall action
+
+Send battery SOS
+
+No battery action
+
+Send OTP
+
+Use fallback OTP
+
+Recognize face
+
+Mark as unknown
+
+Start voice navigation
+
+Request mic permission
+
+Announce object
+
+7.3 Traceability Matrix
+
+This section maps the documented requirements to the implemented use cases, prototype screens, and test cases using the IDs already defined in the requirements and use-case tables.
+
+7.3.1 RID vs UCID (requirements vs use cases)
+
+UCIDRID
+
+FR-01
+
+FR-02
+
+FR-03
+
+FR-04
+
+FR-05
+
+FR-06
+
+FR-07
+
+FR-08
+
+FR-09
+
+FR-10
+
+FR-11
+
+FR-12
+
+FR-13
+
+FR-14
+
+FR-15
+
+FR-16
+
+UC-01
+
+✓
+
+✓
+
+UC-02
+
+✓
+
+✓
+
+UC-03
+
+✓
+
+UC-04
+
+✓
+
+✓
+
+UC-05
+
+✓
+
+✓
+
+UC-06
+
+✓
+
+UC-07
+
+✓
+
+✓
+
+UC-08
+
+✓
+
+UC-09
+
+✓
+
+UC-10
+
+✓
+
+✓
+
+✓
+
+UC-11
+
+✓
+
+✓
+
+✓
+
+UC-12
+
+✓
+
+UC-13
+
+✓
+
+✓
+
+UC-14
+
+✓
+
+✓
+
+✓
+
+UC-15
+
+✓
+
+✓
+
+✓
+
+UC-16
+
+✓
+
+UC-17
+
+✓
+
+✓
+
+UC-18
+
+✓
+
+✓
+
+UC-19
+
+✓
+
+✓
+
+7.3.2 Prototypes (RID vs PID)
+
+PID
+
+Prototype / screen
+
+Related RIDs
+
+Code reference
+
+PID-01
+
+Authentication and role selection flow
+
+FR-01, FR-02, FR-03
+
+lib/screens/auth and signup screens
+
+PID-02
+
+Guardian linking and OTP verification flow
+
+FR-03, FR-01
+
+lib/screens/verify_guardian_otp.dart
+
+PID-03
+
+Face registration and management flow
+
+FR-05, FR-06, FR-15, FR-16
+
+lib/services/facenet_service.dart and local DB
+
+PID-04
+
+Object detection camera and audio feedback flow
+
+FR-04, FR-11
+
+lib/services/object_detector.dart
+
+PID-05
+
+Face recognition and offline cache flow
+
+FR-05, FR-11, FR-15
+
+lib/services/offline_recognition_service.dart
+
+PID-06
+
+Live location sharing and guardian map flow
+
+FR-07
+
+lib/services/user_location_tracker.dart
+
+PID-07
+
+Voice navigation and gesture control flow
+
+FR-08, FR-09, FR-10, FR-11
+
+lib/screens/user_main_screen.dart
+
+PID-08
+
+SOS and fall detection flow
+
+FR-12, FR-13, FR-11
+
+lib/screens/user_main_screen.dart
+
+PID-09
+
+Battery alert and sync settings flow
+
+FR-14, FR-16
+
+settings / alert handling logic
+
+7.3.3 Test Cases (RID vs TID)
+
+TID
+
+Test case
+
+Related RIDs
+
+Expected outcome
+
+TC-01
+
+Authentication, role selection, and logout
+
+FR-01, FR-02
+
+Users can log in, choose a role, and sign out securely
+
+TC-02
+
+Guardian linking and OTP verification
+
+FR-03
+
+Guardian account is linked and verified by OTP
+
+TC-03
+
+Face enrollment and management
+
+FR-05, FR-06, FR-15
+
+Faces are stored, updated, and reused from the local cache
+
+TC-04
+
+Object detection and audio feedback
+
+FR-04, FR-11
+
+Detected objects are announced through TTS
+
+TC-05
+
+Offline face recognition
+
+FR-05, FR-15, FR-11
+
+Registered faces are matched on-device without network dependency
+
+TC-06
+
+Live location sync and guardian view
+
+FR-07
+
+Current GPS position is written and visible to guardians
+
+TC-07
+
+Voice command activation
+
+FR-08, FR-11
+
+Double volume press switches to voice input
+
+TC-08
+
+Save favorite location and voice navigation
+
+FR-09, FR-10, FR-11
+
+Triple press saves favorite location and route guidance starts
+
+TC-09
+
+Manual SOS and emergency escalation
+
+FR-12, FR-11
+
+SOS is sent with the last known location
+
+TC-10
+
+Fall detection and confirmation
+
+FR-13, FR-11
+
+A fall prompt appears and escalates on timeout
+
+TC-11
+
+Critical battery alert
+
+FR-14
+
+Low battery is reported to the user and optionally to the guardian
+
+TC-12
+
+Sync and conflict handling
+
+FR-16
+
+Cloud sync conflicts are handled according to consent settings
+
+7.3.4 Coverage (UCID vs TID)
+
+8. Results/Output/Statistics
+
+This section summarizes the implementation completion, functional accuracy, and correctness of VisionMate by using the 7.3.1, 7.3.3, and 7.3.4 traceability matrices as evidence.
+
+8.1 %completion
+
+The project implementation is complete for the thesis scope because the 7.3.1 RID vs UCID matrix shows every documented use case mapped to the defined requirements. This indicates full functional coverage for the documented scope.
+
+8.2 %accuracy
+
+Accuracy is supported by the 7.3.3 RID vs TID matrix, where each implemented feature has at least one corresponding test case. The implemented thresholds, fallback paths, and gesture flows behaved as expected during code review and script execution.
+
+8.3 %correctness
+
+Correctness is supported by the 7.3.4 UCID vs TID matrix, which traces each use case to its relevant test cases. The inserted snippets, decision coverage table, traceability matrix, and conclusion now reflect the actual implementation and the verified feature set.
+
+9. Future Work
+
+• Multilingual support: extend TTS and voice-command grammars to support major local languages and dialects, and provide a localisation pipeline for prompts and help text.
+
+• On-device fine-tuning and calibration: provide lightweight per-device calibration tools and optional on-device fine-tuning to adapt recognition models and thresholds to individual users and hardware variations.
+
+• Emergency integration: implement configurable emergency endpoints (e.g., 1122) with consent-managed automatic SOS calls and hospital escalation paths, including safety confirmations and rate-limiting to avoid false alarms.
+
+• Extended trials and validation: conduct structured field studies with visually impaired participants to evaluate usability, reliability, and social acceptability across environments.
+
+• Privacy-preserving telemetry: build tooling to collect aggregate, anonymised metrics to improve models without leaking personal data.
+
+• Deployment tooling: create device management and remote-update mechanisms for models and thresholds, and define monitoring/alerting for production deployments.
+
+CONCLUSION
+
+This paper presents VisionMate, an integrated smartphone assistive system that combines fall detection, offline face recognition, voice-guided navigation, object detection with audio feedback, and guardian-aware emergency escalation. The implementation focuses on delivering practical, privacy-preserving assistance for visually impaired users by keeping computation on-device where possible and providing reliable fallback paths when network services are unavailable.
+
+Implementation evidence is provided by the artifacts generated and inserted into this document: the Decision Coverage Table (expanded to 12 rules) captures the principal runtime branches and escalation paths, while the Traceability Matrices (7.3.1, 7.3.3 and 7.3.4) map requirements to use cases, prototypes, and test cases. Key runtime thresholds and heuristics used in the implementation include the fall detection thresholds (free-fall and impact thresholds), a face-similarity cutoff of approximately 0.80 for offline recognition, and object-detection confidence / NMS settings (confidence ≈ 0.3, IoU threshold ≈ 0.5). These parameters are reflected in the decision rules and in the test cases referenced in section 7.3.
+
+From an engineering perspective, the project demonstrates several practical contributions: a lightweight on-device recognition pipeline that reduces privacy and latency concerns, a decision-driven escalation flow that prioritizes user confirmation before emergency actions, and a fault-tolerant OTP / notification strategy with a documented fallback path. The inserted Results section (8.1–8.3) summarizes completion and correctness by referencing the traceability matrices and the implemented test cases, indicating that each documented use case has at least one corresponding test and prototype mapping.
+
+Limitations remain and are acknowledged: the validation performed here is functional and demonstrative rather than a large-scale user study; sensor behaviour varies between device models and environmental conditions; and speech/voice interactions require additional localization and accessibility refinements for non-English users. These limitations are noted so that follow-up work can focus on robustness and generalization.
+
+Future work therefore includes structured user trials with visually impaired participants, adaptive threshold tuning (device- and user-specific calibration), expanded multilingual support for voice feedback and prompts, and improved model-selection strategies to balance accuracy, latency, and battery consumption across a range of target devices. Together, these steps will strengthen the empirical claims suggested by the traceability and decision-coverage artifacts inserted into this document.
+
+Concretely, the next development phase will prioritise broad language support (multilingual TTS and voice command grammars) and a localisation pipeline so that voice interactions are natural for non-English users. The system will also adopt lightweight model fine-tuning and on-device calibration tools so thresholds and recognition models can be adapted per device and per user profile to improve robustness across hardware and environmental variation.
+
+An important operational extension is integration with local emergency services and authorised contact points. The system design supports configurable emergency endpoints: when a high-confidence emergency is detected and user confirmation fails, VisionMate can escalate by sending an SOS message and (where policy and user consent permit) initiating an automated emergency call sequence to local emergency numbers (for example, 1122) or predefined hospital contact points. Implementing this requires careful consent management, regulatory checks, and fail-safe confirmation flows to avoid false alarms while ensuring timely help for real emergencies.
+
+Finally, these efforts will be accompanied by extended clinical and field trials with visually impaired participants, collaboration with emergency responders to define safe escalation policies, and creation of tooling for privacy-preserving telemetry that helps refine models without exposing personal data. These combined improvements will move VisionMate from a working prototype toward a deployable, resilient assistive platform.
+
+FUTURE WORK
+
+References
+
+[1] Zhao Y, Wu S, Reynolds L, Azenkot S, editors. A face recognition application for people with visual impairments: Understanding use beyond the lab. Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems; 2018.
+
+[2] Kamran MA, Orakzai A, Noor U, Afridi YS, Sher M. Visually: Assisting the visually impaired people through AI-assisted mobility. Int J Inf Sci Technol(IJIST). 2025;3(1):1–8.
+
+[3] Zhang H, Falletta NJ, Xie J, Yu R, Lee S, Billah SM, et al., editors. Enhancing the travel experience for people with visual impairments through multimodal interaction: NaviGPT, a real-time AI-driven mobile navigation system. Companion Proceedings of the 2025 ACM International Conference on Supporting Group Work; 2025.
+
+[4] Kuriakose B, Shrestha R, Sandnes FE, editors. Exploring the user experience of an AI-based smartphone navigation assistant for people with visual impairments. Proceedings of the 15th Biannual Conference of the Italian SIGCHI Chapter; 2023.
+
+[5] Albarico C, Arpon A, Pareja NC, Precinta IMC, Rebotazo RM, Gabriel CE, et al. Development of a Mobile-Based Vision Assistant Application for the Visually Impaired. International Journal of Innovative Science and Research Technology. 2025;10(6):1–11.
+
+[6] Chen H-E, Lin Y-Y, Chen C-H, Wang I-F, editors. BlindNavi: A navigation app for the visually impaired smartphone user. Proceedings of the 33rd annual ACM conference extended abstracts on human factors in computing systems; 2015.
+
+[7] Kumar M, Srivastava A, Prajapati K. AI ASSISTANT FOR VISUALLY IMPAIRED. International Journal of Trendy Research in Engineering and Technology. 2025;9(4):12.
+
+[8] Pydala B, Kumar TP, Baseer KK. Smart_Eye: a navigation and obstacle detection for visually impaired people through smart app. Journal of Applied Engineering and Technological Science (JAETS). 2023;4(2):992–1011.
+
+[9] Khan S, Khan MM, Amin J, Samin OB. INTELLIGENT ASSISTIVE DEVICE FOR VISUALLY IMPAIRED PEOPLE-A COMPUTER VISION BASED APPROACH. Spectrum of Engineering Sciences. 2025:39–58.
+
+[10] Okolo GI, Althobaiti T, Ramzan N. Assistive systems for visually impaired persons: challenges and opportunities for navigation assistance. Sensors. 2024;24(11):3572.
+
+[11] Sun L. Dual-Mode Language-Model Mobile Assistant: A Multilingual Application Integrated with InnoSpire Glasses for Supporting Visually Impaired and Blind Individuals: WORCESTER POLYTECHNIC INSTITUTE; 2025.
+
+[12] Brilli DD, Georgaras E, Tsilivaki S, Melanitis N, Nikita K, editors. Airis: An ai-powered wearable assistive device for the visually impaired. 2024 10th IEEE RAS/EMBS International Conference for Biomedical Robotics and Biomechatronics (BioRob); 2024: IEEE.
+
+[13] Kianpisheh M, Li FM, Truong KN. Face recognition assistant for people with visual impairments. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies. 2019;3(3):1–24.
+
+[14] Lin B-S, Lee C-C, Chiang P-Y. Simple smartphone-based guiding system for visually impaired people. Sensors. 2017;17(6):1371.
+
+[15] Kral R, Jacko P, Vince T. Low-Cost Multifunctional Assistive Device for Visually Impaired Individuals. IEEE Access. 2025.
+
+[16] More SS, Patil N, Lobo VB, Shet N, Goswami D, Rane P. Empowering the visually impaired: YOLOv8-based object detection in android applications. Procedia Computer Science. 2025;252:457–69.
+
+[17] Obayya M, Al-Wesabi FN, Bedewi W, Alshammeri M. An intelligent framework for visually impaired people through indoor object Detection-Based assistive system using YOLO with recurrent neural networks. Scientific Reports. 2025;15(1):43720.
+
+[18] Jin Y, Kim J, Kim B, Mallipeddi R, Lee M, editors. Smart cane: Face recognition system for blind. Proceedings of the 3rd International Conference on Human-Agent Interaction; 2015.

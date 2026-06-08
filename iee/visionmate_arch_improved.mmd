@@ -1,0 +1,91 @@
+flowchart LR
+  %% Users
+  subgraph Users[Users]
+    VIU[Visually Impaired User]
+    GUARD[Guardian]
+  end
+
+  %% Phone Hardware
+  subgraph HW[Phone Hardware]
+    Camera[Camera]
+    Mic[Microphone]
+    Speaker[Speaker]
+    GPS[GPS]
+    Accel[Accelerometer]
+    VolBtn[Volume Buttons]
+  end
+
+  %% App - grouped components
+  subgraph APP[VisionMate App]
+    subgraph PER[Perception]
+      Camera --> ObjDet[Object Detector YOLOv8n]
+      Camera --> FaceRec[Face Recognition MobileFaceNet]
+    end
+
+    subgraph DEC[Decision & Safety]
+      Percept[Perception Aggregator]
+      Safety[Safety / Fall Detector]
+      Nav[Navigation Module]
+    end
+
+    subgraph STO[Storage & Sync]
+      LocalDB[SQLite (embeddings)]
+      Sync[Firebase Sync]
+    end
+
+    subgraph UI[User Interfaces]
+      UserUI[User Interface]
+      GuardUI[Guardian Interface]
+      Fav[Favorite Destinations]
+    end
+  end
+
+  %% Cloud
+  subgraph CLOUD[Cloud Services]
+    Auth[Firebase Auth]
+    Firestore[Firestore (Realtime DB)]
+    Maps[Google Maps]
+  end
+
+  %% Perception -> Aggregation
+  ObjDet -- "object frames" --> Percept
+  FaceRec -- "face embeddings" --> Percept
+  FaceRec -- "embeddings (store)" --> LocalDB
+
+  %% Aggregator -> decision modules
+  Percept -- "events / detections" --> Safety
+  Percept -- "navigation cues" --> Nav
+
+  %% Sensors
+  Accel -- "accel data" --> Safety
+  GPS -- "location" --> Nav
+  Mic -- "voice cmd" --> UserUI
+  Speaker <-- "audio / TTS" -- UserUI
+
+  %% Volume buttons triggers
+  VolBtn -- "double-press" --> UserUI
+  VolBtn -- "triple-press -> favorite" --> Fav
+
+  %% Storage sync
+  LocalDB -- "periodic sync (embeddings)" --> Sync
+  Sync -- "write/read embeddings" --> Firestore
+  Auth -- "authenticated sync" --> Sync
+
+  %% Safety / SOS flow
+  Safety -- "sosAlert (doc)" --> Sync
+  Sync -- "sosAlert" --> Firestore
+  Firestore -- "push notification / DB update" --> GUARD
+  Firestore -- "sos read" --> GuardUI
+
+  %% Navigation uses maps
+  Nav -- "map queries" --> Maps
+  Maps -- "map data" --> Nav
+
+  %% UI interactions
+  VIU --> UserUI
+  GUARD --> GuardUI
+  UserUI -- "commands" --> Percept
+
+  %% Clean layout hints
+  classDef smallFont font-size:12px;
+  class VIU,GUARD,Camera,ObjDet,FaceRec,Percept,Safety,Nav,LocalDB,Sync,Auth,Firestore,Maps,Mic,Speaker,GPS,Accel,VolBtn,UserUI,GuardUI,Fav smallFont;

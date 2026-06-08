@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "probe-write-file",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"Set-Content -Path \"d:\\develop\\flutter_application_1\\flutter_application_1\\_task_probe.txt\" -Value \"ok\""
+			],
+			"isBackground": false
+		},
+		{
+			"label": "build-ieee-docx-v3",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"d:\\develop\\flutter_application_1\\flutter_application_1\\build_ieee_docx.ps1"
+			],
+			"isBackground": false
+		}
+	]
+}

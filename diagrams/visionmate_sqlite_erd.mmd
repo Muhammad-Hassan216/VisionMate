@@ -1,0 +1,20 @@
+erDiagram
+    registered_faces {
+        TEXT id PK
+        TEXT name
+        TEXT embeddings
+        TEXT image_path
+        TEXT created_at
+        INTEGER is_primary
+        TEXT synced_at
+    }
+
+    recognition_history {
+        TEXT id PK
+        TEXT face_id FK
+        TEXT person_name
+        REAL confidence
+        TEXT recognized_at
+    }
+
+    registered_faces ||--o{ recognition_history : "face_id"

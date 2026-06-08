@@ -1,0 +1,70 @@
+graph LR
+  subgraph VisionMate App
+    direction TB
+    UI[UserMainScreen]
+    OfflineScreen[OfflineRecognitionScreen]
+    GuardianDash[GuardianDashboard]
+    ObjectDetectorSvc[ObjectDetector]
+    FaceNetSvc[MobileFaceNetService]
+    OfflineRecSvc[OfflineRecognitionService]
+    FaceDB[FaceDatabaseSQLite]
+    SyncSvc[FirebaseToSQLiteSync]
+    LocationTracker[UserLocationTracker]
+    TTS[FlutterTTS_STT]
+    NavSvc[NavigationMaps]
+    FallLogic[FallDetectionLogic]
+  end
+
+  subgraph Phone Hardware
+    Camera[Camera]
+    Accel[Accelerometer]
+    GPS[GPS]
+    Mic[Microphone]
+    Speaker[Speaker]
+    VolumeButtons[Volume Buttons]
+  end
+
+  subgraph Cloud Services
+    Auth[FirebaseAuth]
+    Firestore[FirestoreUsersDoc]
+  end
+
+  %% Camera / detection flows
+  Camera -->|live feed / photo| UI
+  UI -->|frames| ObjectDetectorSvc
+  ObjectDetectorSvc -->|detections| UI
+  UI -->|announce / haptic| TTS
+  UI -->|capture photo| OfflineRecSvc
+  OfflineRecSvc -->|call| FaceNetSvc
+  FaceNetSvc -->|embeddings| OfflineRecSvc
+  OfflineRecSvc -->|compare with| FaceDB
+  FaceDB -->|recognition history| OfflineRecSvc
+  SyncSvc -->|sync faces from Firestore| FaceDB
+  SyncSvc -->|reads/writes| Firestore
+
+  %% Sensors -> app
+  Accel -->|stream| UI
+  UI -->|fall detected| Firestore
+  LocationTracker -->|GPS stream| Firestore
+  LocationTracker -->|battery/deviceStatus| Firestore
+  GPS -->|one-shot| LocationTracker
+
+  %% Voice / navigation
+  VolumeButtons -->|double-press| UI
+  Mic -->|STT| UI
+  UI -->|Places API request| NavSvc
+  NavSvc -->|route| UI
+
+  %% Auth + guardian flows
+  Auth -->|currentUser| UI
+  UI -->|writes sosAlert / lastSeen / currentLocation / deviceStatus| Firestore
+  GuardianDash -->|subscribes to| Firestore
+  GuardianDash -->|ack / commands| Firestore
+
+  %% Cloud <-> local sync (bidirectional)
+  Firestore <--> SyncSvc
+  SyncSvc --> FaceDB
+
+  %% Notes cluster
+  classDef svc fill:#f3f7ff,stroke:#3b6ea5;
+  class ObjectDetectorSvc,FaceNetSvc,OfflineRecSvc,SyncSvc,LocationTracker,NavSvc svc;

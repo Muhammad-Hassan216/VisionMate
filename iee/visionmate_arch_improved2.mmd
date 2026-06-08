@@ -1,0 +1,74 @@
+flowchart LR
+  subgraph Users
+    VIU[VI User]
+    GUARD[Guardian]
+  end
+
+  subgraph HW
+    Camera[Camera]
+    Mic[Microphone]
+    Speaker[Speaker]
+    GPS[GPS]
+    Accel[Accelerometer]
+    VolBtn[Volume Buttons]
+  end
+
+  subgraph APP
+    subgraph PER
+      Camera --> ObjDet[ObjectDetector_YOLOv8n]
+      Camera --> FaceRec[FaceRec_MobileFaceNet]
+    end
+
+    subgraph DEC
+      Percept[PerceptionAggregator]
+      Safety[SafetyDetector]
+      Nav[NavigationModule]
+    end
+
+    subgraph STO
+      LocalDB[SQLite_Embeddings]
+      Sync[FirebaseSync]
+    end
+
+    subgraph UI
+      UserUI[UserInterface]
+      GuardUI[GuardianInterface]
+      Fav[FavoriteDestinations]
+    end
+  end
+
+  subgraph CLOUD
+    Auth[FirebaseAuth]
+    Firestore[FirestoreDB]
+    Maps[GoogleMaps]
+  end
+
+  ObjDet -- image --> Percept
+  FaceRec -- embedding --> Percept
+  FaceRec -- embedding_store --> LocalDB
+
+  Percept -- events --> Safety
+  Percept -- nav_cues --> Nav
+
+  Accel -- accel --> Safety
+  GPS -- location --> Nav
+  Mic -- voice --> UserUI
+  UserUI -- tts --> Speaker
+
+  VolBtn -- double_press --> UserUI
+  VolBtn -- triple_press --> Fav
+
+  LocalDB -- periodic_sync --> Sync
+  Sync -- write_read --> Firestore
+  Auth -- auth --> Sync
+
+  Safety -- sos --> Sync
+  Sync -- sos --> Firestore
+  Firestore -- notify --> GUARD
+
+  Nav -- map_query --> Maps
+  Maps -- map_data --> Nav
+
+  VIU --> UserUI
+  GUARD --> GuardUI
+  UserUI -- commands --> Percept

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "816627658336",
+    "project_id": "visionmate-75ca4",
+    "storage_bucket": "visionmate-75ca4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816627658336:android:680d1929ec74effc87dd05",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9LYwfK4gMluNxOTX8qPYh07rHS7vYAP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

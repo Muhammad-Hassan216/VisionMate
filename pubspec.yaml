@@ -1,0 +1,47 @@
+name: visionmate
+description: "VisionMate: Assistive Flutter app for visually impaired users with object detection, TTS, and emergency support."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.9
+  firebase_core: ^3.1.1
+  firebase_auth: ^5.1.2
+  cloud_firestore: ^5.1.0
+  camera: ^0.10.5+5
+  tflite_flutter: ^0.12.1
+  sqflite: ^2.3.0
+  path: ^1.8.3
+
+  image: ^4.1.3
+  flutter_tts: ^3.8.0
+  google_maps_flutter: ^2.6.0
+  geolocator: ^11.0.0
+  permission_handler: ^11.3.0
+  http: ^1.6.0
+  volume_controller: ^2.0.7
+  url_launcher: ^6.2.5
+  speech_to_text: ^7.3.0
+  sensors_plus: ^6.1.1
+  battery_plus: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.png
+    - assets/svg/
+    - assets/models/
