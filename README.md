@@ -98,7 +98,8 @@ Make sure your Firebase project includes matching app bundle IDs / package names
 ## Security & Best Practices
 
 - Do not commit real API keys or secrets to GitHub.
-- Replace placeholder values in `lib/config/email_config.dart` only in a secure local environment.
+- Replace placeholder values in `lib/config/email_config.dart`, `lib/firebase_options.dart`, and `lib/screens/user_main_screen.dart` only in a secure local environment.
+- Use local environment variables or non-committed configuration files for your Google Maps and Firebase secrets.
 - Remove any hard-coded service keys before sharing or publishing the repository.
 
 ## Notes for Developers

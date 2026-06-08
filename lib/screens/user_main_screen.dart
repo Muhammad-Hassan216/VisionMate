@@ -133,7 +133,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
 
   // Places Search
   final TextEditingController _searchController = TextEditingController();
-  final String _placesApiKey = 'AIzaSyCVQ1j1qemJHSgn3h60FiffYM-NxMTtyTc';
+  final String _placesApiKey = 'YOUR_GOOGLE_PLACES_API_KEY';
   List<PlacePrediction> _searchPredictions = [];
   bool _isSearching = false;
 

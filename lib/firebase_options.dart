@@ -41,46 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAn_JiqrkJvFO5lBApzDTGIvhpgZ48-JXk',
-    appId: '1:816627658336:web:872228bba00a439187dd05',
-    messagingSenderId: '816627658336',
-    projectId: 'visionmate-75ca4',
-    authDomain: 'visionmate-75ca4.firebaseapp.com',
-    storageBucket: 'visionmate-75ca4.firebasestorage.app',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_APP_ID',
+    messagingSenderId: 'YOUR_FIREBASE_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_FIREBASE_PROJECT_ID',
+    authDomain: 'YOUR_FIREBASE_AUTH_DOMAIN',
+    storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA9LYwfK4gMluNxOTX8qPYh07rHS7vYAP4',
-    appId: '1:816627658336:android:680d1929ec74effc87dd05',
-    messagingSenderId: '816627658336',
-    projectId: 'visionmate-75ca4',
-    storageBucket: 'visionmate-75ca4.firebasestorage.app',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_APP_ID',
+    messagingSenderId: 'YOUR_FIREBASE_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_FIREBASE_PROJECT_ID',
+    storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDYqovwZz9WKL-XFrLA8wFrX3Og7lKgmUo',
-    appId: '1:816627658336:ios:2e64994caaf4f8e387dd05',
-    messagingSenderId: '816627658336',
-    projectId: 'visionmate-75ca4',
-    storageBucket: 'visionmate-75ca4.firebasestorage.app',
-    iosBundleId: 'com.example.flutterApplication1',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_APP_ID',
+    messagingSenderId: 'YOUR_FIREBASE_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_FIREBASE_PROJECT_ID',
+    storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
+    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDYqovwZz9WKL-XFrLA8wFrX3Og7lKgmUo',
-    appId: '1:816627658336:ios:2e64994caaf4f8e387dd05',
-    messagingSenderId: '816627658336',
-    projectId: 'visionmate-75ca4',
-    storageBucket: 'visionmate-75ca4.firebasestorage.app',
-    iosBundleId: 'com.example.flutterApplication1',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_APP_ID',
+    messagingSenderId: 'YOUR_FIREBASE_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_FIREBASE_PROJECT_ID',
+    storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
+    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAn_JiqrkJvFO5lBApzDTGIvhpgZ48-JXk',
-    appId: '1:816627658336:web:7a73fafc2abdcd7c87dd05',
-    messagingSenderId: '816627658336',
-    projectId: 'visionmate-75ca4',
-    authDomain: 'visionmate-75ca4.firebaseapp.com',
-    storageBucket: 'visionmate-75ca4.firebasestorage.app',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_APP_ID',
+    messagingSenderId: 'YOUR_FIREBASE_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_FIREBASE_PROJECT_ID',
+    authDomain: 'YOUR_FIREBASE_AUTH_DOMAIN',
+    storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
   );
 }
